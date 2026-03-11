@@ -1,0 +1,22 @@
+<!--
+    Build.xml — hxcpp supplemental build configuration for Sentinel.
+
+    The native C++ file (sentinel_socket_cpp.cpp) is added to the build
+    via @:buildXml metadata on UnixSocket.hx — that is the correct hxcpp
+    mechanism and does not need to be listed here.
+
+    This file only supplies linker flags (macOS frameworks) that cannot
+    be expressed via @:buildXml on a single class.
+
+    Place this file in the project root alongside build-cpp.hxml.
+    hxcpp picks it up automatically when it finds Build.xml in the
+    current working directory at compile time.
+-->
+<xml>
+  <target id="haxe">
+    <flag value="-mmacosx-version-min=12.0"/>
+    <lib name="-framework Foundation"/>
+    <lib name="-framework Security"/>
+    <lib name="-framework CoreFoundation"/>
+  </target>
+</xml>

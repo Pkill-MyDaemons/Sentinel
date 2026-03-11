@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Network client: outgoing connections for GitHub/AI API calls -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+
+    <!-- File access: read app bundles and browser profiles -->
+    <key>com.apple.security.files.user-selected.read-only</key>
+    <true/>
+
+    <!-- Allow running as daemon -->
+    <key>com.apple.security.app-sandbox</key>
+    <false/>
+
+    <!--
+        NOTE: For full access to /Applications and ~/Library,
+        Sentinel must run OUTSIDE the App Sandbox.
+        Distribution via direct download (not Mac App Store).
+
+        SIP (System Integrity Protection) remains ON — Sentinel
+        does NOT need SIP disabled and does NOT disable it.
+    -->
+</dict>
+</plist>

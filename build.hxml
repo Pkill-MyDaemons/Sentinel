@@ -1,0 +1,31 @@
+# Sentinel Security — Haxe Build File
+# Compile targets: HashLink (.hl), HashLink/C (native), C++ (hxcpp)
+
+# -----------------------------------------------
+# Target 1: HashLink bytecode (.hl) — fast dev
+# -----------------------------------------------
+# haxe build-hl.hxml
+
+# -----------------------------------------------
+# Target 2: C via HashLink/C — native macOS binary
+# -----------------------------------------------
+# haxe build-hlc.hxml && cd build/hlc && cmake . && make
+
+# -----------------------------------------------
+# Target 3: C++ via hxcpp — full native binary
+# -----------------------------------------------
+# haxe build-cpp.hxml
+
+# Default: HashLink bytecode
+# Tell hxcpp where to find OpenSSL 3.5 headers
+-D HXCPP_CLANG
+-D HXCPP_M64
+-D HXCPP_ARM64
+--macro addConfig('include_path', '/opt/homebrew/opt/openssl@3/include')
+--macro addConfig('library_path', '/opt/homebrew/opt/openssl@3/lib')
+-cp src
+-main sentinel.Main
+-lib hxssl
+-hl build/sentinel.hl -
+
+--define SENTINEL_VERSION=0.1.0

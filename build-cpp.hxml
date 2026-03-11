@@ -1,0 +1,7 @@
+-cp src
+-D no_ssl
+-main sentinel.Main
+-lib hxcpp
+-cpp build/cpp
+--define target=cpp
+--define HXCPP_OPTIMIZE_FOR_SIZE

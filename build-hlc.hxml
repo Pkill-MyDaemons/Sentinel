@@ -1,5 +1,4 @@
 -cp src
--D no_ssl
 -main sentinel.Main
 -hl build/hlc/sentinel.c
 --define target=hlc

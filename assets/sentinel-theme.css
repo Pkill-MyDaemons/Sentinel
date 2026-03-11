@@ -1,0 +1,116 @@
+/* sentinel-theme.css — HaxeUI component styles for the Sentinel GUI app */
+
+/* ── Filter bar buttons ─────────────────────────────────────────── */
+.filter-btn {
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 3px;
+    background-color: transparent;
+    border-size: 1px;
+    border-color: #cccccc;
+    color: #555555;
+}
+
+.filter-btn.active-filter {
+    border-color: #2980b9;
+    color: #2980b9;
+    background-color: #eaf4fb;
+}
+
+/* ── Toolbar buttons ────────────────────────────────────────────── */
+.toolbar-btn {
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    border-color: #cccccc;
+    border-size: 1px;
+    color: #555555;
+}
+
+/* ── Action buttons ─────────────────────────────────────────────── */
+.action-btn {
+    font-size: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 4px;
+    border-color: #cccccc;
+    color: #333333;
+}
+
+.action-btn-ok {
+    font-size: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 4px;
+    background-color: #27ae60;
+    border-color: #219a52;
+    color: #ffffff;
+}
+
+.action-btn-ok:hover {
+    background-color: #219a52;
+}
+
+/* ── ListView ───────────────────────────────────────────────────── */
+ListView {
+    font-size: 12px;
+    border-color: #dddddd;
+    border-size: 1px;
+}
+
+ListView .listview-item {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    border-bottom-size: 1px;
+    border-bottom-color: #eeeeee;
+}
+
+ListView .listview-item:selected {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+/* ── TextArea ───────────────────────────────────────────────────── */
+TextArea {
+    border-color: #cccccc;
+    border-size: 1px;
+    border-radius: 3px;
+    padding: 6px;
+    font-family: monospace;
+}
+
+/* ── TextField ──────────────────────────────────────────────────── */
+TextField {
+    border-color: #cccccc;
+    border-size: 1px;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+TextField:focus {
+    border-color: #2980b9;
+}
+
+/* ── Slider ─────────────────────────────────────────────────────── */
+Slider .thumb {
+    background-color: #2980b9;
+}
+
+/* ── TabView ────────────────────────────────────────────────────── */
+TabView .tab-bar {
+    font-size: 12px;
+    background-color: #f5f5f5;
+}
+
+/* ── Status bar label ───────────────────────────────────────────── */
+StatusBar {
+    font-size: 11px;
+    color: #555555;
+    padding-left: 10px;
+}

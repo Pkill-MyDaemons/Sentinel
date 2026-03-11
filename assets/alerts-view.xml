@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    alerts-view.xml — Sentinel alert review panel
+
+    Layout:
+      ┌─────────────────────────────────────────┐
+      │ [All][New][Terminal][Updates]..  [Refresh]│  toolbar
+      ├───────────────────┬─────────────────────┤
+      │                   │  (detail panel)     │
+      │   alerts list     │  title              │
+      │   (ListView)      │  risk / source      │
+      │                   │  timestamp          │
+      │                   │  detail text        │
+      │                   │                     │
+      │                   │  [Reviewed][Dismiss]│
+      └───────────────────┴─────────────────────┘
+-->
+<hbox width="100%" height="100%">
+
+  <!-- Left: list + toolbar -->
+  <vbox width="55%" height="100%" style="padding:0;">
+
+    <!-- Filter toolbar -->
+    <hbox id="filter-bar" style="padding:6px 8px; spacing:4px;">
+      <button id="btn-filter-all"        text="All"        styleName="filter-btn active-filter" />
+      <button id="btn-filter-new"        text="New"        styleName="filter-btn" />
+      <button id="btn-filter-terminal"   text="Terminal"   styleName="filter-btn" />
+      <button id="btn-filter-updates"    text="Updates"    styleName="filter-btn" />
+      <button id="btn-filter-extensions" text="Extensions" styleName="filter-btn" />
+      <button id="btn-filter-network"    text="Network"    styleName="filter-btn" />
+      <spacer width="100%" />
+      <button id="btn-mark-all"   text="Mark All Reviewed" styleName="toolbar-btn" />
+      <button id="btn-refresh"    text="↺ Refresh"         styleName="toolbar-btn" />
+    </hbox>
+
+    <!-- Alerts list -->
+    <listview id="alerts-list" width="100%" height="100%"
+              style="font-size:12px;" />
+
+  </vbox>
+
+  <!-- Right: detail panel -->
+  <vbox id="detail-panel" width="45%" height="100%"
+        style="padding:14px; spacing:10px; border-left: 1px solid #cccccc;">
+
+    <label id="detail-empty" text="Select an alert to view details"
+           style="color:#888888; font-size:12px; margin-top:40px; text-align:center;" />
+
+    <vbox id="detail-content" hidden="true" width="100%" style="spacing:8px;">
+
+      <label id="detail-title"
+             style="font-size:13px; font-weight:bold; word-wrap:true;" />
+
+      <hbox style="spacing:6px;">
+        <label id="detail-risk"   style="font-size:11px; font-weight:bold;" />
+        <label id="detail-source" style="font-size:11px; color:#666666;" />
+      </hbox>
+
+      <label id="detail-time"
+             style="font-size:11px; color:#888888; font-family:monospace;" />
+
+      <label text="Details" style="font-size:10px; color:#888888; font-weight:bold;
+             text-transform:uppercase; letter-spacing:1px; margin-top:6px;" />
+      <textarea id="detail-body" width="100%" height="120"
+               
+                style="font-size:11px; font-family:monospace;" />
+
+      <label text="Status" style="font-size:10px; color:#888888; font-weight:bold;
+             text-transform:uppercase; letter-spacing:1px;" />
+      <label id="detail-status" style="font-size:12px; font-family:monospace;" />
+
+      <spacer height="100%" />
+
+      <hbox style="spacing:8px; margin-top:10px;">
+        <button id="btn-reviewed" text="✓  Mark Reviewed" width="50%"
+                styleName="action-btn-ok" />
+        <button id="btn-dismiss"  text="✕  Dismiss"       width="50%"
+                styleName="action-btn" />
+      </hbox>
+
+    </vbox>
+
+  </vbox>
+
+</hbox>

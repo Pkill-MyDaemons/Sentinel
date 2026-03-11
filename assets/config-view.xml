@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    config-view.xml — Sentinel configuration editor
+
+    Five tabs: AI · Terminal · Updates · Extensions · Network
+    Save / Reset buttons at the bottom.
+-->
+<vbox width="100%" height="100%" style="padding:0; spacing:0;">
+
+  <tabview id="config-tabs" width="100%" height="100%">
+
+    <!-- ── AI Engine ─────────────────────────────── -->
+    <vbox text="AI Engine" style="padding:16px; spacing:12px;">
+
+      <hbox style="spacing:10px;">
+        <label text="Provider" style="font-size:12px; width:160px;" />
+        <dropdown id="cfg-ai-provider" width="200px">
+          <data>
+            <item text="Local (Ollama)" value="local" />
+            <item text="Anthropic Claude" value="anthropic" />
+            <item text="OpenAI" value="openai" />
+          </data>
+        </dropdown>
+      </hbox>
+
+      <vbox id="rows-local" style="spacing:10px;">
+        <hbox style="spacing:10px;">
+          <label text="Ollama Model"    style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-localModel"    width="220px" placeholder="llama3" />
+        </hbox>
+        <hbox style="spacing:10px;">
+          <label text="Ollama URL"      style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-localEndpoint" width="220px" placeholder="http://localhost:11434" />
+        </hbox>
+      </vbox>
+
+      <vbox id="rows-anthropic" style="spacing:10px;" hidden="true">
+        <hbox style="spacing:10px;">
+          <label text="API Key"         style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-anthropicKey"   width="220px" placeholder="sk-ant-..." password="true" />
+        </hbox>
+        <hbox style="spacing:10px;">
+          <label text="Model"           style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-anthropicModel" width="220px" placeholder="claude-sonnet-4-20250514" />
+        </hbox>
+      </vbox>
+
+      <vbox id="rows-openai" style="spacing:10px;" hidden="true">
+        <hbox style="spacing:10px;">
+          <label text="API Key"         style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-openaiKey"   width="220px" placeholder="sk-..." password="true" />
+        </hbox>
+        <hbox style="spacing:10px;">
+          <label text="Model"           style="font-size:12px; width:160px;" />
+          <textfield id="cfg-ai-openaiModel" width="220px" placeholder="gpt-4o" />
+        </hbox>
+      </vbox>
+
+      <hbox style="spacing:10px;">
+        <label text="Block Threshold" style="font-size:12px; width:160px;" />
+        <slider id="cfg-ai-blockThreshold" min="0" max="1" pos="0.85" width="180px" />
+        <label id="lbl-block-thresh" text="0.85" style="font-size:11px; width:36px; font-family:monospace;" />
+      </hbox>
+
+      <hbox style="spacing:10px;">
+        <label text="Warn Threshold" style="font-size:12px; width:160px;" />
+        <slider id="cfg-ai-warnThreshold"  min="0" max="1" pos="0.50" width="180px" />
+        <label id="lbl-warn-thresh"  text="0.50" style="font-size:11px; width:36px; font-family:monospace;" />
+      </hbox>
+
+    </vbox>
+
+    <!-- ── Terminal ──────────────────────────────── -->
+    <vbox text="Terminal" style="padding:16px; spacing:12px;">
+
+      <hbox style="spacing:10px;">
+        <label text="Auto-block high risk" style="font-size:12px; width:200px;" />
+        <checkbox id="cfg-terminal-autoBlock" />
+      </hbox>
+
+      <hbox style="spacing:10px;">
+        <label text="GitHub Token"         style="font-size:12px; width:160px;" />
+        <textfield id="cfg-terminal-githubToken" width="220px" placeholder="ghp_..." password="true" />
+      </hbox>
+
+      <label text="Trusted Taps (one per line)"
+             style="font-size:12px; margin-top:6px;" />
+      <textarea id="cfg-terminal-trustedTaps" width="100%" height="80"
+                style="font-family:monospace; font-size:11px;" />
+
+    </vbox>
+
+    <!-- ── Updates ───────────────────────────────── -->
+    <vbox text="Updates" style="padding:16px; spacing:12px;">
+
+      <hbox style="spacing:10px;">
+        <label text="Block unknown domains" style="font-size:12px; width:200px;" />
+        <checkbox id="cfg-updates-blockUnknownDomains" />
+      </hbox>
+
+      <label text="Trusted Domains (one per line)"
+             style="font-size:12px; margin-top:6px;" />
+      <textarea id="cfg-updates-trustedDomains" width="100%" height="120"
+                style="font-family:monospace; font-size:11px;" />
+
+    </vbox>
+
+    <!-- ── Extensions ────────────────────────────── -->
+    <vbox text="Extensions" style="padding:16px; spacing:12px;">
+
+      <hbox style="spacing:10px;">
+        <label text="Auto-disable flagged" style="font-size:12px; width:200px;" />
+        <checkbox id="cfg-extensions-autoDisable" />
+      </hbox>
+
+      <hbox style="spacing:10px;">
+        <label text="Max permissions"     style="font-size:12px; width:160px;" />
+        <numberstepper id="cfg-extensions-maxPermissions" min="1" max="50" pos="5" width="80px" />
+      </hbox>
+
+      <label text="Dangerous Permissions (one per line)"
+             style="font-size:12px; margin-top:6px;" />
+      <textarea id="cfg-extensions-dangerousPermissions" width="100%" height="120"
+                style="font-family:monospace; font-size:11px;" />
+
+    </vbox>
+
+    <!-- ── Network ───────────────────────────────── -->
+    <vbox text="Network" style="padding:16px; spacing:12px;">
+
+      <hbox style="spacing:10px;">
+        <label text="Log all connections" style="font-size:12px; width:200px;" />
+        <checkbox id="cfg-network-logConnections" />
+      </hbox>
+
+      <label text="Ignored Apps (one per line)"
+             style="font-size:12px; margin-top:6px;" />
+      <textarea id="cfg-network-ignoredApps" width="100%" height="80"
+                style="font-family:monospace; font-size:11px;" />
+
+    </vbox>
+
+  </tabview>
+
+  <!-- Save / Reset bar -->
+  <hbox style="padding:10px 16px; spacing:10px; border-top: 1px solid #cccccc;">
+    <button id="btn-save"  text="Save Changes" styleName="action-btn-ok" />
+    <button id="btn-reset" text="Reset"         styleName="action-btn" />
+    <label  id="lbl-save-status" text="" style="font-size:11px; color:#27ae60;" />
+  </hbox>
+
+</vbox>

@@ -18,7 +18,6 @@
 
 # Default: HashLink bytecode
 -cp src
--D no_ssl
 -main sentinel.Main
 -hl build/sentinel.hl
 --define SENTINEL_VERSION=0.1.0

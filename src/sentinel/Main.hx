@@ -9,6 +9,7 @@ import sentinel.modules.ExtensionMonitor;
 import sentinel.modules.NetworkMonitor;
 import sentinel.ai.AIEngine;
 import sentinel.platform.Signal;
+import sentinel.gui.AlertStore;
 
 /**
  * Sentinel Security — AI-powered macOS security monitor
@@ -28,6 +29,7 @@ class Main {
 
     static var bus:EventBus;
     static var ai:AIEngine;
+    static var alertStore:AlertStore;
 
     static function main() {
         Logger.init();
@@ -38,6 +40,9 @@ class Main {
 
         // Central event bus — all modules communicate through here
         bus = new EventBus();
+
+        // Alert store — subscribes to bus, persists alerts to ~/.sentinel/alerts.json
+        alertStore = new AlertStore(bus);
 
         // AI engine — defaults to local Ollama; falls back to Anthropic/OpenAI if configured
         ai = new AIEngine(Config.get());

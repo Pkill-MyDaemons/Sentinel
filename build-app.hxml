@@ -1,0 +1,20 @@
+# Sentinel Security — Native GUI App
+# Requires: haxelib install hxWidgets haxeui-core haxeui-hxwidgets
+#
+# Build:
+#   haxe build-app.hxml
+# Run:
+#   ./build/app/SentinelApp        (or open build/app/SentinelApp.app on macOS)
+
+-cp src
+-main sentinel.app.SentinelApp
+-lib hxWidgets
+-lib haxeui-core
+-lib haxeui-hxwidgets
+-lib hxcpp
+-cpp build/app
+--define target=cpp
+--define HXCPP_OPTIMIZE_FOR_SIZE
+-resource assets/alerts-view.xml@assets/alerts-view.xml
+-resource assets/config-view.xml@assets/config-view.xml
+-resource assets/sentinel-theme.css@assets/sentinel-theme.css

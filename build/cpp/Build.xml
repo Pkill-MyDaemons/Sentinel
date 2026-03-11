@@ -151,6 +151,7 @@
    <depend name="include/sys/Http.h"/>
    <depend name="include/sys/net/Host.h"/>
    <depend name="include/sys/net/Socket.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
   </file>
   <file name="src/sys/FileSystem.cpp" >
    <depend name="include/Date.h"/>

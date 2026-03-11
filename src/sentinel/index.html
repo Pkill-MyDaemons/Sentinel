@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinel Security</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:        #0a0c0f;
+    --bg2:       #0f1217;
+    --bg3:       #151a21;
+    --border:    #1e2530;
+    --border2:   #262f3d;
+    --text:      #c8d3e0;
+    --text2:     #7a8a9a;
+    --text3:     #4a5668;
+    --accent:    #00d4ff;
+    --accent2:   #0099cc;
+    --safe:      #00c896;
+    --low:       #4db8ff;
+    --medium:    #ffaa00;
+    --high:      #ff5a4a;
+    --critical:  #ff1a4a;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'IBM Plex Sans', sans-serif;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* ── Layout ── */
+  #app { display:flex; height:100vh; flex-direction:column; }
+
+  #titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 48px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .title-left { display:flex; align-items:center; gap:12px; }
+
+  .logo {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 50%, transparent);
+    flex-shrink: 0;
+  }
+
+  .app-name {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+
+  .version-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+  }
+
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+    letter-spacing: 0.06em;
+  }
+
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--safe);
+    box-shadow: 0 0 6px var(--safe);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .status-dot.inactive { background: var(--text3); box-shadow: none; animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── Nav ── */
+  #nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 16px;
+    height: 40px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .nav-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 14px;
+    height: 40px;
+    position: relative;
+    transition: color 0.15s;
+  }
+
+  .nav-btn:hover { color: var(--text2); }
+
+  .nav-btn.active {
+    color: var(--accent);
+  }
+
+  .nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 14px; right: 14px;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  .nav-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: var(--high);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  /* ── Body ── */
+  #body { display:flex; flex:1; overflow:hidden; }
+
+  /* ── Panels ── */
+  .panel { display:none; flex:1; overflow:hidden; flex-direction:column; }
+  .panel.active { display:flex; }
+
+  /* ── Alerts Panel ── */
+  #alerts-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: var(--bg2);
+  }
+
+  .filter-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text3);
+    background: none;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .filter-btn:hover { color: var(--text2); border-color: var(--text3); }
+  .filter-btn.active { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+  .spacer { flex: 1; }
+
+  .icon-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.12s;
+    white-space: nowrap;
+  }
+  .icon-btn:hover { color: var(--text2); border-color: var(--border2); }
+
+  #alerts-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  #alerts-list::-webkit-scrollbar { width: 4px; }
+  #alerts-list::-webkit-scrollbar-track { background: transparent; }
+  #alerts-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .alert-item {
+    display: flex;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.12s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .alert-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+
+  .alert-item.risk-safe::before   { background: var(--safe); }
+  .alert-item.risk-low::before    { background: var(--low); }
+  .alert-item.risk-medium::before { background: var(--medium); }
+  .alert-item.risk-high::before   { background: var(--high); }
+  .alert-item.risk-critical::before { background: var(--critical); box-shadow: 2px 0 8px color-mix(in srgb, var(--critical) 60%, transparent); }
+
+  .alert-item:hover { background: var(--bg3); border-color: var(--border2); }
+  .alert-item.selected { background: var(--bg3); border-color: var(--border2); }
+  .alert-item.status-reviewed { opacity: 0.55; }
+  .alert-item.status-dismissed { display: none; }
+
+  .alert-left { flex: 1; min-width: 0; }
+  .alert-top { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+
+  .risk-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  .risk-safe    { color: var(--safe);     background: color-mix(in srgb, var(--safe)     15%, transparent); }
+  .risk-low     { color: var(--low);      background: color-mix(in srgb, var(--low)      15%, transparent); }
+  .risk-medium  { color: var(--medium);   background: color-mix(in srgb, var(--medium)   15%, transparent); }
+  .risk-high    { color: var(--high);     background: color-mix(in srgb, var(--high)      15%, transparent); }
+  .risk-critical{ color: var(--critical); background: color-mix(in srgb, var(--critical) 15%, transparent); }
+
+  .source-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+  }
+
+  .alert-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .alert-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  .alert-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .new-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 5px var(--accent);
+  }
+
+  .action-row { display: flex; gap: 5px; }
+
+  .mini-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    background: none;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: all 0.12s;
+    white-space: nowrap;
+  }
+  .mini-btn:hover { color: var(--text); border-color: var(--text3); }
+  .mini-btn.ok:hover { color: var(--safe); border-color: var(--safe); }
+  .mini-btn.dismiss:hover { color: var(--text2); }
+
+  /* ── Detail Drawer ── */
+  #detail-drawer {
+    width: 340px;
+    flex-shrink: 0;
+    border-left: 1px solid var(--border);
+    background: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.2s ease;
+  }
+  #detail-drawer.hidden { width: 0; border: none; }
+
+  #detail-header {
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .detail-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    word-break: break-word;
+  }
+
+  .detail-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
+  #detail-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 16px;
+  }
+  #detail-body::-webkit-scrollbar { width: 4px; }
+  #detail-body::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .detail-section { margin-bottom: 16px; }
+
+  .detail-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+
+  .detail-value {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-wrap;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+
+  #detail-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .action-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    padding: 7px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    background: none;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.12s;
+    flex: 1;
+  }
+  .action-btn:hover { color: var(--text); border-color: var(--text2); background: var(--bg3); }
+  .action-btn.primary { color: var(--safe); border-color: var(--safe); background: color-mix(in srgb, var(--safe) 8%, transparent); }
+  .action-btn.primary:hover { background: color-mix(in srgb, var(--safe) 14%, transparent); }
+
+  /* ── Config Panel ── */
+  #config-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+  }
+  #config-panel::-webkit-scrollbar { width: 4px; }
+  #config-panel::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+  .config-layout {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .config-section {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .config-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 18px;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text2);
+  }
+
+  .section-icon {
+    font-size: 14px;
+    opacity: 0.6;
+  }
+
+  .config-fields { padding: 16px 18px; display: flex; flex-direction: column; gap: 14px; }
+
+  .field-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .field-row.vertical { flex-direction: column; gap: 6px; }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+    min-width: 160px;
+    flex-shrink: 0;
+    padding-top: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .field-label small {
+    display: block;
+    font-size: 10px;
+    color: var(--text3);
+    margin-top: 2px;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .field-control { flex: 1; }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 7px 10px;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus { border-color: var(--accent2); }
+
+  select option { background: var(--bg2); }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toggle-row:last-child { border: none; padding-bottom: 0; }
+
+  .toggle-info { flex: 1; }
+  .toggle-name { font-size: 12px; color: var(--text); margin-bottom: 2px; }
+  .toggle-desc { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+
+  .toggle {
+    position: relative;
+    width: 34px; height: 18px;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .toggle input { opacity:0; width:0; height:0; }
+
+  .toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--border2);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .toggle-track::after {
+    content: '';
+    position: absolute;
+    width: 12px; height: 12px;
+    left: 3px; top: 3px;
+    background: var(--text3);
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+
+  .toggle input:checked + .toggle-track { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .toggle input:checked + .toggle-track::after { transform: translateX(16px); background: var(--accent); }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text2);
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .tag-remove {
+    color: var(--text3);
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+    transition: color 0.1s;
+  }
+  .tag-remove:hover { color: var(--high); }
+
+  .tag-input-row { display: flex; gap: 6px; margin-top: 6px; }
+  .tag-input-row input { flex: 1; }
+
+  .add-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    border-radius: 4px;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: all 0.12s;
+    white-space: nowrap;
+  }
+  .add-btn:hover { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+
+  /* threshold slider */
+  .slider-row { display: flex; align-items: center; gap: 10px; }
+  input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--border2);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 5px color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+  .slider-val {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 32px;
+    text-align: right;
+  }
+
+  /* save bar */
+  #save-bar {
+    position: sticky;
+    bottom: 0;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 -24px -24px;
+  }
+
+  .save-btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .save-btn:hover { background: var(--accent2); }
+
+  .reset-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    background: none;
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .reset-btn:hover { color: var(--text2); border-color: var(--text3); }
+
+  .save-status {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--safe);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .save-status.show { opacity: 1; }
+
+  /* ── Empty state ── */
+  .empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text3);
+  }
+  .empty-icon { font-size: 32px; opacity: 0.3; }
+  .empty-text { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; }
+
+  /* ── Error toast ── */
+  #error-toast {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    background: color-mix(in srgb, var(--high) 15%, var(--bg2));
+    border: 1px solid var(--high);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--high);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    max-width: 300px;
+  }
+  #error-toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Titlebar -->
+  <div id="titlebar">
+    <div class="title-left">
+      <div class="logo"></div>
+      <span class="app-name">Sentinel</span>
+      <span class="version-badge">v0.1.0</span>
+    </div>
+    <div class="status-pill">
+      <div class="status-dot" id="status-dot"></div>
+      <span id="status-text">DAEMON ACTIVE</span>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div id="nav">
+    <button class="nav-btn active" data-panel="alerts" onclick="switchPanel('alerts')">
+      Alerts <span class="nav-badge" id="alert-badge" style="display:none"></span>
+    </button>
+    <button class="nav-btn" data-panel="config" onclick="switchPanel('config')">
+      Config
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div id="body">
+
+    <!-- ── Alerts Panel ── -->
+    <div class="panel active" id="panel-alerts">
+      <div id="alerts-toolbar">
+        <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-btn" onclick="setFilter('new', this)">New</button>
+        <button class="filter-btn" onclick="setFilter('terminal', this)">Terminal</button>
+        <button class="filter-btn" onclick="setFilter('updates', this)">Updates</button>
+        <button class="filter-btn" onclick="setFilter('extensions', this)">Extensions</button>
+        <button class="filter-btn" onclick="setFilter('network', this)">Network</button>
+        <div class="spacer"></div>
+        <button class="icon-btn" onclick="markAllReviewed()">Mark all reviewed</button>
+        <button class="icon-btn" onclick="loadAlerts()">⟳ Refresh</button>
+      </div>
+
+      <div style="display:flex; flex:1; overflow:hidden;">
+        <div id="alerts-list"></div>
+        <div id="detail-drawer" class="hidden"></div>
+      </div>
+    </div>
+
+    <!-- ── Config Panel ── -->
+    <div class="panel" id="panel-config">
+      <div id="config-panel">
+        <div class="config-layout">
+
+          <!-- AI -->
+          <div class="config-section">
+            <div class="config-section-header">
+              <span class="section-title">AI Engine</span>
+              <span class="section-icon">🤖</span>
+            </div>
+            <div class="config-fields">
+              <div class="field-row">
+                <div class="field-label">Provider<small>Where AI runs</small></div>
+                <div class="field-control">
+                  <select id="cfg-ai-provider" onchange="onProviderChange()">
+                    <option value="local">Local (Ollama)</option>
+                    <option value="anthropic">Anthropic Claude</option>
+                    <option value="openai">OpenAI</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-row" id="row-local-model">
+                <div class="field-label">Ollama Model<small>e.g. llama3, mistral</small></div>
+                <div class="field-control"><input type="text" id="cfg-ai-localModel" placeholder="llama3"></div>
+              </div>
+              <div class="field-row" id="row-local-endpoint">
+                <div class="field-label">Ollama URL</div>
+                <div class="field-control"><input type="text" id="cfg-ai-localEndpoint" placeholder="http://localhost:11434"></div>
+              </div>
+              <div class="field-row" id="row-anthropic-key" style="display:none">
+                <div class="field-label">Anthropic API Key</div>
+                <div class="field-control"><input type="password" id="cfg-ai-anthropicKey" placeholder="sk-ant-..."></div>
+              </div>
+              <div class="field-row" id="row-anthropic-model" style="display:none">
+                <div class="field-label">Claude Model</div>
+                <div class="field-control"><input type="text" id="cfg-ai-anthropicModel" placeholder="claude-sonnet-4-20250514"></div>
+              </div>
+              <div class="field-row" id="row-openai-key" style="display:none">
+                <div class="field-label">OpenAI API Key</div>
+                <div class="field-control"><input type="password" id="cfg-ai-openaiKey" placeholder="sk-..."></div>
+              </div>
+              <div class="field-row" id="row-openai-model" style="display:none">
+                <div class="field-label">GPT Model</div>
+                <div class="field-control"><input type="text" id="cfg-ai-openaiModel" placeholder="gpt-4o"></div>
+              </div>
+              <div class="field-row">
+                <div class="field-label">Block Threshold<small>Auto-block above this risk</small></div>
+                <div class="field-control">
+                  <div class="slider-row">
+                    <input type="range" id="cfg-ai-blockThreshold" min="0" max="1" step="0.05"
+                      oninput="document.getElementById('block-val').textContent = parseFloat(this.value).toFixed(2)">
+                    <span class="slider-val" id="block-val">0.85</span>
+                  </div>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-label">Warn Threshold<small>Show warning above this risk</small></div>
+                <div class="field-control">
+                  <div class="slider-row">
+                    <input type="range" id="cfg-ai-warnThreshold" min="0" max="1" step="0.05"
+                      oninput="document.getElementById('warn-val').textContent = parseFloat(this.value).toFixed(2)">
+                    <span class="slider-val" id="warn-val">0.50</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terminal -->
+          <div class="config-section">
+            <div class="config-section-header">
+              <span class="section-title">Terminal Watcher</span>
+              <span class="section-icon">⌨️</span>
+            </div>
+            <div class="config-fields">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Auto-block high-risk commands</div>
+                  <div class="toggle-desc">Block without prompting when risk &gt; block threshold</div>
+                </div>
+                <label class="toggle"><input type="checkbox" id="cfg-terminal-autoBlock"><span class="toggle-track"></span></label>
+              </div>
+              <div class="field-row">
+                <div class="field-label">GitHub Token<small>For higher API rate limits</small></div>
+                <div class="field-control"><input type="password" id="cfg-terminal-githubToken" placeholder="ghp_..."></div>
+              </div>
+              <div class="field-row vertical">
+                <div class="field-label">Trusted Taps<small>Never flagged homebrew taps</small></div>
+                <div id="trusted-taps-tags" class="tag-list"></div>
+                <div class="tag-input-row">
+                  <input type="text" id="trusted-taps-input" placeholder="homebrew/homebrew-core" onkeydown="if(event.key==='Enter') addTag('trusted-taps')">
+                  <button class="add-btn" onclick="addTag('trusted-taps')">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Updates -->
+          <div class="config-section">
+            <div class="config-section-header">
+              <span class="section-title">Update Monitor</span>
+              <span class="section-icon">🔄</span>
+            </div>
+            <div class="config-fields">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Block unknown domains</div>
+                  <div class="toggle-desc">Deny updates from domains not on the trusted list</div>
+                </div>
+                <label class="toggle"><input type="checkbox" id="cfg-updates-blockUnknownDomains"><span class="toggle-track"></span></label>
+              </div>
+              <div class="field-row vertical">
+                <div class="field-label">Trusted Domains</div>
+                <div id="trusted-domains-tags" class="tag-list"></div>
+                <div class="tag-input-row">
+                  <input type="text" id="trusted-domains-input" placeholder="apple.com" onkeydown="if(event.key==='Enter') addTag('trusted-domains')">
+                  <button class="add-btn" onclick="addTag('trusted-domains')">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Extensions -->
+          <div class="config-section">
+            <div class="config-section-header">
+              <span class="section-title">Extension Monitor</span>
+              <span class="section-icon">🧩</span>
+            </div>
+            <div class="config-fields">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Auto-disable flagged extensions</div>
+                  <div class="toggle-desc">Automatically disable extensions that exceed limits</div>
+                </div>
+                <label class="toggle"><input type="checkbox" id="cfg-extensions-autoDisable"><span class="toggle-track"></span></label>
+              </div>
+              <div class="field-row">
+                <div class="field-label">Max Permissions<small>Flag above this count</small></div>
+                <div class="field-control"><input type="number" id="cfg-extensions-maxPermissions" min="1" max="50" style="width:80px"></div>
+              </div>
+              <div class="field-row vertical">
+                <div class="field-label">Dangerous Permissions</div>
+                <div id="dangerous-perms-tags" class="tag-list"></div>
+                <div class="tag-input-row">
+                  <input type="text" id="dangerous-perms-input" placeholder="<all_urls>" onkeydown="if(event.key==='Enter') addTag('dangerous-perms')">
+                  <button class="add-btn" onclick="addTag('dangerous-perms')">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Network -->
+          <div class="config-section">
+            <div class="config-section-header">
+              <span class="section-title">Network Monitor</span>
+              <span class="section-icon">🌐</span>
+            </div>
+            <div class="config-fields">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Log all connections</div>
+                  <div class="toggle-desc">Write network events to the alert log</div>
+                </div>
+                <label class="toggle"><input type="checkbox" id="cfg-network-logConnections"><span class="toggle-track"></span></label>
+              </div>
+              <div class="field-row vertical">
+                <div class="field-label">Ignored Apps</div>
+                <div id="ignored-apps-tags" class="tag-list"></div>
+                <div class="tag-input-row">
+                  <input type="text" id="ignored-apps-input" placeholder="kernel_task" onkeydown="if(event.key==='Enter') addTag('ignored-apps')">
+                  <button class="add-btn" onclick="addTag('ignored-apps')">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Save bar -->
+          <div id="save-bar">
+            <button class="save-btn" onclick="saveConfig()">Save Changes</button>
+            <button class="reset-btn" onclick="loadConfig()">Reset</button>
+            <span class="save-status" id="save-status">✓ Saved</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+</div><!-- /app -->
+
+<div id="error-toast"></div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────
+const BASE = '';  // same origin
+let alerts = [];
+let selectedId = null;
+let filterMode = 'all';
+let config = null;
+
+// Tag list state
+const tagData = {
+  'trusted-taps':    [],
+  'trusted-domains': [],
+  'dangerous-perms': [],
+  'ignored-apps':    [],
+};
+
+// ── Init ───────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  loadAlerts();
+  loadConfig();
+  setInterval(loadAlerts, 5000); // poll every 5s
+});
+
+// ── Panel switching ────────────────────────────────────────────────
+function switchPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelector(`[data-panel="${name}"]`).classList.add('active');
+}
+
+// ── Alerts ─────────────────────────────────────────────────────────
+async function loadAlerts() {
+  try {
+    const r = await fetch(BASE + '/api/alerts');
+    if (!r.ok) throw new Error(r.statusText);
+    alerts = await r.json();
+    renderAlerts();
+    updateBadge();
+    document.getElementById('status-dot').classList.remove('inactive');
+    document.getElementById('status-text').textContent = 'DAEMON ACTIVE';
+  } catch (e) {
+    document.getElementById('status-dot').classList.add('inactive');
+    document.getElementById('status-text').textContent = 'DAEMON OFFLINE';
+  }
+}
+
+function updateBadge() {
+  const newCount = alerts.filter(a => a.status === 'new').length;
+  const badge = document.getElementById('alert-badge');
+  if (newCount > 0) {
+    badge.textContent = newCount > 99 ? '99+' : newCount;
+    badge.style.display = '';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+function setFilter(mode, btn) {
+  filterMode = mode;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAlerts();
+}
+
+function filterAlerts() {
+  if (filterMode === 'all') return alerts.filter(a => a.status !== 'dismissed');
+  if (filterMode === 'new') return alerts.filter(a => a.status === 'new');
+  return alerts.filter(a =>
+    a.status !== 'dismissed' &&
+    a.source.toLowerCase() === filterMode
+  );
+}
+
+function renderAlerts() {
+  const list = document.getElementById('alerts-list');
+  const visible = filterAlerts();
+
+  if (visible.length === 0) {
+    list.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">🛡</div>
+      <div class="empty-text">No alerts</div>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = visible.map(a => `
+    <div class="alert-item risk-${a.risk} status-${a.status} ${selectedId===a.id?'selected':''}"
+         onclick="selectAlert(${a.id})">
+      <div class="alert-left">
+        <div class="alert-top">
+          <span class="risk-tag risk-${a.risk}">${a.risk}</span>
+          <span class="source-tag">${a.source}</span>
+        </div>
+        <div class="alert-title">${escHtml(a.title)}</div>
+        <div class="alert-meta">${a.timestamp}</div>
+      </div>
+      <div class="alert-actions">
+        ${a.status === 'new' ? '<div class="new-dot"></div>' : ''}
+        <div class="action-row">
+          <button class="mini-btn ok" onclick="reviewAlert(event,${a.id})">✓</button>
+          <button class="mini-btn dismiss" onclick="dismissAlert(event,${a.id})">✕</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectAlert(id) {
+  selectedId = id;
+  const a = alerts.find(x => x.id === id);
+  if (!a) return;
+  renderAlerts();
+  showDetail(a);
+}
+
+function showDetail(a) {
+  const drawer = document.getElementById('detail-drawer');
+  drawer.classList.remove('hidden');
+  drawer.innerHTML = `
+    <div id="detail-header">
+      <div class="detail-title">${escHtml(a.title)}</div>
+      <div class="detail-meta">
+        <span class="risk-tag risk-${a.risk}">${a.risk}</span>
+        <span class="source-tag">${a.source}</span>
+      </div>
+    </div>
+    <div id="detail-body">
+      <div class="detail-section">
+        <div class="detail-label">Timestamp</div>
+        <div class="detail-value">${a.timestamp}</div>
+      </div>
+      ${a.detail ? `<div class="detail-section">
+        <div class="detail-label">Details</div>
+        <div class="detail-value">${escHtml(a.detail)}</div>
+      </div>` : ''}
+      <div class="detail-section">
+        <div class="detail-label">Status</div>
+        <div class="detail-value">${a.status}</div>
+      </div>
+    </div>
+    <div id="detail-footer">
+      <button class="action-btn primary" onclick="reviewAlert(event,${a.id})">Mark Reviewed</button>
+      <button class="action-btn" onclick="dismissAlert(event,${a.id})">Dismiss</button>
+    </div>
+  `;
+}
+
+async function reviewAlert(e, id) {
+  e.stopPropagation();
+  try {
+    await fetch(BASE + '/api/alerts/' + id + '/review', { method: 'POST' });
+    const a = alerts.find(x => x.id === id);
+    if (a) a.status = 'reviewed';
+    renderAlerts();
+    updateBadge();
+    if (selectedId === id) showDetail(a);
+  } catch(err) { showError(err.message); }
+}
+
+async function dismissAlert(e, id) {
+  e.stopPropagation();
+  try {
+    await fetch(BASE + '/api/alerts/' + id + '/dismiss', { method: 'POST' });
+    const a = alerts.find(x => x.id === id);
+    if (a) a.status = 'dismissed';
+    if (selectedId === id) {
+      selectedId = null;
+      document.getElementById('detail-drawer').classList.add('hidden');
+    }
+    renderAlerts();
+    updateBadge();
+  } catch(err) { showError(err.message); }
+}
+
+async function markAllReviewed() {
+  try {
+    await fetch(BASE + '/api/alerts/review-all', { method: 'POST' });
+    alerts.forEach(a => { if (a.status === 'new') a.status = 'reviewed'; });
+    renderAlerts();
+    updateBadge();
+  } catch(err) { showError(err.message); }
+}
+
+// ── Config ─────────────────────────────────────────────────────────
+async function loadConfig() {
+  try {
+    const r = await fetch(BASE + '/api/config');
+    if (!r.ok) throw new Error(r.statusText);
+    config = await r.json();
+    populateConfig(config);
+  } catch(e) {
+    // daemon offline — skip silently
+  }
+}
+
+function populateConfig(c) {
+  // AI
+  setVal('cfg-ai-provider', c.ai.provider);
+  setVal('cfg-ai-localModel', c.ai.localModel);
+  setVal('cfg-ai-localEndpoint', c.ai.localEndpoint);
+  setVal('cfg-ai-anthropicKey', c.ai.anthropicKey || '');
+  setVal('cfg-ai-anthropicModel', c.ai.anthropicModel || '');
+  setVal('cfg-ai-openaiKey', c.ai.openaiKey || '');
+  setVal('cfg-ai-openaiModel', c.ai.openaiModel || '');
+  setRange('cfg-ai-blockThreshold', c.ai.blockThreshold, 'block-val');
+  setRange('cfg-ai-warnThreshold', c.ai.warnThreshold, 'warn-val');
+  onProviderChange();
+
+  // Terminal
+  document.getElementById('cfg-terminal-autoBlock').checked = c.terminal.autoBlock;
+  setVal('cfg-terminal-githubToken', c.terminal.githubToken || '');
+  tagData['trusted-taps'] = [...(c.terminal.trustedTaps || [])];
+  renderTags('trusted-taps');
+
+  // Updates
+  document.getElementById('cfg-updates-blockUnknownDomains').checked = c.updates.blockUnknownDomains;
+  tagData['trusted-domains'] = [...(c.updates.trustedDomains || [])];
+  renderTags('trusted-domains');
+
+  // Extensions
+  document.getElementById('cfg-extensions-autoDisable').checked = c.extensions.autoDisable;
+  setVal('cfg-extensions-maxPermissions', c.extensions.maxPermissions);
+  tagData['dangerous-perms'] = [...(c.extensions.dangerousPermissions || [])];
+  renderTags('dangerous-perms');
+
+  // Network
+  document.getElementById('cfg-network-logConnections').checked = c.network.logConnections;
+  tagData['ignored-apps'] = [...(c.network.ignoredApps || [])];
+  renderTags('ignored-apps');
+}
+
+function onProviderChange() {
+  const p = document.getElementById('cfg-ai-provider').value;
+  const show = (id, cond) => document.getElementById(id).style.display = cond ? '' : 'none';
+  show('row-local-model',     p === 'local');
+  show('row-local-endpoint',  p === 'local');
+  show('row-anthropic-key',   p === 'anthropic');
+  show('row-anthropic-model', p === 'anthropic');
+  show('row-openai-key',      p === 'openai');
+  show('row-openai-model',    p === 'openai');
+}
+
+function collectConfig() {
+  return {
+    version: config ? config.version : '0.1.0',
+    ai: {
+      provider:        getVal('cfg-ai-provider'),
+      localModel:      getVal('cfg-ai-localModel'),
+      localEndpoint:   getVal('cfg-ai-localEndpoint'),
+      anthropicKey:    getVal('cfg-ai-anthropicKey'),
+      anthropicModel:  getVal('cfg-ai-anthropicModel'),
+      openaiKey:       getVal('cfg-ai-openaiKey'),
+      openaiModel:     getVal('cfg-ai-openaiModel'),
+      blockThreshold:  parseFloat(getVal('cfg-ai-blockThreshold')),
+      warnThreshold:   parseFloat(getVal('cfg-ai-warnThreshold')),
+    },
+    terminal: {
+      autoBlock:    document.getElementById('cfg-terminal-autoBlock').checked,
+      githubToken:  getVal('cfg-terminal-githubToken'),
+      trustedTaps:  [...tagData['trusted-taps']],
+      watchPaths:   config ? config.terminal.watchPaths : [],
+    },
+    updates: {
+      blockUnknownDomains: document.getElementById('cfg-updates-blockUnknownDomains').checked,
+      trustedDomains:      [...tagData['trusted-domains']],
+    },
+    extensions: {
+      autoDisable:          document.getElementById('cfg-extensions-autoDisable').checked,
+      maxPermissions:       parseInt(getVal('cfg-extensions-maxPermissions')),
+      dangerousPermissions: [...tagData['dangerous-perms']],
+    },
+    network: {
+      logConnections: document.getElementById('cfg-network-logConnections').checked,
+      ignoredApps:    [...tagData['ignored-apps']],
+    },
+  };
+}
+
+async function saveConfig() {
+  const data = collectConfig();
+  try {
+    const r = await fetch(BASE + '/api/config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    config = data;
+    const s = document.getElementById('save-status');
+    s.classList.add('show');
+    setTimeout(() => s.classList.remove('show'), 2500);
+  } catch(e) { showError('Save failed: ' + e.message); }
+}
+
+// ── Tag helpers ────────────────────────────────────────────────────
+function addTag(key) {
+  const input = document.getElementById(key + '-input');
+  const val = input.value.trim();
+  if (!val || tagData[key].includes(val)) { input.value = ''; return; }
+  tagData[key].push(val);
+  input.value = '';
+  renderTags(key);
+}
+
+function removeTag(key, val) {
+  tagData[key] = tagData[key].filter(v => v !== val);
+  renderTags(key);
+}
+
+function renderTags(key) {
+  const el = document.getElementById(key + '-tags');
+  el.innerHTML = tagData[key].map(v => `
+    <span class="tag">${escHtml(v)}<span class="tag-remove" onclick="removeTag('${key}','${escHtml(v)}')">×</span></span>
+  `).join('');
+}
+
+// ── Utilities ──────────────────────────────────────────────────────
+function setVal(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.value = val;
+}
+function getVal(id) {
+  const el = document.getElementById(id);
+  return el ? el.value : '';
+}
+function setRange(id, val, labelId) {
+  setVal(id, val);
+  document.getElementById(labelId).textContent = parseFloat(val).toFixed(2);
+}
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function showError(msg) {
+  const t = document.getElementById('error-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

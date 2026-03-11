@@ -10,11 +10,14 @@
 #ifndef INCLUDED_StringTools
 #include <StringTools.h>
 #endif
+#ifndef INCLUDED_haxe_IMap
+#include <haxe/IMap.h>
+#endif
+#ifndef INCLUDED_haxe_ds_StringMap
+#include <haxe/ds/StringMap.h>
+#endif
 #ifndef INCLUDED_haxe_format_JsonParser
 #include <haxe/format/JsonParser.h>
-#endif
-#ifndef INCLUDED_haxe_http_HttpBase
-#include <haxe/http/HttpBase.h>
 #endif
 #ifndef INCLUDED_sentinel_ai_GitHubFetcher
 #include <sentinel/ai/GitHubFetcher.h>
@@ -22,50 +25,34 @@
 #ifndef INCLUDED_sentinel_core_Logger
 #include <sentinel/core/Logger.h>
 #endif
-#ifndef INCLUDED_sys_Http
-#include <sys/Http.h>
+#ifndef INCLUDED_sentinel_platform_HttpsClient
+#include <sentinel/platform/HttpsClient.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_54b91dd514b75aa7_30_new,"sentinel.ai.GitHubFetcher","new",0x8f2aff3a,"sentinel.ai.GitHubFetcher.new","sentinel/ai/GitHubFetcher.hx",30,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_37_fetchForCommand,"sentinel.ai.GitHubFetcher","fetchForCommand",0x514d27f6,"sentinel.ai.GitHubFetcher.fetchForCommand","sentinel/ai/GitHubFetcher.hx",37,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_43_fetch,"sentinel.ai.GitHubFetcher","fetch",0x541e2d94,"sentinel.ai.GitHubFetcher.fetch","sentinel/ai/GitHubFetcher.hx",43,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_142_findBrewFormula,"sentinel.ai.GitHubFetcher","findBrewFormula",0x25663765,"sentinel.ai.GitHubFetcher.findBrewFormula","sentinel/ai/GitHubFetcher.hx",142,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_169_apiGet,"sentinel.ai.GitHubFetcher","apiGet",0x948ead82,"sentinel.ai.GitHubFetcher.apiGet","sentinel/ai/GitHubFetcher.hx",169,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_170_apiGet,"sentinel.ai.GitHubFetcher","apiGet",0x948ead82,"sentinel.ai.GitHubFetcher.apiGet","sentinel/ai/GitHubFetcher.hx",170,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_161_apiGet,"sentinel.ai.GitHubFetcher","apiGet",0x948ead82,"sentinel.ai.GitHubFetcher.apiGet","sentinel/ai/GitHubFetcher.hx",161,0x25aebc16)
-static const ::String _hx_array_data_26409a48_10[] = {
-	HX_("",00,00,00,00),
-};
-static const ::String _hx_array_data_26409a48_11[] = {
-	HX_("",00,00,00,00),
-};
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_193_tryFetchRaw,"sentinel.ai.GitHubFetcher","tryFetchRaw",0x2d264b03,"sentinel.ai.GitHubFetcher.tryFetchRaw","sentinel/ai/GitHubFetcher.hx",193,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_194_tryFetchRaw,"sentinel.ai.GitHubFetcher","tryFetchRaw",0x2d264b03,"sentinel.ai.GitHubFetcher.tryFetchRaw","sentinel/ai/GitHubFetcher.hx",194,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_185_tryFetchRaw,"sentinel.ai.GitHubFetcher","tryFetchRaw",0x2d264b03,"sentinel.ai.GitHubFetcher.tryFetchRaw","sentinel/ai/GitHubFetcher.hx",185,0x25aebc16)
-static const ::String _hx_array_data_26409a48_15[] = {
-	HX_("",00,00,00,00),
-};
-static const ::String _hx_array_data_26409a48_16[] = {
-	HX_("",00,00,00,00),
-};
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_111_parseRepoFromCommand,"sentinel.ai.GitHubFetcher","parseRepoFromCommand",0xc8660aa2,"sentinel.ai.GitHubFetcher.parseRepoFromCommand","sentinel/ai/GitHubFetcher.hx",111,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_133_extractOwnerRepo,"sentinel.ai.GitHubFetcher","extractOwnerRepo",0x0041bdaa,"sentinel.ai.GitHubFetcher.extractOwnerRepo","sentinel/ai/GitHubFetcher.hx",133,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_24_boot,"sentinel.ai.GitHubFetcher","boot",0xae8d5418,"sentinel.ai.GitHubFetcher.boot","sentinel/ai/GitHubFetcher.hx",24,0x25aebc16)
-HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_25_boot,"sentinel.ai.GitHubFetcher","boot",0xae8d5418,"sentinel.ai.GitHubFetcher.boot","sentinel/ai/GitHubFetcher.hx",25,0x25aebc16)
+HX_DEFINE_STACK_FRAME(_hx_pos_54b91dd514b75aa7_27_new,"sentinel.ai.GitHubFetcher","new",0x8f2aff3a,"sentinel.ai.GitHubFetcher.new","sentinel/ai/GitHubFetcher.hx",27,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_34_fetchForCommand,"sentinel.ai.GitHubFetcher","fetchForCommand",0x514d27f6,"sentinel.ai.GitHubFetcher.fetchForCommand","sentinel/ai/GitHubFetcher.hx",34,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_40_fetch,"sentinel.ai.GitHubFetcher","fetch",0x541e2d94,"sentinel.ai.GitHubFetcher.fetch","sentinel/ai/GitHubFetcher.hx",40,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_139_findBrewFormula,"sentinel.ai.GitHubFetcher","findBrewFormula",0x25663765,"sentinel.ai.GitHubFetcher.findBrewFormula","sentinel/ai/GitHubFetcher.hx",139,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_158_apiGet,"sentinel.ai.GitHubFetcher","apiGet",0x948ead82,"sentinel.ai.GitHubFetcher.apiGet","sentinel/ai/GitHubFetcher.hx",158,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_172_tryFetchRaw,"sentinel.ai.GitHubFetcher","tryFetchRaw",0x2d264b03,"sentinel.ai.GitHubFetcher.tryFetchRaw","sentinel/ai/GitHubFetcher.hx",172,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_108_parseRepoFromCommand,"sentinel.ai.GitHubFetcher","parseRepoFromCommand",0xc8660aa2,"sentinel.ai.GitHubFetcher.parseRepoFromCommand","sentinel/ai/GitHubFetcher.hx",108,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_130_extractOwnerRepo,"sentinel.ai.GitHubFetcher","extractOwnerRepo",0x0041bdaa,"sentinel.ai.GitHubFetcher.extractOwnerRepo","sentinel/ai/GitHubFetcher.hx",130,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_21_boot,"sentinel.ai.GitHubFetcher","boot",0xae8d5418,"sentinel.ai.GitHubFetcher.boot","sentinel/ai/GitHubFetcher.hx",21,0x25aebc16)
+HX_LOCAL_STACK_FRAME(_hx_pos_54b91dd514b75aa7_22_boot,"sentinel.ai.GitHubFetcher","boot",0xae8d5418,"sentinel.ai.GitHubFetcher.boot","sentinel/ai/GitHubFetcher.hx",22,0x25aebc16)
 namespace sentinel{
 namespace ai{
 
 void GitHubFetcher_obj::__construct(::String token){
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_30_new)
-HXDLIN(  30)		::String tmp = token;
-HXDLIN(  30)		::String _hx_tmp;
-HXDLIN(  30)		if (::hx::IsNotNull( tmp )) {
-HXDLIN(  30)			_hx_tmp = tmp;
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_27_new)
+HXDLIN(  27)		::String tmp = token;
+HXDLIN(  27)		::String _hx_tmp;
+HXDLIN(  27)		if (::hx::IsNotNull( tmp )) {
+HXDLIN(  27)			_hx_tmp = tmp;
             		}
             		else {
-HXDLIN(  30)			_hx_tmp = HX_("",00,00,00,00);
+HXDLIN(  27)			_hx_tmp = HX_("",00,00,00,00);
             		}
-HXDLIN(  30)		this->token = _hx_tmp;
+HXDLIN(  27)		this->token = _hx_tmp;
             	}
 
 Dynamic GitHubFetcher_obj::__CreateEmpty() { return new GitHubFetcher_obj; }
@@ -84,12 +71,12 @@ bool GitHubFetcher_obj::_hx_isInstanceOf(int inClassId) {
 }
 
  ::Dynamic GitHubFetcher_obj::fetchForCommand(::String cmd){
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_37_fetchForCommand)
-HXLINE(  38)		::String parsed = ::sentinel::ai::GitHubFetcher_obj::parseRepoFromCommand(cmd);
-HXLINE(  39)		if (::hx::IsNull( parsed )) {
-HXLINE(  39)			HX_STACK_DO_THROW((HX_("Could not extract GitHub repo from: ",8c,b8,d4,5b) + cmd));
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_34_fetchForCommand)
+HXLINE(  35)		::String parsed = ::sentinel::ai::GitHubFetcher_obj::parseRepoFromCommand(cmd);
+HXLINE(  36)		if (::hx::IsNull( parsed )) {
+HXLINE(  36)			HX_STACK_DO_THROW((HX_("Could not extract GitHub repo from: ",8c,b8,d4,5b) + cmd));
             		}
-HXLINE(  40)		return  ::Dynamic(::hx::Anon_obj::Create(2)
+HXLINE(  37)		return  ::Dynamic(::hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("url",6f,2b,59,00),parsed)
             			->setFixed(1,HX_("data",2a,56,63,42),this->fetch(parsed)));
             	}
@@ -98,112 +85,112 @@ HXLINE(  40)		return  ::Dynamic(::hx::Anon_obj::Create(2)
 HX_DEFINE_DYNAMIC_FUNC1(GitHubFetcher_obj,fetchForCommand,return )
 
  ::Dynamic GitHubFetcher_obj::fetch(::String repoUrl){
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_43_fetch)
-HXLINE(  44)		 ::Dynamic ownerRepo = ::sentinel::ai::GitHubFetcher_obj::extractOwnerRepo(repoUrl);
-HXLINE(  45)		if (::hx::IsNull( ownerRepo )) {
-HXLINE(  45)			HX_STACK_DO_THROW((HX_("Invalid GitHub URL: ",a1,86,31,ed) + repoUrl));
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_40_fetch)
+HXLINE(  41)		 ::Dynamic ownerRepo = ::sentinel::ai::GitHubFetcher_obj::extractOwnerRepo(repoUrl);
+HXLINE(  42)		if (::hx::IsNull( ownerRepo )) {
+HXLINE(  42)			HX_STACK_DO_THROW((HX_("Invalid GitHub URL: ",a1,86,31,ed) + repoUrl));
             		}
-HXLINE(  47)		::String owner = ( (::String)(ownerRepo->__Field(HX_("owner",33,98,76,38),::hx::paccDynamic)) );
-HXLINE(  48)		::String repo = ( (::String)(ownerRepo->__Field(HX_("repo",72,58,a7,4b),::hx::paccDynamic)) );
-HXLINE(  50)		::sentinel::core::Logger_obj::info(((((HX_("[GitHub] Fetching ",d7,f2,66,8a) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("...",ee,0f,23,00)));
-HXLINE(  53)		 ::Dynamic meta = this->apiGet((((HX_("/repos/",bd,0a,f5,a8) + owner) + HX_("/",2f,00,00,00)) + repo));
-HXLINE(  54)		 ::Dynamic ownerMeta = this->apiGet((HX_("/users/",d6,2c,60,e4) + owner));
-HXLINE(  57)		 ::Dynamic tree = this->apiGet(((((HX_("/repos/",bd,0a,f5,a8) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/git/trees/HEAD?recursive=0",4c,ba,32,e6)));
-HXLINE(  58)		::Array< ::String > files = ::Array_obj< ::String >::__new(0);
-HXLINE(  59)		bool _hx_tmp;
-HXDLIN(  59)		if (::hx::IsNotNull( tree )) {
-HXLINE(  59)			_hx_tmp = ::hx::IsNotNull( tree->__Field(HX_("tree",5e,99,03,4d),::hx::paccDynamic) );
+HXLINE(  44)		::String owner = ( (::String)(ownerRepo->__Field(HX_("owner",33,98,76,38),::hx::paccDynamic)) );
+HXLINE(  45)		::String repo = ( (::String)(ownerRepo->__Field(HX_("repo",72,58,a7,4b),::hx::paccDynamic)) );
+HXLINE(  47)		::sentinel::core::Logger_obj::info(((((HX_("[GitHub] Fetching ",d7,f2,66,8a) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("...",ee,0f,23,00)));
+HXLINE(  50)		 ::Dynamic meta = this->apiGet((((HX_("/repos/",bd,0a,f5,a8) + owner) + HX_("/",2f,00,00,00)) + repo));
+HXLINE(  51)		 ::Dynamic ownerMeta = this->apiGet((HX_("/users/",d6,2c,60,e4) + owner));
+HXLINE(  54)		 ::Dynamic tree = this->apiGet(((((HX_("/repos/",bd,0a,f5,a8) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/git/trees/HEAD?recursive=0",4c,ba,32,e6)));
+HXLINE(  55)		::Array< ::String > files = ::Array_obj< ::String >::__new(0);
+HXLINE(  56)		bool _hx_tmp;
+HXDLIN(  56)		if (::hx::IsNotNull( tree )) {
+HXLINE(  56)			_hx_tmp = ::hx::IsNotNull( tree->__Field(HX_("tree",5e,99,03,4d),::hx::paccDynamic) );
             		}
             		else {
-HXLINE(  59)			_hx_tmp = false;
+HXLINE(  56)			_hx_tmp = false;
             		}
-HXDLIN(  59)		if (_hx_tmp) {
-HXLINE(  60)			int _g = 0;
-HXDLIN(  60)			::cpp::VirtualArray _g1 = ( (::cpp::VirtualArray)(tree->__Field(HX_("tree",5e,99,03,4d),::hx::paccDynamic)) );
-HXDLIN(  60)			while((_g < _g1->get_length())){
-HXLINE(  60)				 ::Dynamic f = _g1->__get(_g);
-HXDLIN(  60)				_g = (_g + 1);
-HXLINE(  61)				if (::hx::IsEq( f->__Field(HX_("type",ba,f2,08,4d),::hx::paccDynamic),HX_("blob",5d,3d,19,41) )) {
-HXLINE(  61)					files->push( ::Dynamic(f->__Field(HX_("path",a5,e5,51,4a),::hx::paccDynamic)));
+HXDLIN(  56)		if (_hx_tmp) {
+HXLINE(  57)			int _g = 0;
+HXDLIN(  57)			::cpp::VirtualArray _g1 = ( (::cpp::VirtualArray)(tree->__Field(HX_("tree",5e,99,03,4d),::hx::paccDynamic)) );
+HXDLIN(  57)			while((_g < _g1->get_length())){
+HXLINE(  57)				 ::Dynamic f = _g1->__get(_g);
+HXDLIN(  57)				_g = (_g + 1);
+HXLINE(  58)				if (::hx::IsEq( f->__Field(HX_("type",ba,f2,08,4d),::hx::paccDynamic),HX_("blob",5d,3d,19,41) )) {
+HXLINE(  58)					files->push( ::Dynamic(f->__Field(HX_("path",a5,e5,51,4a),::hx::paccDynamic)));
             				}
             			}
             		}
-HXLINE(  66)		::String readme = this->tryFetchRaw(owner,repo,HX_("README.md",97,bf,bd,3e));
-HXLINE(  67)		::String installSh;
-HXDLIN(  67)		::String tmp = this->tryFetchRaw(owner,repo,HX_("install.sh",08,5a,14,4b));
-HXDLIN(  67)		::String tmp1;
-HXDLIN(  67)		if (::hx::IsNotNull( tmp )) {
-HXLINE(  67)			tmp1 = tmp;
+HXLINE(  63)		::String readme = this->tryFetchRaw(owner,repo,HX_("README.md",97,bf,bd,3e));
+HXLINE(  64)		::String installSh;
+HXDLIN(  64)		::String tmp = this->tryFetchRaw(owner,repo,HX_("install.sh",08,5a,14,4b));
+HXDLIN(  64)		::String tmp1;
+HXDLIN(  64)		if (::hx::IsNotNull( tmp )) {
+HXLINE(  64)			tmp1 = tmp;
             		}
             		else {
-HXLINE(  67)			tmp1 = this->tryFetchRaw(owner,repo,HX_("install.bash",47,60,23,71));
+HXLINE(  64)			tmp1 = this->tryFetchRaw(owner,repo,HX_("install.bash",47,60,23,71));
             		}
-HXDLIN(  67)		if (::hx::IsNotNull( tmp1 )) {
-HXLINE(  67)			installSh = tmp1;
-            		}
-            		else {
-HXLINE(  67)			installSh = this->tryFetchRaw(owner,repo,HX_("setup.sh",e6,09,14,23));
-            		}
-HXLINE(  70)		::String packageJson = this->tryFetchRaw(owner,repo,HX_("package.json",10,40,dc,ab));
-HXLINE(  71)		::String makefile = this->tryFetchRaw(owner,repo,HX_("Makefile",8a,53,32,29));
-HXLINE(  72)		::String brewFormula = this->findBrewFormula(owner,repo,files);
-HXLINE(  75)		::String installScript = HX_("",00,00,00,00);
-HXLINE(  76)		if (::hx::IsNotNull( installSh )) {
-HXLINE(  76)			installScript = (installScript + ((HX_("=== install.sh ===\n",62,48,1f,a3) + installSh.substr(0,3000)) + HX_("\n",0a,00,00,00)));
-            		}
-HXLINE(  77)		if (::hx::IsNotNull( makefile )) {
-HXLINE(  77)			installScript = (installScript + ((HX_("=== Makefile ===\n",60,fe,45,23) + makefile.substr(0,1000)) + HX_("\n",0a,00,00,00)));
-            		}
-HXLINE(  78)		if (::hx::IsNotNull( brewFormula )) {
-HXLINE(  78)			installScript = (installScript + ((HX_("=== Formula ===\n",ca,50,94,6b) + brewFormula.substr(0,2000)) + HX_("\n",0a,00,00,00)));
-            		}
-HXLINE(  81)		::String ownerAge = HX_("unknown",8a,23,7b,e1);
-HXLINE(  82)		bool _hx_tmp1;
-HXDLIN(  82)		if (::hx::IsNotNull( ownerMeta )) {
-HXLINE(  82)			_hx_tmp1 = ::hx::IsNotNull( ownerMeta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic) );
+HXDLIN(  64)		if (::hx::IsNotNull( tmp1 )) {
+HXLINE(  64)			installSh = tmp1;
             		}
             		else {
-HXLINE(  82)			_hx_tmp1 = false;
+HXLINE(  64)			installSh = this->tryFetchRaw(owner,repo,HX_("setup.sh",e6,09,14,23));
             		}
-HXDLIN(  82)		if (_hx_tmp1) {
-HXLINE(  83)			ownerAge = ( (::String)(ownerMeta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic)) );
+HXLINE(  67)		::String packageJson = this->tryFetchRaw(owner,repo,HX_("package.json",10,40,dc,ab));
+HXLINE(  68)		::String makefile = this->tryFetchRaw(owner,repo,HX_("Makefile",8a,53,32,29));
+HXLINE(  69)		::String brewFormula = this->findBrewFormula(owner,repo,files);
+HXLINE(  72)		::String installScript = HX_("",00,00,00,00);
+HXLINE(  73)		if (::hx::IsNotNull( installSh )) {
+HXLINE(  73)			installScript = (installScript + ((HX_("=== install.sh ===\n",62,48,1f,a3) + installSh.substr(0,3000)) + HX_("\n",0a,00,00,00)));
             		}
-HXLINE(  88)		::String _hx_tmp2;
-HXDLIN(  88)		if ((installScript.length > 0)) {
-HXLINE(  88)			_hx_tmp2 = installScript;
+HXLINE(  74)		if (::hx::IsNotNull( makefile )) {
+HXLINE(  74)			installScript = (installScript + ((HX_("=== Makefile ===\n",60,fe,45,23) + makefile.substr(0,1000)) + HX_("\n",0a,00,00,00)));
+            		}
+HXLINE(  75)		if (::hx::IsNotNull( brewFormula )) {
+HXLINE(  75)			installScript = (installScript + ((HX_("=== Formula ===\n",ca,50,94,6b) + brewFormula.substr(0,2000)) + HX_("\n",0a,00,00,00)));
+            		}
+HXLINE(  78)		::String ownerAge = HX_("unknown",8a,23,7b,e1);
+HXLINE(  79)		bool _hx_tmp1;
+HXDLIN(  79)		if (::hx::IsNotNull( ownerMeta )) {
+HXLINE(  79)			_hx_tmp1 = ::hx::IsNotNull( ownerMeta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic) );
             		}
             		else {
-HXLINE(  88)			_hx_tmp2 = null();
+HXLINE(  79)			_hx_tmp1 = false;
             		}
-HXLINE(  91)		int _hx_tmp3;
+HXDLIN(  79)		if (_hx_tmp1) {
+HXLINE(  80)			ownerAge = ( (::String)(ownerMeta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic)) );
+            		}
+HXLINE(  85)		::String _hx_tmp2;
+HXDLIN(  85)		if ((installScript.length > 0)) {
+HXLINE(  85)			_hx_tmp2 = installScript;
+            		}
+            		else {
+HXLINE(  85)			_hx_tmp2 = null();
+            		}
+HXLINE(  88)		int _hx_tmp3;
+HXDLIN(  88)		if (::hx::IsNotNull( meta )) {
+HXLINE(  88)			_hx_tmp3 = ::Std_obj::_hx_int(( (Float)(meta->__Field(HX_("stargazers_count",a8,59,f8,61),::hx::paccDynamic)) ));
+            		}
+            		else {
+HXLINE(  88)			_hx_tmp3 = 0;
+            		}
+HXLINE(  89)		int _hx_tmp4;
+HXDLIN(  89)		if (::hx::IsNotNull( meta )) {
+HXLINE(  89)			_hx_tmp4 = ::Std_obj::_hx_int(( (Float)(meta->__Field(HX_("forks_count",c1,0f,ee,84),::hx::paccDynamic)) ));
+            		}
+            		else {
+HXLINE(  89)			_hx_tmp4 = 0;
+            		}
+HXLINE(  90)		::String _hx_tmp5;
+HXDLIN(  90)		if (::hx::IsNotNull( meta )) {
+HXLINE(  90)			_hx_tmp5 = ( (::String)(meta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic)) );
+            		}
+            		else {
+HXLINE(  90)			_hx_tmp5 = HX_("unknown",8a,23,7b,e1);
+            		}
+HXLINE(  91)		::String _hx_tmp6;
 HXDLIN(  91)		if (::hx::IsNotNull( meta )) {
-HXLINE(  91)			_hx_tmp3 = ::Std_obj::_hx_int(( (Float)(meta->__Field(HX_("stargazers_count",a8,59,f8,61),::hx::paccDynamic)) ));
+HXLINE(  91)			_hx_tmp6 = ( (::String)(meta->__Field(HX_("pushed_at",f9,4f,c8,1a),::hx::paccDynamic)) );
             		}
             		else {
-HXLINE(  91)			_hx_tmp3 = 0;
+HXLINE(  91)			_hx_tmp6 = HX_("unknown",8a,23,7b,e1);
             		}
-HXLINE(  92)		int _hx_tmp4;
-HXDLIN(  92)		if (::hx::IsNotNull( meta )) {
-HXLINE(  92)			_hx_tmp4 = ::Std_obj::_hx_int(( (Float)(meta->__Field(HX_("forks_count",c1,0f,ee,84),::hx::paccDynamic)) ));
-            		}
-            		else {
-HXLINE(  92)			_hx_tmp4 = 0;
-            		}
-HXLINE(  93)		::String _hx_tmp5;
-HXDLIN(  93)		if (::hx::IsNotNull( meta )) {
-HXLINE(  93)			_hx_tmp5 = ( (::String)(meta->__Field(HX_("created_at",2a,56,16,6a),::hx::paccDynamic)) );
-            		}
-            		else {
-HXLINE(  93)			_hx_tmp5 = HX_("unknown",8a,23,7b,e1);
-            		}
-HXLINE(  94)		::String _hx_tmp6;
-HXDLIN(  94)		if (::hx::IsNotNull( meta )) {
-HXLINE(  94)			_hx_tmp6 = ( (::String)(meta->__Field(HX_("pushed_at",f9,4f,c8,1a),::hx::paccDynamic)) );
-            		}
-            		else {
-HXLINE(  94)			_hx_tmp6 = HX_("unknown",8a,23,7b,e1);
-            		}
-HXLINE(  86)		return  ::Dynamic(::hx::Anon_obj::Create(9)
+HXLINE(  83)		return  ::Dynamic(::hx::Anon_obj::Create(9)
             			->setFixed(0,HX_("stars",61,74,0b,84),_hx_tmp3)
             			->setFixed(1,HX_("ownerAge",4c,f6,9f,8f),ownerAge)
             			->setFixed(2,HX_("installScript",86,dd,a0,f7),_hx_tmp2)
@@ -219,90 +206,106 @@ HXLINE(  86)		return  ::Dynamic(::hx::Anon_obj::Create(9)
 HX_DEFINE_DYNAMIC_FUNC1(GitHubFetcher_obj,fetch,return )
 
 ::String GitHubFetcher_obj::findBrewFormula(::String owner,::String repo,::Array< ::String > files){
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_142_findBrewFormula)
-HXLINE( 143)		{
-HXLINE( 143)			int _g = 0;
-HXDLIN( 143)			while((_g < files->length)){
-HXLINE( 143)				::String f = files->__get(_g);
-HXDLIN( 143)				_g = (_g + 1);
-HXLINE( 144)				bool _hx_tmp;
-HXDLIN( 144)				if (::StringTools_obj::startsWith(f,HX_("Formula/",29,4e,9e,50))) {
-HXLINE( 144)					_hx_tmp = ::StringTools_obj::endsWith(f,HX_(".rb",5e,4b,23,00));
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_139_findBrewFormula)
+HXLINE( 140)		{
+HXLINE( 140)			int _g = 0;
+HXDLIN( 140)			while((_g < files->length)){
+HXLINE( 140)				::String f = files->__get(_g);
+HXDLIN( 140)				_g = (_g + 1);
+HXLINE( 141)				bool _hx_tmp;
+HXDLIN( 141)				if (::StringTools_obj::startsWith(f,HX_("Formula/",29,4e,9e,50))) {
+HXLINE( 141)					_hx_tmp = ::StringTools_obj::endsWith(f,HX_(".rb",5e,4b,23,00));
             				}
             				else {
-HXLINE( 144)					_hx_tmp = false;
+HXLINE( 141)					_hx_tmp = false;
             				}
-HXDLIN( 144)				if (_hx_tmp) {
-HXLINE( 145)					return this->tryFetchRaw(owner,repo,f);
+HXDLIN( 141)				if (_hx_tmp) {
+HXLINE( 142)					return this->tryFetchRaw(owner,repo,f);
             				}
             			}
             		}
-HXLINE( 149)		{
-HXLINE( 149)			int _g1 = 0;
-HXDLIN( 149)			while((_g1 < files->length)){
-HXLINE( 149)				::String f1 = files->__get(_g1);
-HXDLIN( 149)				_g1 = (_g1 + 1);
-HXLINE( 150)				bool _hx_tmp1;
-HXDLIN( 150)				if (::StringTools_obj::endsWith(f1,HX_(".rb",5e,4b,23,00))) {
-HXLINE( 150)					_hx_tmp1 = (f1.indexOf(HX_("/",2f,00,00,00),null()) == -1);
+HXLINE( 146)		{
+HXLINE( 146)			int _g1 = 0;
+HXDLIN( 146)			while((_g1 < files->length)){
+HXLINE( 146)				::String f1 = files->__get(_g1);
+HXDLIN( 146)				_g1 = (_g1 + 1);
+HXLINE( 147)				bool _hx_tmp1;
+HXDLIN( 147)				if (::StringTools_obj::endsWith(f1,HX_(".rb",5e,4b,23,00))) {
+HXLINE( 147)					_hx_tmp1 = (f1.indexOf(HX_("/",2f,00,00,00),null()) == -1);
             				}
             				else {
-HXLINE( 150)					_hx_tmp1 = false;
+HXLINE( 147)					_hx_tmp1 = false;
             				}
-HXDLIN( 150)				if (_hx_tmp1) {
-HXLINE( 151)					return this->tryFetchRaw(owner,repo,f1);
+HXDLIN( 147)				if (_hx_tmp1) {
+HXLINE( 148)					return this->tryFetchRaw(owner,repo,f1);
             				}
             			}
             		}
-HXLINE( 154)		return null();
+HXLINE( 151)		return null();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC3(GitHubFetcher_obj,findBrewFormula,return )
 
  ::Dynamic GitHubFetcher_obj::apiGet(::String path){
-            		HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0,::Array< ::String >,response) HXARGC(1)
-            		void _hx_run(::String d){
-            			HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_169_apiGet)
-HXLINE( 169)			response[0] = d;
+            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_158_apiGet)
+HXLINE( 159)		 ::haxe::ds::StringMap headers =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXLINE( 160)		headers->set(HX_("Accept",28,07,9b,3f),HX_("application/vnd.github+json",cf,1f,70,86));
+HXLINE( 161)		headers->set(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
+HXLINE( 162)		if ((this->token != HX_("",00,00,00,00))) {
+HXLINE( 162)			::String v = (HX_("Bearer ",ff,ad,19,40) + this->token);
+HXDLIN( 162)			headers->set(HX_("Authorization",d9,69,3c,31),v);
             		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            		HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_1,::Array< ::String >,error) HXARGC(1)
-            		void _hx_run(::String e){
-            			HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_170_apiGet)
-HXLINE( 170)			error[0] = e;
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_161_apiGet)
-HXLINE( 162)		 ::sys::Http http =  ::sys::Http_obj::__alloc( HX_CTX ,(::sentinel::ai::GitHubFetcher_obj::API + path));
-HXLINE( 163)		http->setHeader(HX_("Accept",28,07,9b,3f),HX_("application/vnd.github+json",cf,1f,70,86));
-HXLINE( 164)		http->setHeader(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
-HXLINE( 165)		if ((this->token != HX_("",00,00,00,00))) {
-HXLINE( 165)			http->setHeader(HX_("Authorization",d9,69,3c,31),(HX_("Bearer ",ff,ad,19,40) + this->token));
-            		}
-HXLINE( 167)		::Array< ::String > response = ::Array_obj< ::String >::fromData( _hx_array_data_26409a48_10,1);
-HXLINE( 168)		::Array< ::String > error = ::Array_obj< ::String >::fromData( _hx_array_data_26409a48_11,1);
-HXLINE( 169)		http->onData =  ::Dynamic(new _hx_Closure_0(response));
-HXLINE( 170)		http->onError =  ::Dynamic(new _hx_Closure_1(error));
-HXLINE( 171)		http->request(false);
-HXLINE( 173)		if ((error->__get(0) != HX_("",00,00,00,00))) {
-HXLINE( 174)			::sentinel::core::Logger_obj::warn((((HX_("[GitHub] API error for ",16,49,45,e1) + path) + HX_(": ",a6,32,00,00)) + error->__get(0)));
-HXLINE( 175)			return null();
-            		}
-HXLINE( 177)		try {
+HXLINE( 163)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 178)			return  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response->__get(0))->doParse();
+HXLINE( 164)			::String response = ::sentinel::platform::HttpsClient_obj::get((::sentinel::ai::GitHubFetcher_obj::API + path),headers);
+HXLINE( 165)			return  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response)->doParse();
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
             				 ::Dynamic _g = _hx_e;
-HXLINE( 179)				{
-HXLINE( 179)					null();
+HXLINE( 166)				{
+HXLINE( 166)					null();
             				}
-HXDLIN( 179)				 ::Dynamic e = _g;
-HXLINE( 180)				::sentinel::core::Logger_obj::warn((((HX_("[GitHub] JSON parse error for ",53,2b,c6,13) + path) + HX_(": ",a6,32,00,00)) + ::Std_obj::string(e)));
+HXDLIN( 166)				 ::Dynamic e = _g;
+HXLINE( 167)				::sentinel::core::Logger_obj::warn((((HX_("[GitHub] API error for ",16,49,45,e1) + path) + HX_(": ",a6,32,00,00)) + ::Std_obj::string(e)));
+HXLINE( 168)				return null();
+            			}
+            			else {
+            				HX_STACK_DO_THROW(_hx_e);
+            			}
+            		}
+HXLINE( 163)		return null();
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC1(GitHubFetcher_obj,apiGet,return )
+
+::String GitHubFetcher_obj::tryFetchRaw(::String owner,::String repo,::String file){
+            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_172_tryFetchRaw)
+HXLINE( 173)		::String url = (((((((HX_("",00,00,00,00) + ::sentinel::ai::GitHubFetcher_obj::RAW) + HX_("/",2f,00,00,00)) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/HEAD/",80,00,6d,6d)) + file);
+HXLINE( 174)		 ::haxe::ds::StringMap headers =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXLINE( 175)		if ((this->token != HX_("",00,00,00,00))) {
+HXLINE( 175)			::String v = (HX_("Bearer ",ff,ad,19,40) + this->token);
+HXDLIN( 175)			headers->set(HX_("Authorization",d9,69,3c,31),v);
+            		}
+HXLINE( 176)		headers->set(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
+HXLINE( 177)		try {
+            			HX_STACK_CATCHABLE( ::Dynamic, 0);
+HXLINE( 178)			::String response = ::sentinel::platform::HttpsClient_obj::get(url,headers);
+HXLINE( 179)			if ((response == HX_("",00,00,00,00))) {
+HXLINE( 179)				return null();
+            			}
+            			else {
+HXLINE( 179)				return response;
+            			}
+            		} catch( ::Dynamic _hx_e) {
+            			if (_hx_e.IsClass<  ::Dynamic >() ){
+            				HX_STACK_BEGIN_CATCH
+            				 ::Dynamic _g = _hx_e;
+HXLINE( 180)				{
+HXLINE( 180)					null();
+            				}
 HXLINE( 181)				return null();
             			}
             			else {
@@ -313,49 +316,6 @@ HXLINE( 177)		return null();
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC1(GitHubFetcher_obj,apiGet,return )
-
-::String GitHubFetcher_obj::tryFetchRaw(::String owner,::String repo,::String file){
-            		HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0,::Array< ::String >,response) HXARGC(1)
-            		void _hx_run(::String d){
-            			HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_193_tryFetchRaw)
-HXLINE( 193)			response[0] = d;
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            		HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_1,::Array< ::String >,error) HXARGC(1)
-            		void _hx_run(::String e){
-            			HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_194_tryFetchRaw)
-HXLINE( 194)			error[0] = e;
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_185_tryFetchRaw)
-HXLINE( 186)		::String url = (((((((HX_("",00,00,00,00) + ::sentinel::ai::GitHubFetcher_obj::RAW) + HX_("/",2f,00,00,00)) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/HEAD/",80,00,6d,6d)) + file);
-HXLINE( 187)		 ::sys::Http http =  ::sys::Http_obj::__alloc( HX_CTX ,url);
-HXLINE( 188)		if ((this->token != HX_("",00,00,00,00))) {
-HXLINE( 188)			http->setHeader(HX_("Authorization",d9,69,3c,31),(HX_("Bearer ",ff,ad,19,40) + this->token));
-            		}
-HXLINE( 189)		http->setHeader(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
-HXLINE( 191)		::Array< ::String > response = ::Array_obj< ::String >::fromData( _hx_array_data_26409a48_15,1);
-HXLINE( 192)		::Array< ::String > error = ::Array_obj< ::String >::fromData( _hx_array_data_26409a48_16,1);
-HXLINE( 193)		http->onData =  ::Dynamic(new _hx_Closure_0(response));
-HXLINE( 194)		http->onError =  ::Dynamic(new _hx_Closure_1(error));
-HXLINE( 195)		http->request(false);
-HXLINE( 197)		bool _hx_tmp;
-HXDLIN( 197)		if ((error->__get(0) == HX_("",00,00,00,00))) {
-HXLINE( 197)			_hx_tmp = (response->__get(0) == HX_("",00,00,00,00));
-            		}
-            		else {
-HXLINE( 197)			_hx_tmp = true;
-            		}
-HXDLIN( 197)		if (_hx_tmp) {
-HXLINE( 197)			return null();
-            		}
-HXLINE( 198)		return response->__get(0);
-            	}
-
-
 HX_DEFINE_DYNAMIC_FUNC3(GitHubFetcher_obj,tryFetchRaw,return )
 
 ::String GitHubFetcher_obj::API;
@@ -363,39 +323,39 @@ HX_DEFINE_DYNAMIC_FUNC3(GitHubFetcher_obj,tryFetchRaw,return )
 ::String GitHubFetcher_obj::RAW;
 
 ::String GitHubFetcher_obj::parseRepoFromCommand(::String cmd){
-            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_111_parseRepoFromCommand)
-HXLINE( 113)		 ::EReg tapRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("brew\\s+tap\\s+([\\w.-]+)/([\\w.-]+)",0a,06,81,1a),HX_("",00,00,00,00));
-HXLINE( 114)		if (tapRe->match(cmd)) {
-HXLINE( 115)			::String _hx_tmp = ((HX_("https://github.com/",ca,bc,55,3f) + tapRe->matched(1)) + HX_("/",2f,00,00,00));
-HXDLIN( 115)			return (_hx_tmp + tapRe->matched(2));
+            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_108_parseRepoFromCommand)
+HXLINE( 110)		 ::EReg tapRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("brew\\s+tap\\s+([\\w.-]+)/([\\w.-]+)",0a,06,81,1a),HX_("",00,00,00,00));
+HXLINE( 111)		if (tapRe->match(cmd)) {
+HXLINE( 112)			::String _hx_tmp = ((HX_("https://github.com/",ca,bc,55,3f) + tapRe->matched(1)) + HX_("/",2f,00,00,00));
+HXDLIN( 112)			return (_hx_tmp + tapRe->matched(2));
             		}
-HXLINE( 119)		 ::EReg ghRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
-HXLINE( 120)		if (ghRe->match(cmd)) {
-HXLINE( 121)			::String _hx_tmp1 = ((HX_("https://github.com/",ca,bc,55,3f) + ghRe->matched(1)) + HX_("/",2f,00,00,00));
-HXDLIN( 121)			return (_hx_tmp1 + ghRe->matched(2));
+HXLINE( 116)		 ::EReg ghRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
+HXLINE( 117)		if (ghRe->match(cmd)) {
+HXLINE( 118)			::String _hx_tmp1 = ((HX_("https://github.com/",ca,bc,55,3f) + ghRe->matched(1)) + HX_("/",2f,00,00,00));
+HXDLIN( 118)			return (_hx_tmp1 + ghRe->matched(2));
             		}
-HXLINE( 125)		 ::EReg rawRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("raw\\.githubusercontent\\.com/([\\w.-]+)/([\\w.-]+)",7c,c9,ba,76),HX_("",00,00,00,00));
-HXLINE( 126)		if (rawRe->match(cmd)) {
-HXLINE( 127)			::String _hx_tmp2 = ((HX_("https://github.com/",ca,bc,55,3f) + rawRe->matched(1)) + HX_("/",2f,00,00,00));
-HXDLIN( 127)			return (_hx_tmp2 + rawRe->matched(2));
+HXLINE( 122)		 ::EReg rawRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("raw\\.githubusercontent\\.com/([\\w.-]+)/([\\w.-]+)",7c,c9,ba,76),HX_("",00,00,00,00));
+HXLINE( 123)		if (rawRe->match(cmd)) {
+HXLINE( 124)			::String _hx_tmp2 = ((HX_("https://github.com/",ca,bc,55,3f) + rawRe->matched(1)) + HX_("/",2f,00,00,00));
+HXDLIN( 124)			return (_hx_tmp2 + rawRe->matched(2));
             		}
-HXLINE( 130)		return null();
+HXLINE( 127)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(GitHubFetcher_obj,parseRepoFromCommand,return )
 
  ::Dynamic GitHubFetcher_obj::extractOwnerRepo(::String url){
-            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_133_extractOwnerRepo)
-HXLINE( 134)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
-HXLINE( 135)		if (!(re->match(url))) {
-HXLINE( 135)			return null();
+            	HX_GC_STACKFRAME(&_hx_pos_54b91dd514b75aa7_130_extractOwnerRepo)
+HXLINE( 131)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
+HXLINE( 132)		if (!(re->match(url))) {
+HXLINE( 132)			return null();
             		}
-HXLINE( 136)		::String repo = re->matched(2);
-HXLINE( 138)		if (::StringTools_obj::endsWith(repo,HX_(".git",a4,54,b6,1e))) {
-HXLINE( 138)			repo = repo.substr(0,(repo.length - 4));
+HXLINE( 133)		::String repo = re->matched(2);
+HXLINE( 135)		if (::StringTools_obj::endsWith(repo,HX_(".git",a4,54,b6,1e))) {
+HXLINE( 135)			repo = repo.substr(0,(repo.length - 4));
             		}
-HXLINE( 139)		return  ::Dynamic(::hx::Anon_obj::Create(2)
+HXLINE( 136)		return  ::Dynamic(::hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("owner",33,98,76,38),re->matched(1))
             			->setFixed(1,HX_("repo",72,58,a7,4b),repo));
             	}
@@ -568,12 +528,12 @@ void GitHubFetcher_obj::__register()
 void GitHubFetcher_obj::__boot()
 {
 {
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_24_boot)
-HXDLIN(  24)		API = HX_("https://api.github.com",99,3e,9e,24);
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_21_boot)
+HXDLIN(  21)		API = HX_("https://api.github.com",99,3e,9e,24);
             	}
 {
-            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_25_boot)
-HXDLIN(  25)		RAW = HX_("https://raw.githubusercontent.com",e9,f9,ea,4d);
+            	HX_STACKFRAME(&_hx_pos_54b91dd514b75aa7_22_boot)
+HXDLIN(  22)		RAW = HX_("https://raw.githubusercontent.com",e9,f9,ea,4d);
             	}
 }
 

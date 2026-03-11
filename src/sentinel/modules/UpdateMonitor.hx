@@ -5,7 +5,9 @@ using StringTools;
 import sentinel.core.IModule;
 import sentinel.core.EventBus;
 import sentinel.core.Logger;
+import sentinel.core.RiskLevel;
 import sentinel.ai.AIEngine;
+import sentinel.ai.AIResult;
 import sentinel.config.Config;
 import sys.io.File;
 import sys.FileSystem;
@@ -211,7 +213,7 @@ class UpdateMonitor implements IModule {
         var newVersion = latestInfo?.version ?? "unknown";
 
         // AI analysis
-        var result = ai.analyzeUpdate(
+        var result:sentinel.ai.AIResult = ai.analyzeUpdate(
             appName, currentVersion, newVersion,
             downloadUrl, plistSnippet.substr(0, 2000)
         );
@@ -251,21 +253,12 @@ class UpdateMonitor implements IModule {
 
     static function fetchSparkleVersion(feedUrl:String):Null<VersionInfo> {
         try {
-            var http = new haxe.Http(feedUrl);
-            var xml = "";
-            http.onData = (d) -> xml = d;
-            http.onError = (e) -> {};
-            http.request(false);
-
+            var xml = sentinel.platform.HttpsClient.get(feedUrl);
             if (xml.length == 0) return null;
-
-            // Parse Sparkle appcast
             var verRe = ~/sparkle:version="([^"]+)"/;
             var version = verRe.match(xml) ? verRe.matched(1) : null;
-
             var dateRe = ~/<pubDate>([^<]+)<\/pubDate>/;
             var date = dateRe.match(xml) ? dateRe.matched(1) : null;
-
             return { version: version, releaseDate: date };
         } catch (e:Dynamic) {
             return null;
@@ -274,20 +267,18 @@ class UpdateMonitor implements IModule {
 
     static function fetchGithubLatestRelease(owner:String, repo:String):Null<VersionInfo> {
         try {
-            var http = new haxe.Http('https://api.github.com/repos/$owner/$repo/releases/latest');
-            http.setHeader("User-Agent", "Sentinel-Security/0.1");
-            http.setHeader("Accept", "application/vnd.github+json");
-            var response = "";
-            http.onData = (d) -> response = d;
-            http.onError = (e) -> {};
-            http.request(false);
-
+            var headers = [
+                "User-Agent" => "Sentinel-Security/0.1",
+                "Accept"     => "application/vnd.github+json"
+            ];
+            var response = sentinel.platform.HttpsClient.get(
+                'https://api.github.com/repos/$owner/$repo/releases/latest', headers);
             if (response.length == 0) return null;
             var j = Json.parse(response);
             return {
-                version: j.tag_name,
+                version:     j.tag_name,
                 releaseDate: j.published_at,
-                notes: j.body != null ? Std.string(j.body).substr(0, 500) : null,
+                notes:       j.body != null ? Std.string(j.body).substr(0, 500) : null,
             };
         } catch (e:Dynamic) {
             return null;

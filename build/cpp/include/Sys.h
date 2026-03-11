@@ -58,6 +58,9 @@ class HXCPP_CLASS_ATTRIBUTES Sys_obj : public ::hx::Object
 		static void sleep(Float seconds);
 		static ::Dynamic sleep_dyn();
 
+		static ::String systemName();
+		static ::Dynamic systemName_dyn();
+
 		static Float time();
 		static ::Dynamic time_dyn();
 

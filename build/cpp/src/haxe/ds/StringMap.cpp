@@ -40,8 +40,13 @@ bool StringMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 static ::haxe::IMap_obj _hx_haxe_ds_StringMap__hx_haxe_IMap= {
+	(  ::Dynamic (::hx::Object::*)( ::Dynamic))&::haxe::ds::StringMap_obj::get_a7a2487a,
+	(  ::Dynamic (::hx::Object::*)())&::haxe::ds::StringMap_obj::keys,
 };
 
+ ::Dynamic StringMap_obj::get_a7a2487a( ::Dynamic k) {
+			return get(k);
+}
 void *StringMap_obj::_hx_getInterface(int inHash) {
 	switch(inHash) {
 		case (int)0x09c2bd39: return &_hx_haxe_ds_StringMap__hx_haxe_IMap;

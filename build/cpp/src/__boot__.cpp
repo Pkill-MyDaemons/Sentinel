@@ -25,6 +25,15 @@
 #ifndef INCLUDED_ValueType
 #include <ValueType.h>
 #endif
+#ifndef INCLUDED_sys_ssl_Socket
+#include <sys/ssl/Socket.h>
+#endif
+#ifndef INCLUDED_sys_ssl_Key
+#include <sys/ssl/Key.h>
+#endif
+#ifndef INCLUDED_sys_ssl_Certificate
+#include <sys/ssl/Certificate.h>
+#endif
 #ifndef INCLUDED_sys_net_Host
 #include <sys/net/Host.h>
 #endif
@@ -67,6 +76,12 @@
 #ifndef INCLUDED_sys_thread__EventLoop_RegularEvent
 #include <sys/thread/_EventLoop/RegularEvent.h>
 #endif
+#ifndef INCLUDED_sys_ssl__Socket_SocketOutput
+#include <sys/ssl/_Socket/SocketOutput.h>
+#endif
+#ifndef INCLUDED_sys_ssl__Socket_SocketInput
+#include <sys/ssl/_Socket/SocketInput.h>
+#endif
 #ifndef INCLUDED_sys_net_Socket
 #include <sys/net/Socket.h>
 #endif
@@ -105,6 +120,9 @@
 #endif
 #ifndef INCLUDED_sentinel_platform_MacSecurity
 #include <sentinel/platform/MacSecurity.h>
+#endif
+#ifndef INCLUDED_sentinel_platform_HttpsClient
+#include <sentinel/platform/HttpsClient.h>
 #endif
 #ifndef INCLUDED_sentinel_modules_TerminalWatcher
 #include <sentinel/modules/TerminalWatcher.h>
@@ -238,6 +256,9 @@ __files__boot();
 ::haxe::io::Error_obj::__register();
 ::haxe::io::Encoding_obj::__register();
 ::ValueType_obj::__register();
+::sys::ssl::Socket_obj::__register();
+::sys::ssl::Key_obj::__register();
+::sys::ssl::Certificate_obj::__register();
 ::sys::net::Host_obj::__register();
 ::sys::Http_obj::__register();
 ::sentinel::platform::UnixSocket_obj::__register();
@@ -252,6 +273,8 @@ __files__boot();
 ::sys::thread::_Thread::Thread_Impl__obj::__register();
 ::sys::thread::Lock_obj::__register();
 ::sys::thread::_EventLoop::RegularEvent_obj::__register();
+::sys::ssl::_Socket::SocketOutput_obj::__register();
+::sys::ssl::_Socket::SocketInput_obj::__register();
 ::sys::net::Socket_obj::__register();
 ::sys::net::_Socket::SocketOutput_obj::__register();
 ::sys::net::_Socket::SocketInput_obj::__register();
@@ -265,6 +288,7 @@ __files__boot();
 ::sentinel::platform::UnixSocketServer_obj::__register();
 ::sentinel::platform::Signal_obj::__register();
 ::sentinel::platform::MacSecurity_obj::__register();
+::sentinel::platform::HttpsClient_obj::__register();
 ::sentinel::modules::TerminalWatcher_obj::__register();
 ::sentinel::core::IModule_obj::__register();
 ::sentinel::core::EventBus_obj::__register();
@@ -314,6 +338,9 @@ __files__boot();
 ::ValueType_obj::__boot();
 ::sys::thread::_Thread::HaxeThread_obj::__init__();
 ::sys::net::Host_obj::__init__();
+::sys::ssl::Certificate_obj::__init__();
+::sys::ssl::Key_obj::__init__();
+::sys::ssl::Socket_obj::__init__();
 ::DateTools_obj::__boot();
 ::sys::thread::_Thread::HaxeThread_obj::__boot();
 ::sentinel::ai::GitHubFetcher_obj::__boot();
@@ -325,5 +352,8 @@ __files__boot();
 ::sentinel::platform::UnixSocket_obj::__boot();
 ::sys::Http_obj::__boot();
 ::sys::net::Host_obj::__boot();
+::sys::ssl::Certificate_obj::__boot();
+::sys::ssl::Key_obj::__boot();
+::sys::ssl::Socket_obj::__boot();
 }
 

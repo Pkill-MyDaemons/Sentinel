@@ -1,14 +1,6 @@
 -cp src
+-D no_ssl
 -main sentinel.Main
--lib hxssl
-# Tell hxcpp where to find OpenSSL 3.5 headers
--D HXCPP_CLANG
--D HXCPP_M64
--D HXCPP_ARM64
---macro addConfig('include_path', '/opt/homebrew/opt/openssl@3/include')
---macro addConfig('library_path', '/opt/homebrew/opt/openssl@3/lib')
-
--hl build/hlc/sentinel.c 
-
+-hl build/hlc/sentinel.c
 --define target=hlc
 --define hlc

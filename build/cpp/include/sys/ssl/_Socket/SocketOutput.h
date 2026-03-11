@@ -11,6 +11,8 @@
 #endif
 HX_DECLARE_CLASS2(haxe,io,Bytes)
 HX_DECLARE_CLASS2(haxe,io,Output)
+HX_DECLARE_CLASS2(sys,net,Socket)
+HX_DECLARE_CLASS2(sys,ssl,Socket)
 HX_DECLARE_CLASS3(sys,ssl,_Socket,SocketOutput)
 
 namespace sys{
@@ -28,13 +30,13 @@ class HXCPP_CLASS_ATTRIBUTES SocketOutput_obj : public  ::haxe::io::Output_obj
 	public:
 		enum { _hx_ClassId = 0x52cf5067 };
 
-		void __construct( ::Dynamic s);
+		void __construct( ::sys::ssl::Socket s);
 		inline void *operator new(size_t inSize, bool inContainer=true,const char *inName="sys.ssl._Socket.SocketOutput")
 			{ return ::hx::Object::operator new(inSize,inContainer,inName); }
 		inline void *operator new(size_t inSize, int extra)
 			{ return ::hx::Object::operator new(inSize+extra,true,"sys.ssl._Socket.SocketOutput"); }
-		static ::hx::ObjectPtr< SocketOutput_obj > __new( ::Dynamic s);
-		static ::hx::ObjectPtr< SocketOutput_obj > __alloc(::hx::Ctx *_hx_ctx, ::Dynamic s);
+		static ::hx::ObjectPtr< SocketOutput_obj > __new( ::sys::ssl::Socket s);
+		static ::hx::ObjectPtr< SocketOutput_obj > __alloc(::hx::Ctx *_hx_ctx, ::sys::ssl::Socket s);
 		static void * _hx_vtable;
 		static Dynamic __CreateEmpty();
 		static Dynamic __Create(::hx::DynamicArray inArgs);
@@ -42,9 +44,7 @@ class HXCPP_CLASS_ATTRIBUTES SocketOutput_obj : public  ::haxe::io::Output_obj
 
 		HX_DO_RTTI_ALL;
 		::hx::Val __Field(const ::String &inString, ::hx::PropertyAccess inCallProp);
-		static bool __GetStatic(const ::String &inString, Dynamic &outValue, ::hx::PropertyAccess inCallProp);
 		::hx::Val __SetField(const ::String &inString,const ::hx::Val &inValue, ::hx::PropertyAccess inCallProp);
-		static bool __SetStatic(const ::String &inString, Dynamic &ioValue, ::hx::PropertyAccess inCallProp);
 		void __GetFields(Array< ::String> &outFields);
 		static void __register();
 		void __Mark(HX_MARK_PARAMS);
@@ -52,15 +52,7 @@ class HXCPP_CLASS_ATTRIBUTES SocketOutput_obj : public  ::haxe::io::Output_obj
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("SocketOutput",34,a3,ea,62); }
 
-		static void __boot();
-		static  ::Dynamic socket_close;
-		static Dynamic socket_close_dyn() { return socket_close;}
-		static  ::Dynamic socket_send_char;
-		static Dynamic socket_send_char_dyn() { return socket_send_char;}
-		static  ::Dynamic socket_send;
-		static Dynamic socket_send_dyn() { return socket_send;}
-		 ::Dynamic __s;
-		 ::Dynamic ssl;
+		 ::sys::ssl::Socket __s;
 		void writeByte(int c);
 
 		int writeBytes( ::haxe::io::Bytes buf,int pos,int len);

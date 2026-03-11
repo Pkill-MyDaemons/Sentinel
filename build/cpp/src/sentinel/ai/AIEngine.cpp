@@ -10,6 +10,12 @@
 #ifndef INCLUDED_StringTools
 #include <StringTools.h>
 #endif
+#ifndef INCLUDED_haxe_IMap
+#include <haxe/IMap.h>
+#endif
+#ifndef INCLUDED_haxe_ds_StringMap
+#include <haxe/ds/StringMap.h>
+#endif
 #ifndef INCLUDED_haxe_format_JsonParser
 #include <haxe/format/JsonParser.h>
 #endif
@@ -27,6 +33,9 @@
 #endif
 #ifndef INCLUDED_sentinel_core_RiskLevel
 #include <sentinel/core/RiskLevel.h>
+#endif
+#ifndef INCLUDED_sentinel_platform_HttpsClient
+#include <sentinel/platform/HttpsClient.h>
 #endif
 #ifndef INCLUDED_sys_Http
 #include <sys/Http.h>
@@ -51,12 +60,12 @@ static const ::String _hx_array_data_2a600886_14[] = {
 static const ::String _hx_array_data_2a600886_15[] = {
 	HX_("",00,00,00,00),
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_278_queryAnthropic,"sentinel.ai.AIEngine","queryAnthropic",0x8ec7382c,"sentinel.ai.AIEngine.queryAnthropic","sentinel/ai/AIEngine.hx",278,0x0ac5df58)
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_309_queryOpenAI,"sentinel.ai.AIEngine","queryOpenAI",0x052ca472,"sentinel.ai.AIEngine.queryOpenAI","sentinel/ai/AIEngine.hx",309,0x0ac5df58)
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_344_parseResult,"sentinel.ai.AIEngine","parseResult",0x15348188,"sentinel.ai.AIEngine.parseResult","sentinel/ai/AIEngine.hx",344,0x0ac5df58)
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_364_scoreToLevel,"sentinel.ai.AIEngine","scoreToLevel",0xff772dbf,"sentinel.ai.AIEngine.scoreToLevel","sentinel/ai/AIEngine.hx",364,0x0ac5df58)
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_373_fallbackResult,"sentinel.ai.AIEngine","fallbackResult",0x6bf9c587,"sentinel.ai.AIEngine.fallbackResult","sentinel/ai/AIEngine.hx",373,0x0ac5df58)
-HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_384_resolveModel,"sentinel.ai.AIEngine","resolveModel",0xf8689205,"sentinel.ai.AIEngine.resolveModel","sentinel/ai/AIEngine.hx",384,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_276_queryAnthropic,"sentinel.ai.AIEngine","queryAnthropic",0x8ec7382c,"sentinel.ai.AIEngine.queryAnthropic","sentinel/ai/AIEngine.hx",276,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_294_queryOpenAI,"sentinel.ai.AIEngine","queryOpenAI",0x052ca472,"sentinel.ai.AIEngine.queryOpenAI","sentinel/ai/AIEngine.hx",294,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_318_parseResult,"sentinel.ai.AIEngine","parseResult",0x15348188,"sentinel.ai.AIEngine.parseResult","sentinel/ai/AIEngine.hx",318,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_338_scoreToLevel,"sentinel.ai.AIEngine","scoreToLevel",0xff772dbf,"sentinel.ai.AIEngine.scoreToLevel","sentinel/ai/AIEngine.hx",338,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_347_fallbackResult,"sentinel.ai.AIEngine","fallbackResult",0x6bf9c587,"sentinel.ai.AIEngine.fallbackResult","sentinel/ai/AIEngine.hx",347,0x0ac5df58)
+HX_LOCAL_STACK_FRAME(_hx_pos_1a6b5286c6e51459_358_resolveModel,"sentinel.ai.AIEngine","resolveModel",0xf8689205,"sentinel.ai.AIEngine.resolveModel","sentinel/ai/AIEngine.hx",358,0x0ac5df58)
 namespace sentinel{
 namespace ai{
 
@@ -264,62 +273,105 @@ HXLINE( 273)		return ( (::String)(parsed->__Field(HX_("response",81,ae,0c,a2),::
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,queryOllama,return )
 
 ::String AIEngine_obj::queryAnthropic(::String prompt){
-            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_278_queryAnthropic)
-HXDLIN( 278)		HX_STACK_DO_THROW(HX_("Anthropic API requires SSL. Build without -D no_ssl, or switch provider to 'ollama' in config.",d7,6d,3a,23));
-HXDLIN( 278)		return null();
+            	HX_GC_STACKFRAME(&_hx_pos_1a6b5286c6e51459_276_queryAnthropic)
+HXLINE( 277)		::String model;
+HXDLIN( 277)		if (::hx::IsNotNull(  ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("anthropicModel",9d,9a,8b,42),::hx::paccDynamic) )) {
+HXLINE( 277)			model = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("anthropicModel",9d,9a,8b,42),::hx::paccDynamic)) );
+            		}
+            		else {
+HXLINE( 277)			model = HX_("claude-sonnet-4-20250514",75,20,33,0f);
+            		}
+HXLINE( 278)		 ::Dynamic replacer = null();
+HXDLIN( 278)		::String space = null();
+HXDLIN( 278)		::String payload = ::haxe::format::JsonPrinter_obj::print( ::Dynamic(::hx::Anon_obj::Create(3)
+            			->setFixed(0,HX_("max_tokens",d5,7a,31,9d),1024)
+            			->setFixed(1,HX_("model",a9,23,58,0c),model)
+            			->setFixed(2,HX_("messages",cc,d8,fd,34),::Array_obj< ::Dynamic>::__new(1)->init(0, ::Dynamic(::hx::Anon_obj::Create(2)
+            				->setFixed(0,HX_("content",39,8d,77,19),prompt)
+            				->setFixed(1,HX_("role",76,eb,ae,4b),HX_("user",4b,92,ad,4d)))))),replacer,space);
+HXLINE( 283)		 ::haxe::ds::StringMap _g =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXDLIN( 283)		_g->set(HX_("Content-Type",ce,69,5d,3c),HX_("application/json",87,d8,7f,4e));
+HXDLIN( 283)		_g->set(HX_("x-api-key",17,bd,c4,0b), ::Dynamic( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("anthropicKey",93,9b,e5,1b),::hx::paccDynamic)));
+HXDLIN( 283)		_g->set(HX_("anthropic-version",f7,93,40,bd),HX_("2023-06-01",1a,f6,8e,55));
+HXDLIN( 283)		 ::haxe::ds::StringMap headers = _g;
+HXLINE( 288)		::String response = ::sentinel::platform::HttpsClient_obj::post(HX_("https://api.anthropic.com/v1/messages",8d,17,15,bb),payload,headers);
+HXLINE( 290)		 ::Dynamic parsed =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response)->doParse();
+HXLINE( 291)		return ( (::String)( ::Dynamic(parsed->__Field(HX_("content",39,8d,77,19),::hx::paccDynamic))->__GetItem(0)->__Field(HX_("text",ad,cc,f9,4c),::hx::paccDynamic)) );
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,queryAnthropic,return )
 
 ::String AIEngine_obj::queryOpenAI(::String prompt){
-            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_309_queryOpenAI)
-HXDLIN( 309)		HX_STACK_DO_THROW(HX_("OpenAI API requires SSL. Build without -D no_ssl, or switch provider to 'ollama' in config.",11,36,6e,52));
-HXDLIN( 309)		return null();
+            	HX_GC_STACKFRAME(&_hx_pos_1a6b5286c6e51459_294_queryOpenAI)
+HXLINE( 295)		::String model;
+HXDLIN( 295)		if (::hx::IsNotNull(  ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("openaiModel",17,df,90,2a),::hx::paccDynamic) )) {
+HXLINE( 295)			model = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("openaiModel",17,df,90,2a),::hx::paccDynamic)) );
+            		}
+            		else {
+HXLINE( 295)			model = HX_("gpt-4o",dd,35,72,f8);
+            		}
+HXLINE( 296)		 ::Dynamic replacer = null();
+HXDLIN( 296)		::String space = null();
+HXDLIN( 296)		::String payload = ::haxe::format::JsonPrinter_obj::print( ::Dynamic(::hx::Anon_obj::Create(3)
+            			->setFixed(0,HX_("model",a9,23,58,0c),model)
+            			->setFixed(1,HX_("messages",cc,d8,fd,34),::Array_obj< ::Dynamic>::__new(2)->init(0, ::Dynamic(::hx::Anon_obj::Create(2)
+            				->setFixed(0,HX_("content",39,8d,77,19),HX_("You are a macOS security expert. Always respond with valid JSON only.",2f,a0,f3,ca))
+            				->setFixed(1,HX_("role",76,eb,ae,4b),HX_("system",ef,96,e2,f2))))->init(1, ::Dynamic(::hx::Anon_obj::Create(2)
+            				->setFixed(0,HX_("content",39,8d,77,19),prompt)
+            				->setFixed(1,HX_("role",76,eb,ae,4b),HX_("user",4b,92,ad,4d)))))
+            			->setFixed(2,HX_("temperature",34,b4,90,3c),((Float)0.1))),replacer,space);
+HXLINE( 304)		 ::haxe::ds::StringMap _g =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXDLIN( 304)		_g->set(HX_("Content-Type",ce,69,5d,3c),HX_("application/json",87,d8,7f,4e));
+HXDLIN( 304)		_g->set(HX_("Authorization",d9,69,3c,31), ::Dynamic((HX_("Bearer ",ff,ad,19,40) +  ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("openaiKey",8d,ed,76,ff),::hx::paccDynamic))));
+HXDLIN( 304)		 ::haxe::ds::StringMap headers = _g;
+HXLINE( 308)		::String response = ::sentinel::platform::HttpsClient_obj::post(HX_("https://api.openai.com/v1/chat/completions",4d,18,3c,e9),payload,headers);
+HXLINE( 310)		 ::Dynamic parsed =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response)->doParse();
+HXLINE( 311)		return ( (::String)( ::Dynamic( ::Dynamic(parsed->__Field(HX_("choices",f2,b5,17,d9),::hx::paccDynamic))->__GetItem(0)->__Field(HX_("message",c7,35,11,9a),::hx::paccDynamic))->__Field(HX_("content",39,8d,77,19),::hx::paccDynamic)) );
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,queryOpenAI,return )
 
  ::Dynamic AIEngine_obj::parseResult(::String raw){
-            	HX_GC_STACKFRAME(&_hx_pos_1a6b5286c6e51459_344_parseResult)
-HXLINE( 346)		::String clean = ::StringTools_obj::trim( ::EReg_obj::__alloc( HX_CTX ,HX_("```json\n?|```",61,7d,d0,c7),HX_("g",67,00,00,00))->replace(raw,HX_("",00,00,00,00)));
-HXLINE( 347)		try {
+            	HX_GC_STACKFRAME(&_hx_pos_1a6b5286c6e51459_318_parseResult)
+HXLINE( 320)		::String clean = ::StringTools_obj::trim( ::EReg_obj::__alloc( HX_CTX ,HX_("```json\n?|```",61,7d,d0,c7),HX_("g",67,00,00,00))->replace(raw,HX_("",00,00,00,00)));
+HXLINE( 321)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 348)			 ::Dynamic j =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,clean)->doParse();
-HXLINE( 349)			Float score;
-HXDLIN( 349)			if (::hx::IsNotNull( j->__Field(HX_("riskScore",c3,68,8c,e7),::hx::paccDynamic) )) {
-HXLINE( 349)				score = ( (Float)(j->__Field(HX_("riskScore",c3,68,8c,e7),::hx::paccDynamic)) );
+HXLINE( 322)			 ::Dynamic j =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,clean)->doParse();
+HXLINE( 323)			Float score;
+HXDLIN( 323)			if (::hx::IsNotNull( j->__Field(HX_("riskScore",c3,68,8c,e7),::hx::paccDynamic) )) {
+HXLINE( 323)				score = ( (Float)(j->__Field(HX_("riskScore",c3,68,8c,e7),::hx::paccDynamic)) );
             			}
             			else {
-HXLINE( 349)				score = ((Float)0.5);
+HXLINE( 323)				score = ((Float)0.5);
             			}
-HXLINE( 352)			 ::sentinel::core::RiskLevel _hx_tmp = this->scoreToLevel(score);
-HXLINE( 353)			::String tmp = ( (::String)(j->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)) );
-HXDLIN( 353)			::String _hx_tmp1;
-HXDLIN( 353)			if (::hx::IsNotNull( tmp )) {
-HXLINE( 353)				_hx_tmp1 = tmp;
-            			}
-            			else {
-HXLINE( 353)				_hx_tmp1 = HX_("No summary",67,5c,94,b4);
-            			}
-HXLINE( 354)			::Array< ::String > tmp1 = ( (::Array< ::String >)(j->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) );
-HXDLIN( 354)			::Array< ::String > _hx_tmp2;
-HXDLIN( 354)			if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 354)				_hx_tmp2 = tmp1;
+HXLINE( 326)			 ::sentinel::core::RiskLevel _hx_tmp = this->scoreToLevel(score);
+HXLINE( 327)			::String tmp = ( (::String)(j->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)) );
+HXDLIN( 327)			::String _hx_tmp1;
+HXDLIN( 327)			if (::hx::IsNotNull( tmp )) {
+HXLINE( 327)				_hx_tmp1 = tmp;
             			}
             			else {
-HXLINE( 354)				_hx_tmp2 = ::Array_obj< ::String >::__new(0);
+HXLINE( 327)				_hx_tmp1 = HX_("No summary",67,5c,94,b4);
             			}
-HXLINE( 355)			::String tmp2 = ( (::String)(j->__Field(HX_("recommendation",39,7e,c2,c5),::hx::paccDynamic)) );
-HXDLIN( 355)			::String _hx_tmp3;
-HXDLIN( 355)			if (::hx::IsNotNull( tmp2 )) {
-HXLINE( 355)				_hx_tmp3 = tmp2;
+HXLINE( 328)			::Array< ::String > tmp1 = ( (::Array< ::String >)(j->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) );
+HXDLIN( 328)			::Array< ::String > _hx_tmp2;
+HXDLIN( 328)			if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 328)				_hx_tmp2 = tmp1;
             			}
             			else {
-HXLINE( 355)				_hx_tmp3 = HX_("WARN",46,2a,b3,39);
+HXLINE( 328)				_hx_tmp2 = ::Array_obj< ::String >::__new(0);
             			}
-HXLINE( 350)			return  ::Dynamic(::hx::Anon_obj::Create(6)
+HXLINE( 329)			::String tmp2 = ( (::String)(j->__Field(HX_("recommendation",39,7e,c2,c5),::hx::paccDynamic)) );
+HXDLIN( 329)			::String _hx_tmp3;
+HXDLIN( 329)			if (::hx::IsNotNull( tmp2 )) {
+HXLINE( 329)				_hx_tmp3 = tmp2;
+            			}
+            			else {
+HXLINE( 329)				_hx_tmp3 = HX_("WARN",46,2a,b3,39);
+            			}
+HXLINE( 324)			return  ::Dynamic(::hx::Anon_obj::Create(6)
             				->setFixed(0,HX_("summary",26,0b,e9,80),_hx_tmp1)
             				->setFixed(1,HX_("warnings",97,36,93,88),_hx_tmp2)
             				->setFixed(2,HX_("recommendation",39,7e,c2,c5),_hx_tmp3)
@@ -330,46 +382,46 @@ HXLINE( 350)			return  ::Dynamic(::hx::Anon_obj::Create(6)
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
             				 ::Dynamic _g = _hx_e;
-HXLINE( 358)				{
-HXLINE( 358)					null();
+HXLINE( 332)				{
+HXLINE( 332)					null();
             				}
-HXDLIN( 358)				 ::Dynamic e = _g;
-HXLINE( 359)				::sentinel::core::Logger_obj::warn((((HX_("[AI] Failed to parse JSON response: ",8a,73,6d,41) + ::Std_obj::string(e)) + HX_("\nRaw: ",24,5e,e5,76)) + raw));
-HXLINE( 360)				return this->fallbackResult(raw);
+HXDLIN( 332)				 ::Dynamic e = _g;
+HXLINE( 333)				::sentinel::core::Logger_obj::warn((((HX_("[AI] Failed to parse JSON response: ",8a,73,6d,41) + ::Std_obj::string(e)) + HX_("\nRaw: ",24,5e,e5,76)) + raw));
+HXLINE( 334)				return this->fallbackResult(raw);
             			}
             			else {
             				HX_STACK_DO_THROW(_hx_e);
             			}
             		}
-HXLINE( 347)		return null();
+HXLINE( 321)		return null();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,parseResult,return )
 
  ::sentinel::core::RiskLevel AIEngine_obj::scoreToLevel(Float score){
-            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_364_scoreToLevel)
-HXLINE( 365)		if ((score < ((Float)0.2))) {
-HXLINE( 365)			return ::sentinel::core::RiskLevel_obj::Safe_dyn();
+            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_338_scoreToLevel)
+HXLINE( 339)		if ((score < ((Float)0.2))) {
+HXLINE( 339)			return ::sentinel::core::RiskLevel_obj::Safe_dyn();
             		}
-HXLINE( 366)		if ((score < ((Float)0.4))) {
-HXLINE( 366)			return ::sentinel::core::RiskLevel_obj::Low_dyn();
+HXLINE( 340)		if ((score < ((Float)0.4))) {
+HXLINE( 340)			return ::sentinel::core::RiskLevel_obj::Low_dyn();
             		}
-HXLINE( 367)		if ((score < ((Float)0.6))) {
-HXLINE( 367)			return ::sentinel::core::RiskLevel_obj::Medium_dyn();
+HXLINE( 341)		if ((score < ((Float)0.6))) {
+HXLINE( 341)			return ::sentinel::core::RiskLevel_obj::Medium_dyn();
             		}
-HXLINE( 368)		if ((score < ((Float)0.8))) {
-HXLINE( 368)			return ::sentinel::core::RiskLevel_obj::High_dyn();
+HXLINE( 342)		if ((score < ((Float)0.8))) {
+HXLINE( 342)			return ::sentinel::core::RiskLevel_obj::High_dyn();
             		}
-HXLINE( 369)		return ::sentinel::core::RiskLevel_obj::Critical_dyn();
+HXLINE( 343)		return ::sentinel::core::RiskLevel_obj::Critical_dyn();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,scoreToLevel,return )
 
  ::Dynamic AIEngine_obj::fallbackResult(::String msg){
-            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_373_fallbackResult)
-HXDLIN( 373)		return  ::Dynamic(::hx::Anon_obj::Create(6)
+            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_347_fallbackResult)
+HXDLIN( 347)		return  ::Dynamic(::hx::Anon_obj::Create(6)
             			->setFixed(0,HX_("summary",26,0b,e9,80),HX_W(u"AI analysis unavailable \u2014 manual review required",1153,0e32))
             			->setFixed(1,HX_("warnings",97,36,93,88),::Array_obj< ::String >::__new(1)->init(0,msg))
             			->setFixed(2,HX_("recommendation",39,7e,c2,c5),HX_("WARN",46,2a,b3,39))
@@ -382,39 +434,39 @@ HXDLIN( 373)		return  ::Dynamic(::hx::Anon_obj::Create(6)
 HX_DEFINE_DYNAMIC_FUNC1(AIEngine_obj,fallbackResult,return )
 
 ::String AIEngine_obj::resolveModel(){
-            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_384_resolveModel)
-HXDLIN( 384)		::String _hx_switch_0 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("provider",31,f1,39,23),::hx::paccDynamic)) );
+            	HX_STACKFRAME(&_hx_pos_1a6b5286c6e51459_358_resolveModel)
+HXDLIN( 358)		::String _hx_switch_0 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("provider",31,f1,39,23),::hx::paccDynamic)) );
             		if (  (_hx_switch_0==HX_("anthropic",6c,51,5f,db)) ){
-HXLINE( 385)			::String tmp = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("anthropicModel",9d,9a,8b,42),::hx::paccDynamic)) );
-HXDLIN( 385)			if (::hx::IsNotNull( tmp )) {
-HXLINE( 385)				return tmp;
+HXLINE( 359)			::String tmp = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("anthropicModel",9d,9a,8b,42),::hx::paccDynamic)) );
+HXDLIN( 359)			if (::hx::IsNotNull( tmp )) {
+HXLINE( 359)				return tmp;
             			}
             			else {
-HXLINE( 385)				return HX_("claude-sonnet-4-20250514",75,20,33,0f);
+HXLINE( 359)				return HX_("claude-sonnet-4-20250514",75,20,33,0f);
             			}
-HXDLIN( 385)			goto _hx_goto_21;
+HXDLIN( 359)			goto _hx_goto_21;
             		}
             		if (  (_hx_switch_0==HX_("openai",32,5f,94,21)) ){
-HXLINE( 386)			::String tmp1 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("openaiModel",17,df,90,2a),::hx::paccDynamic)) );
-HXDLIN( 386)			if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 386)				return tmp1;
+HXLINE( 360)			::String tmp1 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("openaiModel",17,df,90,2a),::hx::paccDynamic)) );
+HXDLIN( 360)			if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 360)				return tmp1;
             			}
             			else {
-HXLINE( 386)				return HX_("gpt-4o",dd,35,72,f8);
+HXLINE( 360)				return HX_("gpt-4o",dd,35,72,f8);
             			}
-HXDLIN( 386)			goto _hx_goto_21;
+HXDLIN( 360)			goto _hx_goto_21;
             		}
             		/* default */{
-HXLINE( 387)			::String tmp2 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("localModel",3e,c6,4b,44),::hx::paccDynamic)) );
-HXDLIN( 387)			if (::hx::IsNotNull( tmp2 )) {
-HXLINE( 387)				return tmp2;
+HXLINE( 361)			::String tmp2 = ( (::String)( ::Dynamic(this->cfg->__Field(HX_("ai",e8,54,00,00),::hx::paccDynamic))->__Field(HX_("localModel",3e,c6,4b,44),::hx::paccDynamic)) );
+HXDLIN( 361)			if (::hx::IsNotNull( tmp2 )) {
+HXLINE( 361)				return tmp2;
             			}
             			else {
-HXLINE( 387)				return HX_("llama3",1e,5b,42,9e);
+HXLINE( 361)				return HX_("llama3",1e,5b,42,9e);
             			}
             		}
             		_hx_goto_21:;
-HXLINE( 384)		return null();
+HXLINE( 358)		return null();
             	}
 
 

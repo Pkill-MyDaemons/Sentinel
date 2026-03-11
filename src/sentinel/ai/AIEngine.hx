@@ -274,46 +274,25 @@ Respond ONLY with JSON:
     }
 
     function queryAnthropic(prompt:String):String {
-        #if no_ssl
-        throw "Anthropic API requires SSL. Build without -D no_ssl, or switch provider to 'ollama' in config.";
-        return "";
-        #else
-        var http = new Http("https://api.anthropic.com/v1/messages");
-        http.setHeader("Content-Type", "application/json");
-        http.setHeader("x-api-key", cfg.ai.anthropicKey);
-        http.setHeader("anthropic-version", "2023-06-01");
-
-        var model = cfg.ai.anthropicModel != null ? cfg.ai.anthropicModel : "claude-sonnet-4-20250514";
+        var model   = cfg.ai.anthropicModel != null ? cfg.ai.anthropicModel : "claude-sonnet-4-20250514";
         var payload = Json.stringify({
             model: model,
             max_tokens: 1024,
             messages: [{ role: "user", content: prompt }]
         });
-
-        var response = "";
-        var error = "";
-        http.onData = (data) -> response = data;
-        http.onError = (err) -> error = err;
-        http.setPostData(payload);
-        http.request(true);
-
-        if (error != "") throw 'Anthropic error: $error';
-
+        var headers = [
+            "Content-Type"      => "application/json",
+            "x-api-key"         => cfg.ai.anthropicKey,
+            "anthropic-version" => "2023-06-01"
+        ];
+        var response = sentinel.platform.HttpsClient.post(
+            "https://api.anthropic.com/v1/messages", payload, headers);
         var parsed = Json.parse(response);
         return parsed.content[0].text;
-        #end
     }
 
     function queryOpenAI(prompt:String):String {
-        #if no_ssl
-        throw "OpenAI API requires SSL. Build without -D no_ssl, or switch provider to 'ollama' in config.";
-        return "";
-        #else
-        var http = new Http("https://api.openai.com/v1/chat/completions");
-        http.setHeader("Content-Type", "application/json");
-        http.setHeader("Authorization", "Bearer " + cfg.ai.openaiKey);
-
-        var model = cfg.ai.openaiModel != null ? cfg.ai.openaiModel : "gpt-4o";
+        var model   = cfg.ai.openaiModel != null ? cfg.ai.openaiModel : "gpt-4o";
         var payload = Json.stringify({
             model: model,
             temperature: 0.1,
@@ -322,19 +301,14 @@ Respond ONLY with JSON:
                 { role: "user", content: prompt }
             ]
         });
-
-        var response = "";
-        var error = "";
-        http.onData = (data) -> response = data;
-        http.onError = (err) -> error = err;
-        http.setPostData(payload);
-        http.request(true);
-
-        if (error != "") throw 'OpenAI error: $error';
-
+        var headers = [
+            "Content-Type"  => "application/json",
+            "Authorization" => "Bearer " + cfg.ai.openaiKey
+        ];
+        var response = sentinel.platform.HttpsClient.post(
+            "https://api.openai.com/v1/chat/completions", payload, headers);
         var parsed = Json.parse(response);
         return parsed.choices[0].message.content;
-        #end
     }
 
     // ----------------------------------------------------------------

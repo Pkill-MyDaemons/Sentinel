@@ -53,13 +53,13 @@ class HXCPP_CLASS_ATTRIBUTES Socket_obj : public ::hx::Object
 		bool _hx___fastSend;
 		 ::haxe::io::Input input;
 		 ::haxe::io::Output output;
-		void init();
+		virtual void init();
 		::Dynamic init_dyn();
 
-		void close();
+		virtual void close();
 		::Dynamic close_dyn();
 
-		void connect( ::sys::net::Host host,int port);
+		virtual void connect( ::sys::net::Host host,int port);
 		::Dynamic connect_dyn();
 
 		void shutdown(bool read,bool write);

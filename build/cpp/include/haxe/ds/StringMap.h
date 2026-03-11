@@ -47,6 +47,7 @@ class HXCPP_CLASS_ATTRIBUTES StringMap_obj : public ::hx::Object
 		void __Visit(HX_VISIT_PARAMS);
 		bool _hx_isInstanceOf(int inClassId);
 		void *_hx_getInterface(int inHash);
+		 ::Dynamic get_a7a2487a( ::Dynamic k);
 		::String __ToString() const { return HX_("StringMap",2b,12,8c,69); }
 
 		 ::Dynamic h;

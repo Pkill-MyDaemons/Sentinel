@@ -1,10 +1,7 @@
 package sentinel.ai;
 
 using StringTools;
-
-import sentinel.ai.RepoData;
 import haxe.Json;
-import haxe.Http;
 import sentinel.core.Logger;
 
 /**
@@ -159,42 +156,29 @@ class GitHubFetcher {
     // ----------------------------------------------------------------
 
     function apiGet(path:String):Dynamic {
-        var http = new Http(API + path);
-        http.setHeader("Accept", "application/vnd.github+json");
-        http.setHeader("User-Agent", "Sentinel-Security/0.1");
-        if (token != "") http.setHeader("Authorization", "Bearer " + token);
-
-        var response = "";
-        var error = "";
-        http.onData = (d) -> response = d;
-        http.onError = (e) -> error = e;
-        http.request(false);
-
-        if (error != "") {
-            Logger.warn('[GitHub] API error for $path: $error');
-            return null;
-        }
+        var headers = new Map<String,String>();
+        headers["Accept"]     = "application/vnd.github+json";
+        headers["User-Agent"] = "Sentinel-Security/0.1";
+        if (token != "") headers["Authorization"] = "Bearer " + token;
         try {
+            var response = sentinel.platform.HttpsClient.get(API + path, headers);
             return Json.parse(response);
         } catch (e:Dynamic) {
-            Logger.warn('[GitHub] JSON parse error for $path: $e');
+            Logger.warn('[GitHub] API error for $path: $e');
             return null;
         }
     }
 
     function tryFetchRaw(owner:String, repo:String, file:String):Null<String> {
         var url = '$RAW/$owner/$repo/HEAD/$file';
-        var http = new Http(url);
-        if (token != "") http.setHeader("Authorization", "Bearer " + token);
-        http.setHeader("User-Agent", "Sentinel-Security/0.1");
-
-        var response = "";
-        var error = "";
-        http.onData = (d) -> response = d;
-        http.onError = (e) -> error = e;
-        http.request(false);
-
-        if (error != "" || response == "") return null;
-        return response;
+        var headers = new Map<String,String>();
+        if (token != "") headers["Authorization"] = "Bearer " + token;
+        headers["User-Agent"] = "Sentinel-Security/0.1";
+        try {
+            var response = sentinel.platform.HttpsClient.get(url, headers);
+            return response == "" ? null : response;
+        } catch (e:Dynamic) {
+            return null;
+        }
     }
 }

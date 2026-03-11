@@ -10,11 +10,11 @@
 #ifndef INCLUDED_haxe_Exception
 #include <haxe/Exception.h>
 #endif
-#ifndef INCLUDED_haxe_Log
-#include <haxe/Log.h>
-#endif
 #ifndef INCLUDED_haxe_ValueException
 #include <haxe/ValueException.h>
+#endif
+#ifndef INCLUDED_haxe_io_Error
+#include <haxe/io/Error.h>
 #endif
 #ifndef INCLUDED_haxe_io_Input
 #include <haxe/io/Input.h>
@@ -24,6 +24,15 @@
 #endif
 #ifndef INCLUDED_sys_net_Host
 #include <sys/net/Host.h>
+#endif
+#ifndef INCLUDED_sys_net_Socket
+#include <sys/net/Socket.h>
+#endif
+#ifndef INCLUDED_sys_ssl_Certificate
+#include <sys/ssl/Certificate.h>
+#endif
+#ifndef INCLUDED_sys_ssl_Key
+#include <sys/ssl/Key.h>
 #endif
 #ifndef INCLUDED_sys_ssl_Socket
 #include <sys/ssl/Socket.h>
@@ -35,64 +44,21 @@
 #include <sys/ssl/_Socket/SocketOutput.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_136_new,"sys.ssl.Socket","new",0xb0189de8,"sys.ssl.Socket.new","sys/ssl/Socket.hx",136,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_145_connect,"sys.ssl.Socket","connect",0x6aae6d72,"sys.ssl.Socket.connect","sys/ssl/Socket.hx",145,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_168_setCertLocation,"sys.ssl.Socket","setCertLocation",0xd189a183,"sys.ssl.Socket.setCertLocation","sys/ssl/Socket.hx",168,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_176_read,"sys.ssl.Socket","read",0x681654ce,"sys.ssl.Socket.read","sys/ssl/Socket.hx",176,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_187_write,"sys.ssl.Socket","write",0x9512ac67,"sys.ssl.Socket.write","sys/ssl/Socket.hx",187,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_193_close,"sys.ssl.Socket","close",0x0d1c5740,"sys.ssl.Socket.close","sys/ssl/Socket.hx",193,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_250_shutdown,"sys.ssl.Socket","shutdown",0x9e49220e,"sys.ssl.Socket.shutdown","sys/ssl/Socket.hx",250,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_255_host,"sys.ssl.Socket","host",0x6181d8e0,"sys.ssl.Socket.host","sys/ssl/Socket.hx",255,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_263_setTimeout,"sys.ssl.Socket","setTimeout",0x84c1b297,"sys.ssl.Socket.setTimeout","sys/ssl/Socket.hx",263,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_267_waitForRead,"sys.ssl.Socket","waitForRead",0x433ec292,"sys.ssl.Socket.waitForRead","sys/ssl/Socket.hx",267,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_271_setBlocking,"sys.ssl.Socket","setBlocking",0xbf2a84ff,"sys.ssl.Socket.setBlocking","sys/ssl/Socket.hx",271,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_275_setFastSend,"sys.ssl.Socket","setFastSend",0x2de5594e,"sys.ssl.Socket.setFastSend","sys/ssl/Socket.hx",275,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_278_initSSL,"sys.ssl.Socket","initSSL",0x20bc8424,"sys.ssl.Socket.initSSL","sys/ssl/Socket.hx",278,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_283_buildSSLContext,"sys.ssl.Socket","buildSSLContext",0xc7d561d9,"sys.ssl.Socket.buildSSLContext","sys/ssl/Socket.hx",283,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_295_select,"sys.ssl.Socket","select",0xc7917274,"sys.ssl.Socket.select","sys/ssl/Socket.hx",295,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_335_lib,"sys.ssl.Socket","lib",0xb0171ccd,"sys.ssl.Socket.lib","sys/ssl/Socket.hx",335,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_306_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",306,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_307_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",307,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_309_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",309,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_310_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",310,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_311_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",311,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_312_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",312,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_313_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",313,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_315_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",315,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_317_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",317,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_318_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",318,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_320_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",320,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_321_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",321,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_322_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",322,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_323_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",323,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_324_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",324,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_326_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",326,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_327_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",327,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_329_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",329,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_330_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",330,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_332_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",332,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_338_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",338,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_339_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",339,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_340_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",340,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_341_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",341,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_342_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",342,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_343_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",343,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_344_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",344,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_345_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",345,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_346_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",346,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_347_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",347,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_348_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",348,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_349_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",349,0xb08761c6)
-HX_LOCAL_STACK_FRAME(_hx_pos_0b2771c495d9f0fd_350_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","sys/ssl/Socket.hx",350,0xb08761c6)
+HX_DEFINE_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_119_new,"sys.ssl.Socket","new",0xb0189de8,"sys.ssl.Socket.new","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",119,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_dbd0450d1c63e64f_295___init__,"::sys::ssl::Socket_obj","__init__",0xb5703314,"::sys::ssl::Socket_obj.__init__","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",295,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_138_init,"sys.ssl.Socket","init",0x622a4488,"sys.ssl.Socket.init","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",138,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_152_connect,"sys.ssl.Socket","connect",0x6aae6d72,"sys.ssl.Socket.connect","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",152,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_174_handshake,"sys.ssl.Socket","handshake",0x5679847f,"sys.ssl.Socket.handshake","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",174,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_213_close,"sys.ssl.Socket","close",0x0d1c5740,"sys.ssl.Socket.close","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",213,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_260_buildSSLConfig,"sys.ssl.Socket","buildSSLConfig",0xf55ff618,"sys.ssl.Socket.buildSSLConfig","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",260,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_267_buildSSLConfig,"sys.ssl.Socket","buildSSLConfig",0xf55ff618,"sys.ssl.Socket.buildSSLConfig","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",267,0x1b5e340f)
+HX_LOCAL_STACK_FRAME(_hx_pos_2e2c72abb6bfe4fd_120_boot,"sys.ssl.Socket","boot",0x5d8a8daa,"sys.ssl.Socket.boot","/opt/homebrew/lib/haxe/std/cpp/_std/sys/ssl/Socket.hx",120,0x1b5e340f)
 namespace sys{
 namespace ssl{
 
 void Socket_obj::__construct(){
-            	HX_GC_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_136_new)
-HXLINE( 138)		this->initSSL();
-HXLINE( 139)		this->__s = ::sys::ssl::Socket_obj::socket_new(false);
-HXLINE( 140)		this->input =  ::sys::ssl::_Socket::SocketInput_obj::__alloc( HX_CTX ,this->__s,null());
-HXLINE( 141)		this->output =  ::sys::ssl::_Socket::SocketOutput_obj::__alloc( HX_CTX ,this->__s);
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_119_new)
+HXDLIN( 119)		super::__construct();
             	}
 
 Dynamic Socket_obj::__CreateEmpty() { return new Socket_obj; }
@@ -107,91 +73,109 @@ Dynamic Socket_obj::__Create(::hx::DynamicArray inArgs)
 }
 
 bool Socket_obj::_hx_isInstanceOf(int inClassId) {
-	return inClassId==(int)0x00000001 || inClassId==(int)0x7a492a0e;
+	if (inClassId<=(int)0x70c71ec3) {
+		return inClassId==(int)0x00000001 || inClassId==(int)0x70c71ec3;
+	} else {
+		return inClassId==(int)0x7a492a0e;
+	}
 }
 
+void Socket_obj::__init__(){
+            	HX_STACKFRAME(&_hx_pos_dbd0450d1c63e64f_295___init__)
+HXDLIN( 295)		_hx_ssl_init();
+            	}
+
+
+void Socket_obj::init(){
+            	HX_GC_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_138_init)
+HXLINE( 139)		this->__s = _hx_std_socket_new(false);
+HXLINE( 140)		this->input =  ::sys::ssl::_Socket::SocketInput_obj::__alloc( HX_CTX ,::hx::ObjectPtr<OBJ_>(this));
+HXLINE( 141)		this->output =  ::sys::ssl::_Socket::SocketOutput_obj::__alloc( HX_CTX ,::hx::ObjectPtr<OBJ_>(this));
+HXLINE( 142)		bool _hx_tmp;
+HXDLIN( 142)		if (( (bool)(::sys::ssl::Socket_obj::DEFAULT_VERIFY_CERT) )) {
+HXLINE( 142)			_hx_tmp = ::hx::IsNull( ::sys::ssl::Socket_obj::DEFAULT_CA );
+            		}
+            		else {
+HXLINE( 142)			_hx_tmp = false;
+            		}
+HXDLIN( 142)		if (_hx_tmp) {
+HXLINE( 143)			try {
+            				HX_STACK_CATCHABLE( ::Dynamic, 0);
+HXLINE( 144)				::sys::ssl::Socket_obj::DEFAULT_CA = ::sys::ssl::Certificate_obj::loadDefaults();
+            			} catch( ::Dynamic _hx_e) {
+            				if (_hx_e.IsClass<  ::Dynamic >() ){
+            					HX_STACK_BEGIN_CATCH
+            					 ::Dynamic _g = _hx_e;
+HXLINE( 145)					{
+HXLINE( 145)						null();
+            					}
+            				}
+            				else {
+            					HX_STACK_DO_THROW(_hx_e);
+            				}
+            			}
+            		}
+HXLINE( 147)		this->caCert = ::sys::ssl::Socket_obj::DEFAULT_CA;
+HXLINE( 148)		this->verifyCert = ::sys::ssl::Socket_obj::DEFAULT_VERIFY_CERT;
+            	}
+
+
 void Socket_obj::connect( ::sys::net::Host host,int port){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_145_connect)
-HXDLIN( 145)		try {
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_152_connect)
+HXDLIN( 152)		try {
             			HX_STACK_CATCHABLE(::String, 0);
             			HX_STACK_CATCHABLE( ::haxe::ValueException, 1);
             			HX_STACK_CATCHABLE( ::Dynamic, 2);
-HXLINE( 146)			::sys::ssl::Socket_obj::socket_connect(this->__s,host->ip,port);
-HXLINE( 147)			this->ctx = this->buildSSLContext();
-HXLINE( 148)			this->ssl = ::sys::ssl::Socket_obj::SSL_new(this->ctx);
-HXLINE( 149)			this->input->ssl = this->ssl;
-HXLINE( 150)			this->output->ssl = this->ssl;
-HXLINE( 151)			 ::Dynamic sbio = this->__s;
-HXDLIN( 151)			 ::Dynamic sbio1 = ::sys::ssl::Socket_obj::BIO_NOCLOSE();
-HXDLIN( 151)			 ::Dynamic sbio2 = ::sys::ssl::Socket_obj::BIO_new_socket(sbio,sbio1);
-HXLINE( 152)			::sys::ssl::Socket_obj::SSL_set_bio(this->ssl,sbio2,sbio2);
-HXLINE( 153)			int r = ( (int)(::sys::ssl::Socket_obj::SSL_connect(this->ssl)) );
+HXLINE( 153)			this->conf = this->buildSSLConfig(false);
+HXLINE( 154)			this->ssl = _hx_ssl_new(this->conf);
+HXLINE( 155)			this->handshakeDone = false;
+HXLINE( 156)			_hx_ssl_set_socket(this->ssl,this->__s);
+HXLINE( 157)			if (::hx::IsNull( this->hostname )) {
+HXLINE( 158)				this->hostname = host->host;
+            			}
+HXLINE( 159)			if (::hx::IsNotNull( this->hostname )) {
+HXLINE( 160)				_hx_ssl_set_hostname(this->ssl,this->hostname);
+            			}
+HXLINE( 161)			_hx_std_socket_connect(this->__s,host->ip,port);
+HXLINE( 162)			this->handshake();
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass< ::String >() && _hx_e->toString()!=null() ){
             				HX_STACK_BEGIN_CATCH
             				::String s1 = _hx_e;
-HXLINE( 156)				if ((s1 == HX_("std@socket_connect",1b,03,66,65))) {
-HXLINE( 157)					::String _hx_tmp;
-HXDLIN( 157)					try {
-            						HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 157)						_hx_tmp = host->reverse();
-            					} catch( ::Dynamic _hx_e) {
-            						if (_hx_e.IsClass<  ::Dynamic >() ){
-            							HX_STACK_BEGIN_CATCH
-            							 ::Dynamic _g2 = _hx_e;
-HXLINE( 157)							_hx_tmp = host->toString();
-            						}
-            						else {
-            							HX_STACK_DO_THROW(_hx_e);
-            						}
-            					}
-HXDLIN( 157)					HX_STACK_DO_THROW((((HX_("Failed to connect on ",a9,2b,e3,45) + _hx_tmp) + HX_(":",3a,00,00,00)) + port));
+HXLINE( 164)				if ((s1 == HX_("Invalid socket handle",6c,15,f9,09))) {
+HXLINE( 165)					HX_STACK_DO_THROW((((HX_("Failed to connect on ",a9,2b,e3,45) + host->host) + HX_(":",3a,00,00,00)) + port));
             				}
             				else {
-HXLINE( 159)					HX_STACK_DO_RETHROW(s1);
+HXLINE( 167)					HX_STACK_DO_RETHROW(s1);
             				}
             			}
             			else if (_hx_e.IsClass<  ::haxe::ValueException >() ){
             				HX_STACK_BEGIN_CATCH
-            				 ::haxe::ValueException _g1 = _hx_e;
-HXLINE( 155)				{
-HXLINE( 155)					null();
+            				 ::haxe::ValueException _g = _hx_e;
+HXLINE( 163)				{
+HXLINE( 163)					null();
             				}
-HXLINE( 145)				if (::Std_obj::isOfType(_g1->value,::hx::ClassOf< ::String >())) {
-HXLINE( 155)					::String s1 = ( (::String)(_g1->value) );
-HXLINE( 156)					if ((s1 == HX_("std@socket_connect",1b,03,66,65))) {
-HXLINE( 157)						::String _hx_tmp1;
-HXDLIN( 157)						try {
-            							HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 157)							_hx_tmp1 = host->reverse();
-            						} catch( ::Dynamic _hx_e) {
-            							if (_hx_e.IsClass<  ::Dynamic >() ){
-            								HX_STACK_BEGIN_CATCH
-            								 ::Dynamic _g2 = _hx_e;
-HXLINE( 157)								_hx_tmp1 = host->toString();
-            							}
-            							else {
-            								HX_STACK_DO_THROW(_hx_e);
-            							}
-            						}
-HXDLIN( 157)						HX_STACK_DO_THROW((((HX_("Failed to connect on ",a9,2b,e3,45) + _hx_tmp1) + HX_(":",3a,00,00,00)) + port));
+HXLINE( 152)				if (::Std_obj::isOfType(_g->value,::hx::ClassOf< ::String >())) {
+HXLINE( 163)					::String s1 = ( (::String)(_g->value) );
+HXLINE( 164)					if ((s1 == HX_("Invalid socket handle",6c,15,f9,09))) {
+HXLINE( 165)						HX_STACK_DO_THROW((((HX_("Failed to connect on ",a9,2b,e3,45) + host->host) + HX_(":",3a,00,00,00)) + port));
             					}
             					else {
-HXLINE( 159)						HX_STACK_DO_RETHROW(s1);
+HXLINE( 167)						HX_STACK_DO_RETHROW(s1);
             					}
             				}
             				else {
-HXDLIN( 145)					HX_STACK_DO_THROW(_g1);
+HXDLIN( 152)					HX_STACK_DO_THROW(_g);
             				}
             			}
             			else if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
-            				 ::Dynamic _g3 = _hx_e;
-HXLINE( 160)				{
-HXLINE( 160)					null();
+            				 ::Dynamic _g1 = _hx_e;
+HXLINE( 168)				{
+HXLINE( 168)					null();
             				}
-HXDLIN( 160)				 ::Dynamic e = _g3;
-HXLINE( 161)				HX_STACK_DO_RETHROW(e);
+HXDLIN( 168)				 ::Dynamic e = _g1;
+HXLINE( 169)				HX_STACK_DO_RETHROW(e);
             			}
             			else {
             				HX_STACK_DO_THROW(_hx_e);
@@ -200,229 +184,141 @@ HXLINE( 161)				HX_STACK_DO_RETHROW(e);
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(Socket_obj,connect,(void))
-
-void Socket_obj::setCertLocation(::String file,::String folder){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_168_setCertLocation)
-HXLINE( 169)		this->certFile = file;
-HXLINE( 170)		this->certFolder = folder;
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(Socket_obj,setCertLocation,(void))
-
-::String Socket_obj::read(){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_176_read)
-HXLINE( 177)		::haxe::Log_obj::trace(HX_("read",56,4b,a7,4b),::hx::SourceInfo(HX_("sys/ssl/Socket.hx",c6,61,87,b0),177,HX_("sys.ssl.Socket",f6,c9,b1,35),HX_("read",56,4b,a7,4b)));
-HXLINE( 178)		 ::Dynamic b = ::sys::ssl::Socket_obj::socket_read(this->ssl);
-HXLINE( 179)		if (::hx::IsNull( b )) {
-HXLINE( 180)			return HX_("",00,00,00,00);
+void Socket_obj::handshake(){
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_174_handshake)
+HXDLIN( 174)		if (!(this->handshakeDone)) {
+HXLINE( 175)			try {
+            				HX_STACK_CATCHABLE( ::Dynamic, 0);
+HXLINE( 176)				_hx_ssl_handshake(this->ssl);
+HXLINE( 177)				this->handshakeDone = true;
+            			} catch( ::Dynamic _hx_e) {
+            				if (_hx_e.IsClass<  ::Dynamic >() ){
+            					HX_STACK_BEGIN_CATCH
+            					 ::Dynamic _g = _hx_e;
+HXLINE( 178)					{
+HXLINE( 178)						null();
+            					}
+HXDLIN( 178)					 ::Dynamic e = _g;
+HXLINE( 179)					if (::hx::IsEq( e,HX_("Blocking",d5,e1,61,f3) )) {
+HXLINE( 180)						HX_STACK_DO_THROW(::haxe::io::Error_obj::Blocked_dyn());
+            					}
+            					else {
+HXLINE( 182)						HX_STACK_DO_RETHROW(e);
+            					}
+            				}
+            				else {
+            					HX_STACK_DO_THROW(_hx_e);
+            				}
+            			}
             		}
-HXLINE( 181)		::haxe::Log_obj::trace(HX_("reat",66,4b,a7,4b),::hx::SourceInfo(HX_("sys/ssl/Socket.hx",c6,61,87,b0),181,HX_("sys.ssl.Socket",f6,c9,b1,35),HX_("read",56,4b,a7,4b)));
-HXLINE( 182)		return ( (::String)(b->toString()) );
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,read,return )
-
-void Socket_obj::write(::String content){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_187_write)
-HXDLIN( 187)		::sys::ssl::Socket_obj::socket_write(this->ssl,content);
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC1(Socket_obj,write,(void))
+HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,handshake,(void))
 
 void Socket_obj::close(){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_193_close)
-HXLINE( 195)		::sys::ssl::Socket_obj::SSL_close(this->ssl);
-HXLINE( 196)		::sys::ssl::Socket_obj::SSL_CTX_close(this->ctx);
-HXLINE( 198)		::sys::ssl::Socket_obj::socket_close(this->__s);
-HXLINE( 199)		this->input->__s = (this->output->__s = null());
-HXLINE( 200)		this->input->ssl = (this->output->ssl = null());
-HXLINE( 201)		this->input->close();
-HXLINE( 202)		this->output->close();
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_213_close)
+HXLINE( 214)		if (::hx::IsNotNull( this->ssl )) {
+HXLINE( 215)			_hx_ssl_close(this->ssl);
+            		}
+HXLINE( 216)		if (::hx::IsNotNull( this->conf )) {
+HXLINE( 217)			_hx_ssl_conf_close(this->conf);
+            		}
+HXLINE( 218)		if (::hx::IsNotNull( this->altSNIContexts )) {
+HXLINE( 219)			this->sniCallback = null();
+            		}
+HXLINE( 220)		_hx_std_socket_close(this->__s);
+HXLINE( 221)		 ::sys::ssl::_Socket::SocketInput input = ( ( ::sys::ssl::_Socket::SocketInput)(this->input) );
+HXLINE( 222)		 ::sys::ssl::_Socket::SocketOutput output = ( ( ::sys::ssl::_Socket::SocketOutput)(this->output) );
+HXLINE( 223)		input->__s = (output->__s = null());
+HXLINE( 224)		input->close();
+HXLINE( 225)		output->close();
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,close,(void))
-
-void Socket_obj::shutdown(bool read,bool write){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_250_shutdown)
-HXLINE( 251)		::sys::ssl::Socket_obj::SSL_shutdown(this->ssl);
-HXLINE( 252)		::sys::ssl::Socket_obj::socket_shutdown(this->__s,read,write);
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(Socket_obj,shutdown,(void))
-
- ::Dynamic Socket_obj::host(){
-            	HX_GC_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_255_host)
-HXLINE( 256)		 ::Dynamic a = ::sys::ssl::Socket_obj::socket_host(this->__s);
-HXLINE( 257)		 ::sys::net::Host h =  ::sys::net::Host_obj::__alloc( HX_CTX ,HX_("127.0.0.1",fd,bc,5e,a1));
-HXLINE( 258)		h->ip = ( (int)(a->__GetItem(0)) );
-HXLINE( 259)		return  ::Dynamic(::hx::Anon_obj::Create(2)
-            			->setFixed(0,HX_("host",68,cf,12,45),h)
-            			->setFixed(1,HX_("port",81,83,5c,4a),a->__GetItem(1)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,host,return )
-
-void Socket_obj::setTimeout(Float timeout){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_263_setTimeout)
-HXDLIN( 263)		::sys::ssl::Socket_obj::socket_set_timeout(this->__s,timeout);
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC1(Socket_obj,setTimeout,(void))
-
-void Socket_obj::waitForRead(){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_267_waitForRead)
-HXDLIN( 267)		::sys::ssl::Socket_obj::select(::Array_obj< ::Dynamic>::__new(1)->init(0,::hx::ObjectPtr<OBJ_>(this)),null(),null(),null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,waitForRead,(void))
-
-void Socket_obj::setBlocking(bool b){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_271_setBlocking)
-HXDLIN( 271)		::sys::ssl::Socket_obj::socket_set_blocking(this->__s,b);
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC1(Socket_obj,setBlocking,(void))
-
-void Socket_obj::setFastSend(bool b){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_275_setFastSend)
-HXDLIN( 275)		::sys::ssl::Socket_obj::socket_set_fast_send(this->__s,b);
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC1(Socket_obj,setFastSend,(void))
-
-void Socket_obj::initSSL(){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_278_initSSL)
-HXLINE( 279)		::sys::ssl::Socket_obj::SSL_library_init();
-HXLINE( 280)		::sys::ssl::Socket_obj::SSL_load_error_strings();
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,initSSL,(void))
-
- ::Dynamic Socket_obj::buildSSLContext(){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_283_buildSSLContext)
-HXLINE( 284)		 ::Dynamic ctx = ::sys::ssl::Socket_obj::SSLv23_client_method();
-HXDLIN( 284)		 ::Dynamic ctx1 = ::sys::ssl::Socket_obj::SSL_CTX_new(ctx);
-HXLINE( 286)		bool _hx_tmp;
-HXDLIN( 286)		if (::hx::IsNotNull( this->certFile )) {
-HXLINE( 286)			_hx_tmp = ::hx::IsNotNull( this->certFolder );
+ ::Dynamic Socket_obj::buildSSLConfig(bool server){
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_260_buildSSLConfig)
+HXDLIN( 260)		 ::sys::ssl::Socket _gthis = ::hx::ObjectPtr<OBJ_>(this);
+HXLINE( 261)		 ::Dynamic conf = _hx_ssl_conf_new(server);
+HXLINE( 263)		bool _hx_tmp;
+HXDLIN( 263)		if (::hx::IsNotNull( this->ownCert )) {
+HXLINE( 263)			_hx_tmp = ::hx::IsNotNull( this->ownKey );
             		}
             		else {
-HXLINE( 286)			_hx_tmp = false;
+HXLINE( 263)			_hx_tmp = false;
             		}
-HXDLIN( 286)		if (_hx_tmp) {
-HXLINE( 287)			int r = ( (int)(::sys::ssl::Socket_obj::SSL_CTX_load_verify_locations(ctx1,this->certFile,this->certFolder)) );
-HXLINE( 288)			if ((r == 0)) {
-HXLINE( 289)				HX_STACK_DO_THROW(HX_("Failed to load certificates",f4,c8,ea,29));
+HXDLIN( 263)		if (_hx_tmp) {
+HXLINE( 264)			_hx_ssl_conf_set_cert(conf,this->ownCert->_hx___x,this->ownKey->_hx___k);
+            		}
+HXLINE( 266)		if (::hx::IsNotNull( this->altSNIContexts )) {
+            			HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0, ::sys::ssl::Socket,_gthis) HXARGC(1)
+            			 ::Dynamic _hx_run( ::Dynamic servername){
+            				HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_267_buildSSLConfig)
+HXLINE( 268)				::String servername1 = ::String(( (::String)(servername) ));
+HXLINE( 269)				{
+HXLINE( 269)					int _g = 0;
+HXDLIN( 269)					::Array< ::Dynamic> _g1 = _gthis->altSNIContexts;
+HXDLIN( 269)					while((_g < _g1->length)){
+HXLINE( 269)						 ::Dynamic c = _g1->__get(_g);
+HXDLIN( 269)						_g = (_g + 1);
+HXLINE( 270)						if (( (bool)(c->__Field(HX_("match",45,49,23,03),::hx::paccDynamic)(servername1)) )) {
+HXLINE( 271)							return  ::Dynamic(::hx::Anon_obj::Create(2)
+            								->setFixed(0,HX_("key",9f,89,51,00),( ( ::sys::ssl::Key)(c->__Field(HX_("key",9f,89,51,00),::hx::paccDynamic)) )->_hx___k)
+            								->setFixed(1,HX_("cert",e4,26,bd,41),( ( ::sys::ssl::Certificate)(c->__Field(HX_("cert",e4,26,bd,41),::hx::paccDynamic)) )->_hx___x));
+            						}
+            					}
+            				}
+HXLINE( 275)				bool _hx_tmp;
+HXDLIN( 275)				if (::hx::IsNotNull( _gthis->ownKey )) {
+HXLINE( 275)					_hx_tmp = ::hx::IsNotNull( _gthis->ownCert );
+            				}
+            				else {
+HXLINE( 275)					_hx_tmp = false;
+            				}
+HXDLIN( 275)				if (_hx_tmp) {
+HXLINE( 276)					return  ::Dynamic(::hx::Anon_obj::Create(2)
+            						->setFixed(0,HX_("key",9f,89,51,00),_gthis->ownKey->_hx___k)
+            						->setFixed(1,HX_("cert",e4,26,bd,41),_gthis->ownCert->_hx___x));
+            				}
+HXLINE( 279)				return null();
             			}
-HXLINE( 290)			::sys::ssl::Socket_obj::SSL_CTX_set_verify(ctx1);
+            			HX_END_LOCAL_FUNC1(return)
+
+HXLINE( 267)			this->sniCallback =  ::Dynamic(new _hx_Closure_0(_gthis));
+HXLINE( 281)			_hx_ssl_conf_set_servername_callback(conf,this->sniCallback);
             		}
-HXLINE( 292)		return ctx1;
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(Socket_obj,buildSSLContext,return )
-
- ::Dynamic Socket_obj::select(::Array< ::Dynamic> read,::Array< ::Dynamic> write,::Array< ::Dynamic> others, ::Dynamic timeout){
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_295_select)
-HXLINE( 296)		::Array< ::Dynamic> neko_array = ( (::Array< ::Dynamic>)(::sys::ssl::Socket_obj::socket_select(read,write,others,timeout)) );
-HXLINE( 297)		if (::hx::IsNull( neko_array )) {
-HXLINE( 298)			HX_STACK_DO_THROW(HX_("Select error",c4,23,4b,b6));
+HXLINE( 284)		if (::hx::IsNotNull( this->caCert )) {
+HXLINE( 285)			 ::Dynamic _hx_tmp1;
+HXDLIN( 285)			if (::hx::IsNull( this->caCert )) {
+HXLINE( 285)				_hx_tmp1 = null();
+            			}
+            			else {
+HXLINE( 285)				_hx_tmp1 = this->caCert->_hx___x;
+            			}
+HXDLIN( 285)			_hx_ssl_conf_set_ca(conf,_hx_tmp1);
             		}
-HXLINE( 299)		return  ::Dynamic(::hx::Anon_obj::Create(3)
-            			->setFixed(0,HX_("write",df,6c,59,d0),neko_array->__get(1).StaticCast< ::Array< ::Dynamic> >())
-            			->setFixed(1,HX_("read",56,4b,a7,4b),neko_array->__get(0).StaticCast< ::Array< ::Dynamic> >())
-            			->setFixed(2,HX_("others",a3,8f,23,71),neko_array->__get(2).StaticCast< ::Array< ::Dynamic> >()));
+HXLINE( 286)		if (::hx::IsNull( this->verifyCert )) {
+HXLINE( 287)			_hx_ssl_conf_set_verify(conf,2);
+            		}
+            		else {
+HXLINE( 289)			int _hx_tmp2;
+HXDLIN( 289)			if (( (bool)(this->verifyCert) )) {
+HXLINE( 289)				_hx_tmp2 = 1;
+            			}
+            			else {
+HXLINE( 289)				_hx_tmp2 = 0;
+            			}
+HXDLIN( 289)			_hx_ssl_conf_set_verify(conf,_hx_tmp2);
+            		}
+HXLINE( 291)		return conf;
             	}
 
 
-STATIC_HX_DEFINE_DYNAMIC_FUNC4(Socket_obj,select,return )
+HX_DEFINE_DYNAMIC_FUNC1(Socket_obj,buildSSLConfig,return )
 
- ::Dynamic Socket_obj::SSL_library_init;
+ ::Dynamic Socket_obj::DEFAULT_VERIFY_CERT;
 
- ::Dynamic Socket_obj::SSL_load_error_strings;
-
- ::Dynamic Socket_obj::SSL_new;
-
- ::Dynamic Socket_obj::SSL_close;
-
- ::Dynamic Socket_obj::SSL_connect;
-
- ::Dynamic Socket_obj::SSL_shutdown;
-
- ::Dynamic Socket_obj::SSL_free;
-
- ::Dynamic Socket_obj::SSL_set_bio;
-
- ::Dynamic Socket_obj::SSLv23_client_method;
-
- ::Dynamic Socket_obj::TLSv1_client_method;
-
- ::Dynamic Socket_obj::SSL_CTX_new;
-
- ::Dynamic Socket_obj::SSL_CTX_close;
-
- ::Dynamic Socket_obj::SSL_CTX_load_verify_locations;
-
- ::Dynamic Socket_obj::SSL_CTX_set_verify;
-
- ::Dynamic Socket_obj::SSL_CTX_use_certificate_file;
-
- ::Dynamic Socket_obj::BIO_new_socket;
-
- ::Dynamic Socket_obj::BIO_NOCLOSE;
-
- ::Dynamic Socket_obj::socket_read;
-
- ::Dynamic Socket_obj::socket_write;
-
- ::Dynamic Socket_obj::ssl_accept;
-
- ::Dynamic Socket_obj::lib(::String f,::hx::Null< int >  __o_args){
-            		int args = __o_args.Default(0);
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_335_lib)
-HXDLIN( 335)		return ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + f),args);
-            	}
-
-
-STATIC_HX_DEFINE_DYNAMIC_FUNC2(Socket_obj,lib,return )
-
- ::Dynamic Socket_obj::socket_new;
-
- ::Dynamic Socket_obj::socket_close;
-
- ::Dynamic Socket_obj::socket_connect;
-
- ::Dynamic Socket_obj::socket_listen;
-
- ::Dynamic Socket_obj::socket_select;
-
- ::Dynamic Socket_obj::socket_bind;
-
- ::Dynamic Socket_obj::socket_accept;
-
- ::Dynamic Socket_obj::socket_peer;
-
- ::Dynamic Socket_obj::socket_host;
-
- ::Dynamic Socket_obj::socket_set_timeout;
-
- ::Dynamic Socket_obj::socket_shutdown;
-
- ::Dynamic Socket_obj::socket_set_blocking;
-
- ::Dynamic Socket_obj::socket_set_fast_send;
+ ::sys::ssl::Certificate Socket_obj::DEFAULT_CA;
 
 
 ::hx::ObjectPtr< Socket_obj > Socket_obj::__new() {
@@ -445,70 +341,74 @@ Socket_obj::Socket_obj()
 void Socket_obj::__Mark(HX_MARK_PARAMS)
 {
 	HX_MARK_BEGIN_CLASS(Socket);
-	HX_MARK_MEMBER_NAME(input,"input");
-	HX_MARK_MEMBER_NAME(output,"output");
-	HX_MARK_MEMBER_NAME(custom,"custom");
-	HX_MARK_MEMBER_NAME(__s,"__s");
-	HX_MARK_MEMBER_NAME(ctx,"ctx");
+	HX_MARK_MEMBER_NAME(conf,"conf");
 	HX_MARK_MEMBER_NAME(ssl,"ssl");
-	HX_MARK_MEMBER_NAME(certFile,"certFile");
-	HX_MARK_MEMBER_NAME(certFolder,"certFolder");
+	HX_MARK_MEMBER_NAME(verifyCert,"verifyCert");
+	HX_MARK_MEMBER_NAME(caCert,"caCert");
+	HX_MARK_MEMBER_NAME(hostname,"hostname");
+	HX_MARK_MEMBER_NAME(ownCert,"ownCert");
+	HX_MARK_MEMBER_NAME(ownKey,"ownKey");
+	HX_MARK_MEMBER_NAME(altSNIContexts,"altSNIContexts");
+	HX_MARK_MEMBER_NAME(sniCallback,"sniCallback");
+	HX_MARK_MEMBER_NAME(handshakeDone,"handshakeDone");
+	 ::sys::net::Socket_obj::__Mark(HX_MARK_ARG);
 	HX_MARK_END_CLASS();
 }
 
 void Socket_obj::__Visit(HX_VISIT_PARAMS)
 {
-	HX_VISIT_MEMBER_NAME(input,"input");
-	HX_VISIT_MEMBER_NAME(output,"output");
-	HX_VISIT_MEMBER_NAME(custom,"custom");
-	HX_VISIT_MEMBER_NAME(__s,"__s");
-	HX_VISIT_MEMBER_NAME(ctx,"ctx");
+	HX_VISIT_MEMBER_NAME(conf,"conf");
 	HX_VISIT_MEMBER_NAME(ssl,"ssl");
-	HX_VISIT_MEMBER_NAME(certFile,"certFile");
-	HX_VISIT_MEMBER_NAME(certFolder,"certFolder");
+	HX_VISIT_MEMBER_NAME(verifyCert,"verifyCert");
+	HX_VISIT_MEMBER_NAME(caCert,"caCert");
+	HX_VISIT_MEMBER_NAME(hostname,"hostname");
+	HX_VISIT_MEMBER_NAME(ownCert,"ownCert");
+	HX_VISIT_MEMBER_NAME(ownKey,"ownKey");
+	HX_VISIT_MEMBER_NAME(altSNIContexts,"altSNIContexts");
+	HX_VISIT_MEMBER_NAME(sniCallback,"sniCallback");
+	HX_VISIT_MEMBER_NAME(handshakeDone,"handshakeDone");
+	 ::sys::net::Socket_obj::__Visit(HX_VISIT_ARG);
 }
 
 ::hx::Val Socket_obj::__Field(const ::String &inName,::hx::PropertyAccess inCallProp)
 {
 	switch(inName.length) {
 	case 3:
-		if (HX_FIELD_EQ(inName,"__s") ) { return ::hx::Val( __s ); }
-		if (HX_FIELD_EQ(inName,"ctx") ) { return ::hx::Val( ctx ); }
 		if (HX_FIELD_EQ(inName,"ssl") ) { return ::hx::Val( ssl ); }
 		break;
 	case 4:
-		if (HX_FIELD_EQ(inName,"read") ) { return ::hx::Val( read_dyn() ); }
-		if (HX_FIELD_EQ(inName,"host") ) { return ::hx::Val( host_dyn() ); }
+		if (HX_FIELD_EQ(inName,"conf") ) { return ::hx::Val( conf ); }
+		if (HX_FIELD_EQ(inName,"init") ) { return ::hx::Val( init_dyn() ); }
 		break;
 	case 5:
-		if (HX_FIELD_EQ(inName,"input") ) { return ::hx::Val( input ); }
-		if (HX_FIELD_EQ(inName,"write") ) { return ::hx::Val( write_dyn() ); }
 		if (HX_FIELD_EQ(inName,"close") ) { return ::hx::Val( close_dyn() ); }
 		break;
 	case 6:
-		if (HX_FIELD_EQ(inName,"output") ) { return ::hx::Val( output ); }
-		if (HX_FIELD_EQ(inName,"custom") ) { return ::hx::Val( custom ); }
+		if (HX_FIELD_EQ(inName,"caCert") ) { return ::hx::Val( caCert ); }
+		if (HX_FIELD_EQ(inName,"ownKey") ) { return ::hx::Val( ownKey ); }
 		break;
 	case 7:
+		if (HX_FIELD_EQ(inName,"ownCert") ) { return ::hx::Val( ownCert ); }
 		if (HX_FIELD_EQ(inName,"connect") ) { return ::hx::Val( connect_dyn() ); }
-		if (HX_FIELD_EQ(inName,"initSSL") ) { return ::hx::Val( initSSL_dyn() ); }
 		break;
 	case 8:
-		if (HX_FIELD_EQ(inName,"certFile") ) { return ::hx::Val( certFile ); }
-		if (HX_FIELD_EQ(inName,"shutdown") ) { return ::hx::Val( shutdown_dyn() ); }
+		if (HX_FIELD_EQ(inName,"hostname") ) { return ::hx::Val( hostname ); }
+		break;
+	case 9:
+		if (HX_FIELD_EQ(inName,"handshake") ) { return ::hx::Val( handshake_dyn() ); }
 		break;
 	case 10:
-		if (HX_FIELD_EQ(inName,"certFolder") ) { return ::hx::Val( certFolder ); }
-		if (HX_FIELD_EQ(inName,"setTimeout") ) { return ::hx::Val( setTimeout_dyn() ); }
+		if (HX_FIELD_EQ(inName,"verifyCert") ) { return ::hx::Val( verifyCert ); }
 		break;
 	case 11:
-		if (HX_FIELD_EQ(inName,"waitForRead") ) { return ::hx::Val( waitForRead_dyn() ); }
-		if (HX_FIELD_EQ(inName,"setBlocking") ) { return ::hx::Val( setBlocking_dyn() ); }
-		if (HX_FIELD_EQ(inName,"setFastSend") ) { return ::hx::Val( setFastSend_dyn() ); }
+		if (HX_FIELD_EQ(inName,"sniCallback") ) { return ::hx::Val( sniCallback ); }
 		break;
-	case 15:
-		if (HX_FIELD_EQ(inName,"setCertLocation") ) { return ::hx::Val( setCertLocation_dyn() ); }
-		if (HX_FIELD_EQ(inName,"buildSSLContext") ) { return ::hx::Val( buildSSLContext_dyn() ); }
+	case 13:
+		if (HX_FIELD_EQ(inName,"handshakeDone") ) { return ::hx::Val( handshakeDone ); }
+		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"altSNIContexts") ) { return ::hx::Val( altSNIContexts ); }
+		if (HX_FIELD_EQ(inName,"buildSSLConfig") ) { return ::hx::Val( buildSSLConfig_dyn() ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -516,76 +416,11 @@ void Socket_obj::__Visit(HX_VISIT_PARAMS)
 bool Socket_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::PropertyAccess inCallProp)
 {
 	switch(inName.length) {
-	case 3:
-		if (HX_FIELD_EQ(inName,"lib") ) { outValue = lib_dyn(); return true; }
-		break;
-	case 6:
-		if (HX_FIELD_EQ(inName,"select") ) { outValue = select_dyn(); return true; }
-		break;
-	case 7:
-		if (HX_FIELD_EQ(inName,"SSL_new") ) { outValue = ( SSL_new ); return true; }
-		break;
-	case 8:
-		if (HX_FIELD_EQ(inName,"SSL_free") ) { outValue = ( SSL_free ); return true; }
-		break;
-	case 9:
-		if (HX_FIELD_EQ(inName,"SSL_close") ) { outValue = ( SSL_close ); return true; }
-		break;
 	case 10:
-		if (HX_FIELD_EQ(inName,"ssl_accept") ) { outValue = ( ssl_accept ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_new") ) { outValue = ( socket_new ); return true; }
-		break;
-	case 11:
-		if (HX_FIELD_EQ(inName,"SSL_connect") ) { outValue = ( SSL_connect ); return true; }
-		if (HX_FIELD_EQ(inName,"SSL_set_bio") ) { outValue = ( SSL_set_bio ); return true; }
-		if (HX_FIELD_EQ(inName,"SSL_CTX_new") ) { outValue = ( SSL_CTX_new ); return true; }
-		if (HX_FIELD_EQ(inName,"BIO_NOCLOSE") ) { outValue = ( BIO_NOCLOSE ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_read") ) { outValue = ( socket_read ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_bind") ) { outValue = ( socket_bind ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_peer") ) { outValue = ( socket_peer ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_host") ) { outValue = ( socket_host ); return true; }
-		break;
-	case 12:
-		if (HX_FIELD_EQ(inName,"SSL_shutdown") ) { outValue = ( SSL_shutdown ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_write") ) { outValue = ( socket_write ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_close") ) { outValue = ( socket_close ); return true; }
-		break;
-	case 13:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_close") ) { outValue = ( SSL_CTX_close ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_listen") ) { outValue = ( socket_listen ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_select") ) { outValue = ( socket_select ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_accept") ) { outValue = ( socket_accept ); return true; }
-		break;
-	case 14:
-		if (HX_FIELD_EQ(inName,"BIO_new_socket") ) { outValue = ( BIO_new_socket ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_connect") ) { outValue = ( socket_connect ); return true; }
-		break;
-	case 15:
-		if (HX_FIELD_EQ(inName,"socket_shutdown") ) { outValue = ( socket_shutdown ); return true; }
-		break;
-	case 16:
-		if (HX_FIELD_EQ(inName,"SSL_library_init") ) { outValue = ( SSL_library_init ); return true; }
-		break;
-	case 18:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_set_verify") ) { outValue = ( SSL_CTX_set_verify ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_timeout") ) { outValue = ( socket_set_timeout ); return true; }
+		if (HX_FIELD_EQ(inName,"DEFAULT_CA") ) { outValue = ( DEFAULT_CA ); return true; }
 		break;
 	case 19:
-		if (HX_FIELD_EQ(inName,"TLSv1_client_method") ) { outValue = ( TLSv1_client_method ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_blocking") ) { outValue = ( socket_set_blocking ); return true; }
-		break;
-	case 20:
-		if (HX_FIELD_EQ(inName,"SSLv23_client_method") ) { outValue = ( SSLv23_client_method ); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_fast_send") ) { outValue = ( socket_set_fast_send ); return true; }
-		break;
-	case 22:
-		if (HX_FIELD_EQ(inName,"SSL_load_error_strings") ) { outValue = ( SSL_load_error_strings ); return true; }
-		break;
-	case 28:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_use_certificate_file") ) { outValue = ( SSL_CTX_use_certificate_file ); return true; }
-		break;
-	case 29:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_load_verify_locations") ) { outValue = ( SSL_CTX_load_verify_locations ); return true; }
+		if (HX_FIELD_EQ(inName,"DEFAULT_VERIFY_CERT") ) { outValue = ( DEFAULT_VERIFY_CERT ); return true; }
 	}
 	return false;
 }
@@ -594,22 +429,32 @@ bool Socket_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::Pr
 {
 	switch(inName.length) {
 	case 3:
-		if (HX_FIELD_EQ(inName,"__s") ) { __s=inValue.Cast<  ::Dynamic >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"ctx") ) { ctx=inValue.Cast<  ::Dynamic >(); return inValue; }
 		if (HX_FIELD_EQ(inName,"ssl") ) { ssl=inValue.Cast<  ::Dynamic >(); return inValue; }
 		break;
-	case 5:
-		if (HX_FIELD_EQ(inName,"input") ) { input=inValue.Cast<  ::sys::ssl::_Socket::SocketInput >(); return inValue; }
+	case 4:
+		if (HX_FIELD_EQ(inName,"conf") ) { conf=inValue.Cast<  ::Dynamic >(); return inValue; }
 		break;
 	case 6:
-		if (HX_FIELD_EQ(inName,"output") ) { output=inValue.Cast<  ::sys::ssl::_Socket::SocketOutput >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"custom") ) { custom=inValue.Cast<  ::Dynamic >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"caCert") ) { caCert=inValue.Cast<  ::sys::ssl::Certificate >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"ownKey") ) { ownKey=inValue.Cast<  ::sys::ssl::Key >(); return inValue; }
+		break;
+	case 7:
+		if (HX_FIELD_EQ(inName,"ownCert") ) { ownCert=inValue.Cast<  ::sys::ssl::Certificate >(); return inValue; }
 		break;
 	case 8:
-		if (HX_FIELD_EQ(inName,"certFile") ) { certFile=inValue.Cast< ::String >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"hostname") ) { hostname=inValue.Cast< ::String >(); return inValue; }
 		break;
 	case 10:
-		if (HX_FIELD_EQ(inName,"certFolder") ) { certFolder=inValue.Cast< ::String >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"verifyCert") ) { verifyCert=inValue.Cast<  ::Dynamic >(); return inValue; }
+		break;
+	case 11:
+		if (HX_FIELD_EQ(inName,"sniCallback") ) { sniCallback=inValue.Cast<  ::Dynamic >(); return inValue; }
+		break;
+	case 13:
+		if (HX_FIELD_EQ(inName,"handshakeDone") ) { handshakeDone=inValue.Cast< bool >(); return inValue; }
+		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"altSNIContexts") ) { altSNIContexts=inValue.Cast< ::Array< ::Dynamic> >(); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
@@ -617,232 +462,78 @@ bool Socket_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::Pr
 bool Socket_obj::__SetStatic(const ::String &inName,Dynamic &ioValue,::hx::PropertyAccess inCallProp)
 {
 	switch(inName.length) {
-	case 7:
-		if (HX_FIELD_EQ(inName,"SSL_new") ) { SSL_new=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 8:
-		if (HX_FIELD_EQ(inName,"SSL_free") ) { SSL_free=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 9:
-		if (HX_FIELD_EQ(inName,"SSL_close") ) { SSL_close=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
 	case 10:
-		if (HX_FIELD_EQ(inName,"ssl_accept") ) { ssl_accept=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_new") ) { socket_new=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 11:
-		if (HX_FIELD_EQ(inName,"SSL_connect") ) { SSL_connect=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"SSL_set_bio") ) { SSL_set_bio=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"SSL_CTX_new") ) { SSL_CTX_new=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"BIO_NOCLOSE") ) { BIO_NOCLOSE=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_read") ) { socket_read=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_bind") ) { socket_bind=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_peer") ) { socket_peer=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_host") ) { socket_host=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 12:
-		if (HX_FIELD_EQ(inName,"SSL_shutdown") ) { SSL_shutdown=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_write") ) { socket_write=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_close") ) { socket_close=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 13:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_close") ) { SSL_CTX_close=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_listen") ) { socket_listen=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_select") ) { socket_select=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_accept") ) { socket_accept=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 14:
-		if (HX_FIELD_EQ(inName,"BIO_new_socket") ) { BIO_new_socket=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_connect") ) { socket_connect=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 15:
-		if (HX_FIELD_EQ(inName,"socket_shutdown") ) { socket_shutdown=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 16:
-		if (HX_FIELD_EQ(inName,"SSL_library_init") ) { SSL_library_init=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 18:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_set_verify") ) { SSL_CTX_set_verify=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_timeout") ) { socket_set_timeout=ioValue.Cast<  ::Dynamic >(); return true; }
+		if (HX_FIELD_EQ(inName,"DEFAULT_CA") ) { DEFAULT_CA=ioValue.Cast<  ::sys::ssl::Certificate >(); return true; }
 		break;
 	case 19:
-		if (HX_FIELD_EQ(inName,"TLSv1_client_method") ) { TLSv1_client_method=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_blocking") ) { socket_set_blocking=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 20:
-		if (HX_FIELD_EQ(inName,"SSLv23_client_method") ) { SSLv23_client_method=ioValue.Cast<  ::Dynamic >(); return true; }
-		if (HX_FIELD_EQ(inName,"socket_set_fast_send") ) { socket_set_fast_send=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 22:
-		if (HX_FIELD_EQ(inName,"SSL_load_error_strings") ) { SSL_load_error_strings=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 28:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_use_certificate_file") ) { SSL_CTX_use_certificate_file=ioValue.Cast<  ::Dynamic >(); return true; }
-		break;
-	case 29:
-		if (HX_FIELD_EQ(inName,"SSL_CTX_load_verify_locations") ) { SSL_CTX_load_verify_locations=ioValue.Cast<  ::Dynamic >(); return true; }
+		if (HX_FIELD_EQ(inName,"DEFAULT_VERIFY_CERT") ) { DEFAULT_VERIFY_CERT=ioValue.Cast<  ::Dynamic >(); return true; }
 	}
 	return false;
 }
 
 void Socket_obj::__GetFields(Array< ::String> &outFields)
 {
-	outFields->push(HX_("input",0a,c4,1d,be));
-	outFields->push(HX_("output",01,0f,81,0c));
-	outFields->push(HX_("custom",b1,87,92,3f));
-	outFields->push(HX_("__s",53,69,48,00));
-	outFields->push(HX_("ctx",a7,84,4b,00));
+	outFields->push(HX_("conf",e4,b9,c4,41));
 	outFields->push(HX_("ssl",cc,a7,57,00));
-	outFields->push(HX_("certFile",80,63,39,14));
-	outFields->push(HX_("certFolder",b2,54,60,14));
+	outFields->push(HX_("verifyCert",fd,86,cf,02));
+	outFields->push(HX_("caCert",a2,50,c9,9b));
+	outFields->push(HX_("hostname",b3,15,d2,52));
+	outFields->push(HX_("ownCert",4a,90,f0,1e));
+	outFields->push(HX_("ownKey",f9,ce,3a,2f));
+	outFields->push(HX_("altSNIContexts",89,ca,20,8a));
+	outFields->push(HX_("sniCallback",53,17,a6,61));
+	outFields->push(HX_("handshakeDone",19,45,e6,99));
 	super::__GetFields(outFields);
 };
 
 #ifdef HXCPP_SCRIPTABLE
 static ::hx::StorageInfo Socket_obj_sMemberStorageInfo[] = {
-	{::hx::fsObject /*  ::sys::ssl::_Socket::SocketInput */ ,(int)offsetof(Socket_obj,input),HX_("input",0a,c4,1d,be)},
-	{::hx::fsObject /*  ::sys::ssl::_Socket::SocketOutput */ ,(int)offsetof(Socket_obj,output),HX_("output",01,0f,81,0c)},
-	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,custom),HX_("custom",b1,87,92,3f)},
-	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,__s),HX_("__s",53,69,48,00)},
-	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,ctx),HX_("ctx",a7,84,4b,00)},
+	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,conf),HX_("conf",e4,b9,c4,41)},
 	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,ssl),HX_("ssl",cc,a7,57,00)},
-	{::hx::fsString,(int)offsetof(Socket_obj,certFile),HX_("certFile",80,63,39,14)},
-	{::hx::fsString,(int)offsetof(Socket_obj,certFolder),HX_("certFolder",b2,54,60,14)},
+	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,verifyCert),HX_("verifyCert",fd,86,cf,02)},
+	{::hx::fsObject /*  ::sys::ssl::Certificate */ ,(int)offsetof(Socket_obj,caCert),HX_("caCert",a2,50,c9,9b)},
+	{::hx::fsString,(int)offsetof(Socket_obj,hostname),HX_("hostname",b3,15,d2,52)},
+	{::hx::fsObject /*  ::sys::ssl::Certificate */ ,(int)offsetof(Socket_obj,ownCert),HX_("ownCert",4a,90,f0,1e)},
+	{::hx::fsObject /*  ::sys::ssl::Key */ ,(int)offsetof(Socket_obj,ownKey),HX_("ownKey",f9,ce,3a,2f)},
+	{::hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(Socket_obj,altSNIContexts),HX_("altSNIContexts",89,ca,20,8a)},
+	{::hx::fsObject /*  ::Dynamic */ ,(int)offsetof(Socket_obj,sniCallback),HX_("sniCallback",53,17,a6,61)},
+	{::hx::fsBool,(int)offsetof(Socket_obj,handshakeDone),HX_("handshakeDone",19,45,e6,99)},
 	{ ::hx::fsUnknown, 0, null()}
 };
 static ::hx::StaticInfo Socket_obj_sStaticStorageInfo[] = {
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_library_init,HX_("SSL_library_init",c7,75,bb,3e)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_load_error_strings,HX_("SSL_load_error_strings",a5,38,1f,ab)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_new,HX_("SSL_new",0d,9f,a7,ac)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_close,HX_("SSL_close",a5,ab,49,8c)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_connect,HX_("SSL_connect",17,65,25,0f)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_shutdown,HX_("SSL_shutdown",c9,da,ea,e1)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_free,HX_("SSL_free",5f,a5,c3,60)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_set_bio,HX_("SSL_set_bio",98,3b,66,13)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSLv23_client_method,HX_("SSLv23_client_method",a1,60,fe,f0)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::TLSv1_client_method,HX_("TLSv1_client_method",ec,0b,e8,9a)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_CTX_new,HX_("SSL_CTX_new",95,ae,1f,5c)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_CTX_close,HX_("SSL_CTX_close",2d,ad,8a,15)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_CTX_load_verify_locations,HX_("SSL_CTX_load_verify_locations",06,8a,3a,ad)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_CTX_set_verify,HX_("SSL_CTX_set_verify",21,14,42,af)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::SSL_CTX_use_certificate_file,HX_("SSL_CTX_use_certificate_file",47,26,79,cc)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::BIO_new_socket,HX_("BIO_new_socket",69,82,9e,35)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::BIO_NOCLOSE,HX_("BIO_NOCLOSE",e0,95,d8,68)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_read,HX_("socket_read",a2,92,bb,87)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_write,HX_("socket_write",13,88,03,26)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::ssl_accept,HX_("ssl_accept",5b,ce,ab,be)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_new,HX_("socket_new",94,f6,c0,c3)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_close,HX_("socket_close",ec,32,0d,9e)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_connect,HX_("socket_connect",1e,8c,4e,be)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_listen,HX_("socket_listen",93,7a,27,8f)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_select,HX_("socket_select",48,cd,60,09)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_bind,HX_("socket_bind",09,3d,2b,7d)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_accept,HX_("socket_accept",54,45,34,aa)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_peer,HX_("socket_peer",ee,28,69,86)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_host,HX_("socket_host",b4,16,27,81)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_set_timeout,HX_("socket_set_timeout",f8,fb,6a,90)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_shutdown,HX_("socket_shutdown",e2,d9,c3,76)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_set_blocking,HX_("socket_set_blocking",7e,70,a1,e7)},
-	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::socket_set_fast_send,HX_("socket_set_fast_send",22,16,69,2c)},
+	{::hx::fsObject /*  ::Dynamic */ ,(void *) &Socket_obj::DEFAULT_VERIFY_CERT,HX_("DEFAULT_VERIFY_CERT",cc,6c,33,0e)},
+	{::hx::fsObject /*  ::sys::ssl::Certificate */ ,(void *) &Socket_obj::DEFAULT_CA,HX_("DEFAULT_CA",bc,7e,2f,18)},
 	{ ::hx::fsUnknown, 0, null()}
 };
 #endif
 
 static ::String Socket_obj_sMemberFields[] = {
-	HX_("input",0a,c4,1d,be),
-	HX_("output",01,0f,81,0c),
-	HX_("custom",b1,87,92,3f),
-	HX_("__s",53,69,48,00),
-	HX_("ctx",a7,84,4b,00),
+	HX_("conf",e4,b9,c4,41),
 	HX_("ssl",cc,a7,57,00),
-	HX_("certFile",80,63,39,14),
-	HX_("certFolder",b2,54,60,14),
+	HX_("verifyCert",fd,86,cf,02),
+	HX_("caCert",a2,50,c9,9b),
+	HX_("hostname",b3,15,d2,52),
+	HX_("ownCert",4a,90,f0,1e),
+	HX_("ownKey",f9,ce,3a,2f),
+	HX_("altSNIContexts",89,ca,20,8a),
+	HX_("sniCallback",53,17,a6,61),
+	HX_("handshakeDone",19,45,e6,99),
+	HX_("init",10,3b,bb,45),
 	HX_("connect",ea,3b,80,15),
-	HX_("setCertLocation",fb,a7,02,59),
-	HX_("read",56,4b,a7,4b),
-	HX_("write",df,6c,59,d0),
+	HX_("handshake",f7,e0,35,b4),
 	HX_("close",b8,17,63,48),
-	HX_("shutdown",96,fc,0b,6b),
-	HX_("host",68,cf,12,45),
-	HX_("setTimeout",1f,3f,d6,2b),
-	HX_("waitForRead",0a,2d,25,ce),
-	HX_("setBlocking",77,ef,10,4a),
-	HX_("setFastSend",c6,c3,cb,b8),
-	HX_("initSSL",9c,52,8e,cb),
-	HX_("buildSSLContext",51,68,4e,4f),
+	HX_("buildSSLConfig",a0,66,29,1e),
 	::String(null()) };
 
 static void Socket_obj_sMarkStatics(HX_MARK_PARAMS) {
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_library_init,"SSL_library_init");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_load_error_strings,"SSL_load_error_strings");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_new,"SSL_new");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_close,"SSL_close");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_connect,"SSL_connect");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_shutdown,"SSL_shutdown");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_free,"SSL_free");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_set_bio,"SSL_set_bio");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSLv23_client_method,"SSLv23_client_method");
-	HX_MARK_MEMBER_NAME(Socket_obj::TLSv1_client_method,"TLSv1_client_method");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_CTX_new,"SSL_CTX_new");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_CTX_close,"SSL_CTX_close");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_CTX_load_verify_locations,"SSL_CTX_load_verify_locations");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_CTX_set_verify,"SSL_CTX_set_verify");
-	HX_MARK_MEMBER_NAME(Socket_obj::SSL_CTX_use_certificate_file,"SSL_CTX_use_certificate_file");
-	HX_MARK_MEMBER_NAME(Socket_obj::BIO_new_socket,"BIO_new_socket");
-	HX_MARK_MEMBER_NAME(Socket_obj::BIO_NOCLOSE,"BIO_NOCLOSE");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_read,"socket_read");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_write,"socket_write");
-	HX_MARK_MEMBER_NAME(Socket_obj::ssl_accept,"ssl_accept");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_new,"socket_new");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_close,"socket_close");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_connect,"socket_connect");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_listen,"socket_listen");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_select,"socket_select");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_bind,"socket_bind");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_accept,"socket_accept");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_peer,"socket_peer");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_host,"socket_host");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_set_timeout,"socket_set_timeout");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_shutdown,"socket_shutdown");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_set_blocking,"socket_set_blocking");
-	HX_MARK_MEMBER_NAME(Socket_obj::socket_set_fast_send,"socket_set_fast_send");
+	HX_MARK_MEMBER_NAME(Socket_obj::DEFAULT_VERIFY_CERT,"DEFAULT_VERIFY_CERT");
+	HX_MARK_MEMBER_NAME(Socket_obj::DEFAULT_CA,"DEFAULT_CA");
 };
 
 #ifdef HXCPP_VISIT_ALLOCS
 static void Socket_obj_sVisitStatics(HX_VISIT_PARAMS) {
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_library_init,"SSL_library_init");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_load_error_strings,"SSL_load_error_strings");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_new,"SSL_new");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_close,"SSL_close");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_connect,"SSL_connect");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_shutdown,"SSL_shutdown");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_free,"SSL_free");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_set_bio,"SSL_set_bio");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSLv23_client_method,"SSLv23_client_method");
-	HX_VISIT_MEMBER_NAME(Socket_obj::TLSv1_client_method,"TLSv1_client_method");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_CTX_new,"SSL_CTX_new");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_CTX_close,"SSL_CTX_close");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_CTX_load_verify_locations,"SSL_CTX_load_verify_locations");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_CTX_set_verify,"SSL_CTX_set_verify");
-	HX_VISIT_MEMBER_NAME(Socket_obj::SSL_CTX_use_certificate_file,"SSL_CTX_use_certificate_file");
-	HX_VISIT_MEMBER_NAME(Socket_obj::BIO_new_socket,"BIO_new_socket");
-	HX_VISIT_MEMBER_NAME(Socket_obj::BIO_NOCLOSE,"BIO_NOCLOSE");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_read,"socket_read");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_write,"socket_write");
-	HX_VISIT_MEMBER_NAME(Socket_obj::ssl_accept,"ssl_accept");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_new,"socket_new");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_close,"socket_close");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_connect,"socket_connect");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_listen,"socket_listen");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_select,"socket_select");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_bind,"socket_bind");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_accept,"socket_accept");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_peer,"socket_peer");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_host,"socket_host");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_set_timeout,"socket_set_timeout");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_shutdown,"socket_shutdown");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_set_blocking,"socket_set_blocking");
-	HX_VISIT_MEMBER_NAME(Socket_obj::socket_set_fast_send,"socket_set_fast_send");
+	HX_VISIT_MEMBER_NAME(Socket_obj::DEFAULT_VERIFY_CERT,"DEFAULT_VERIFY_CERT");
+	HX_VISIT_MEMBER_NAME(Socket_obj::DEFAULT_CA,"DEFAULT_CA");
 };
 
 #endif
@@ -850,41 +541,8 @@ static void Socket_obj_sVisitStatics(HX_VISIT_PARAMS) {
 ::hx::Class Socket_obj::__mClass;
 
 static ::String Socket_obj_sStaticFields[] = {
-	HX_("select",fc,1a,33,6a),
-	HX_("SSL_library_init",c7,75,bb,3e),
-	HX_("SSL_load_error_strings",a5,38,1f,ab),
-	HX_("SSL_new",0d,9f,a7,ac),
-	HX_("SSL_close",a5,ab,49,8c),
-	HX_("SSL_connect",17,65,25,0f),
-	HX_("SSL_shutdown",c9,da,ea,e1),
-	HX_("SSL_free",5f,a5,c3,60),
-	HX_("SSL_set_bio",98,3b,66,13),
-	HX_("SSLv23_client_method",a1,60,fe,f0),
-	HX_("TLSv1_client_method",ec,0b,e8,9a),
-	HX_("SSL_CTX_new",95,ae,1f,5c),
-	HX_("SSL_CTX_close",2d,ad,8a,15),
-	HX_("SSL_CTX_load_verify_locations",06,8a,3a,ad),
-	HX_("SSL_CTX_set_verify",21,14,42,af),
-	HX_("SSL_CTX_use_certificate_file",47,26,79,cc),
-	HX_("BIO_new_socket",69,82,9e,35),
-	HX_("BIO_NOCLOSE",e0,95,d8,68),
-	HX_("socket_read",a2,92,bb,87),
-	HX_("socket_write",13,88,03,26),
-	HX_("ssl_accept",5b,ce,ab,be),
-	HX_("lib",45,4f,52,00),
-	HX_("socket_new",94,f6,c0,c3),
-	HX_("socket_close",ec,32,0d,9e),
-	HX_("socket_connect",1e,8c,4e,be),
-	HX_("socket_listen",93,7a,27,8f),
-	HX_("socket_select",48,cd,60,09),
-	HX_("socket_bind",09,3d,2b,7d),
-	HX_("socket_accept",54,45,34,aa),
-	HX_("socket_peer",ee,28,69,86),
-	HX_("socket_host",b4,16,27,81),
-	HX_("socket_set_timeout",f8,fb,6a,90),
-	HX_("socket_shutdown",e2,d9,c3,76),
-	HX_("socket_set_blocking",7e,70,a1,e7),
-	HX_("socket_set_fast_send",22,16,69,2c),
+	HX_("DEFAULT_VERIFY_CERT",cc,6c,33,0e),
+	HX_("DEFAULT_CA",bc,7e,2f,18),
 	::String(null())
 };
 
@@ -918,136 +576,8 @@ void Socket_obj::__register()
 void Socket_obj::__boot()
 {
 {
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_306_boot)
-HXDLIN( 306)		SSL_library_init = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_library_init",c7,75,bb,3e)),0);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_307_boot)
-HXDLIN( 307)		SSL_load_error_strings = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_load_error_strings",a5,38,1f,ab)),0);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_309_boot)
-HXDLIN( 309)		SSL_new = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_new",0d,9f,a7,ac)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_310_boot)
-HXDLIN( 310)		SSL_close = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_close",a5,ab,49,8c)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_311_boot)
-HXDLIN( 311)		SSL_connect = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_connect",17,65,25,0f)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_312_boot)
-HXDLIN( 312)		SSL_shutdown = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_shutdown",c9,da,ea,e1)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_313_boot)
-HXDLIN( 313)		SSL_free = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_free",5f,a5,c3,60)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_315_boot)
-HXDLIN( 315)		SSL_set_bio = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_set_bio",98,3b,66,13)),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_317_boot)
-HXDLIN( 317)		SSLv23_client_method = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSLv23_client_method",a1,60,fe,f0)),0);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_318_boot)
-HXDLIN( 318)		TLSv1_client_method = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("TLSv1_client_method",ec,0b,e8,9a)),0);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_320_boot)
-HXDLIN( 320)		SSL_CTX_new = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_CTX_new",95,ae,1f,5c)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_321_boot)
-HXDLIN( 321)		SSL_CTX_close = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_CTX_close",2d,ad,8a,15)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_322_boot)
-HXDLIN( 322)		SSL_CTX_load_verify_locations = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_CTX_load_verify_locations",06,8a,3a,ad)),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_323_boot)
-HXDLIN( 323)		SSL_CTX_set_verify = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_CTX_set_verify",21,14,42,af)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_324_boot)
-HXDLIN( 324)		SSL_CTX_use_certificate_file = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("SSL_CTX_use_certificate_file",47,26,79,cc)),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_326_boot)
-HXDLIN( 326)		BIO_new_socket = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("BIO_new_socket",69,82,9e,35)),2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_327_boot)
-HXDLIN( 327)		BIO_NOCLOSE = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("BIO_NOCLOSE",e0,95,d8,68)),0);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_329_boot)
-HXDLIN( 329)		socket_read = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("__SSL_read",29,c7,e0,0b)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_330_boot)
-HXDLIN( 330)		socket_write = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("__SSL_write",ac,49,6c,42)),2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_332_boot)
-HXDLIN( 332)		ssl_accept = ::cpp::Lib_obj::load(HX_("hxssl",bc,96,55,31),(HX_("hxssl_",23,4e,8e,f9) + HX_("__SSL_accept",9b,e9,74,69)),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_338_boot)
-HXDLIN( 338)		socket_new = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_new",94,f6,c0,c3),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_339_boot)
-HXDLIN( 339)		socket_close = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_close",ec,32,0d,9e),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_340_boot)
-HXDLIN( 340)		socket_connect = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_connect",1e,8c,4e,be),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_341_boot)
-HXDLIN( 341)		socket_listen = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_listen",93,7a,27,8f),2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_342_boot)
-HXDLIN( 342)		socket_select = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_select",48,cd,60,09),4);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_343_boot)
-HXDLIN( 343)		socket_bind = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_bind",09,3d,2b,7d),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_344_boot)
-HXDLIN( 344)		socket_accept = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_accept",54,45,34,aa),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_345_boot)
-HXDLIN( 345)		socket_peer = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_peer",ee,28,69,86),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_346_boot)
-HXDLIN( 346)		socket_host = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_host",b4,16,27,81),1);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_347_boot)
-HXDLIN( 347)		socket_set_timeout = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_set_timeout",f8,fb,6a,90),2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_348_boot)
-HXDLIN( 348)		socket_shutdown = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_shutdown",e2,d9,c3,76),3);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_349_boot)
-HXDLIN( 349)		socket_set_blocking = ::cpp::Lib_obj::load(HX_("std",a3,a8,57,00),HX_("socket_set_blocking",7e,70,a1,e7),2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_0b2771c495d9f0fd_350_boot)
-HXDLIN( 350)		socket_set_fast_send = ::cpp::Lib_obj::loadLazy(HX_("std",a3,a8,57,00),HX_("socket_set_fast_send",22,16,69,2c),2);
+            	HX_STACKFRAME(&_hx_pos_2e2c72abb6bfe4fd_120_boot)
+HXDLIN( 120)		DEFAULT_VERIFY_CERT = true;
             	}
 }
 

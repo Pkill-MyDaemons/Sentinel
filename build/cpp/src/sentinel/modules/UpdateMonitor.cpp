@@ -28,9 +28,6 @@
 #ifndef INCLUDED_haxe_format_JsonParser
 #include <haxe/format/JsonParser.h>
 #endif
-#ifndef INCLUDED_haxe_http_HttpBase
-#include <haxe/http/HttpBase.h>
-#endif
 #ifndef INCLUDED_haxe_io_Bytes
 #include <haxe/io/Bytes.h>
 #endif
@@ -61,11 +58,11 @@
 #ifndef INCLUDED_sentinel_modules_UpdateMonitor
 #include <sentinel/modules/UpdateMonitor.h>
 #endif
+#ifndef INCLUDED_sentinel_platform_HttpsClient
+#include <sentinel/platform/HttpsClient.h>
+#endif
 #ifndef INCLUDED_sys_FileSystem
 #include <sys/FileSystem.h>
-#endif
-#ifndef INCLUDED_sys_Http
-#include <sys/Http.h>
 #endif
 #ifndef INCLUDED_sys_io_File
 #include <sys/io/File.h>
@@ -77,51 +74,41 @@
 #include <sys/thread/_Thread/HaxeThread.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_45_new,"sentinel.modules.UpdateMonitor","new",0xa99ab4f2,"sentinel.modules.UpdateMonitor.new","sentinel/modules/UpdateMonitor.hx",45,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_64_name,"sentinel.modules.UpdateMonitor","name",0xbdc08d79,"sentinel.modules.UpdateMonitor.name","sentinel/modules/UpdateMonitor.hx",64,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_69_start,"sentinel.modules.UpdateMonitor","start",0x38422174,"sentinel.modules.UpdateMonitor.start","sentinel/modules/UpdateMonitor.hx",69,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_66_start,"sentinel.modules.UpdateMonitor","start",0x38422174,"sentinel.modules.UpdateMonitor.start","sentinel/modules/UpdateMonitor.hx",66,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_79_stop,"sentinel.modules.UpdateMonitor","stop",0xc11d0b30,"sentinel.modules.UpdateMonitor.stop","sentinel/modules/UpdateMonitor.hx",79,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_83_onEvent,"sentinel.modules.UpdateMonitor","onEvent",0x3d0bfc0d,"sentinel.modules.UpdateMonitor.onEvent","sentinel/modules/UpdateMonitor.hx",83,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_94_scanApplications,"sentinel.modules.UpdateMonitor","scanApplications",0x5111746e,"sentinel.modules.UpdateMonitor.scanApplications","sentinel/modules/UpdateMonitor.hx",94,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_186_analyzeUpdateFromPlist,"sentinel.modules.UpdateMonitor","analyzeUpdateFromPlist",0x0216b07d,"sentinel.modules.UpdateMonitor.analyzeUpdateFromPlist","sentinel/modules/UpdateMonitor.hx",186,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_191_validateUpdate,"sentinel.modules.UpdateMonitor","validateUpdate",0xc8157fed,"sentinel.modules.UpdateMonitor.validateUpdate","sentinel/modules/UpdateMonitor.hx",191,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_307_isTrustedDomain,"sentinel.modules.UpdateMonitor","isTrustedDomain",0x792a71e3,"sentinel.modules.UpdateMonitor.isTrustedDomain","sentinel/modules/UpdateMonitor.hx",307,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_314_showUpdateAlert,"sentinel.modules.UpdateMonitor","showUpdateAlert",0x6f12d228,"sentinel.modules.UpdateMonitor.showUpdateAlert","sentinel/modules/UpdateMonitor.hx",314,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_138_parsePlist,"sentinel.modules.UpdateMonitor","parsePlist",0x26580d49,"sentinel.modules.UpdateMonitor.parsePlist","sentinel/modules/UpdateMonitor.hx",138,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_174_extractPlistValue,"sentinel.modules.UpdateMonitor","extractPlistValue",0x0485e476,"sentinel.modules.UpdateMonitor.extractPlistValue","sentinel/modules/UpdateMonitor.hx",174,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_237_lookupLatestVersion,"sentinel.modules.UpdateMonitor","lookupLatestVersion",0x2a4c2249,"sentinel.modules.UpdateMonitor.lookupLatestVersion","sentinel/modules/UpdateMonitor.hx",237,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_253_fetchSparkleVersion,"sentinel.modules.UpdateMonitor","fetchSparkleVersion",0x3b73a68e,"sentinel.modules.UpdateMonitor.fetchSparkleVersion","sentinel/modules/UpdateMonitor.hx",253,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_256_fetchSparkleVersion,"sentinel.modules.UpdateMonitor","fetchSparkleVersion",0x3b73a68e,"sentinel.modules.UpdateMonitor.fetchSparkleVersion","sentinel/modules/UpdateMonitor.hx",256,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_257_fetchSparkleVersion,"sentinel.modules.UpdateMonitor","fetchSparkleVersion",0x3b73a68e,"sentinel.modules.UpdateMonitor.fetchSparkleVersion","sentinel/modules/UpdateMonitor.hx",257,0x8cbdbbc0)
-static const ::String _hx_array_data_40c51400_22[] = {
-	HX_("",00,00,00,00),
-};
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_276_fetchGithubLatestRelease,"sentinel.modules.UpdateMonitor","fetchGithubLatestRelease",0x37345f71,"sentinel.modules.UpdateMonitor.fetchGithubLatestRelease","sentinel/modules/UpdateMonitor.hx",276,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_281_fetchGithubLatestRelease,"sentinel.modules.UpdateMonitor","fetchGithubLatestRelease",0x37345f71,"sentinel.modules.UpdateMonitor.fetchGithubLatestRelease","sentinel/modules/UpdateMonitor.hx",281,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_282_fetchGithubLatestRelease,"sentinel.modules.UpdateMonitor","fetchGithubLatestRelease",0x37345f71,"sentinel.modules.UpdateMonitor.fetchGithubLatestRelease","sentinel/modules/UpdateMonitor.hx",282,0x8cbdbbc0)
-static const ::String _hx_array_data_40c51400_26[] = {
-	HX_("",00,00,00,00),
-};
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_301_extractDomain,"sentinel.modules.UpdateMonitor","extractDomain",0x758dd077,"sentinel.modules.UpdateMonitor.extractDomain","sentinel/modules/UpdateMonitor.hx",301,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_328_escapeAS,"sentinel.modules.UpdateMonitor","escapeAS",0xafec68e1,"sentinel.modules.UpdateMonitor.escapeAS","sentinel/modules/UpdateMonitor.hx",328,0x8cbdbbc0)
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_54_boot,"sentinel.modules.UpdateMonitor","boot",0xb5dc9f60,"sentinel.modules.UpdateMonitor.boot","sentinel/modules/UpdateMonitor.hx",54,0x8cbdbbc0)
-static const ::String _hx_array_data_40c51400_30[] = {
+HX_DEFINE_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_47_new,"sentinel.modules.UpdateMonitor","new",0xa99ab4f2,"sentinel.modules.UpdateMonitor.new","sentinel/modules/UpdateMonitor.hx",47,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_66_name,"sentinel.modules.UpdateMonitor","name",0xbdc08d79,"sentinel.modules.UpdateMonitor.name","sentinel/modules/UpdateMonitor.hx",66,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_71_start,"sentinel.modules.UpdateMonitor","start",0x38422174,"sentinel.modules.UpdateMonitor.start","sentinel/modules/UpdateMonitor.hx",71,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_68_start,"sentinel.modules.UpdateMonitor","start",0x38422174,"sentinel.modules.UpdateMonitor.start","sentinel/modules/UpdateMonitor.hx",68,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_81_stop,"sentinel.modules.UpdateMonitor","stop",0xc11d0b30,"sentinel.modules.UpdateMonitor.stop","sentinel/modules/UpdateMonitor.hx",81,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_85_onEvent,"sentinel.modules.UpdateMonitor","onEvent",0x3d0bfc0d,"sentinel.modules.UpdateMonitor.onEvent","sentinel/modules/UpdateMonitor.hx",85,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_96_scanApplications,"sentinel.modules.UpdateMonitor","scanApplications",0x5111746e,"sentinel.modules.UpdateMonitor.scanApplications","sentinel/modules/UpdateMonitor.hx",96,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_188_analyzeUpdateFromPlist,"sentinel.modules.UpdateMonitor","analyzeUpdateFromPlist",0x0216b07d,"sentinel.modules.UpdateMonitor.analyzeUpdateFromPlist","sentinel/modules/UpdateMonitor.hx",188,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_193_validateUpdate,"sentinel.modules.UpdateMonitor","validateUpdate",0xc8157fed,"sentinel.modules.UpdateMonitor.validateUpdate","sentinel/modules/UpdateMonitor.hx",193,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_298_isTrustedDomain,"sentinel.modules.UpdateMonitor","isTrustedDomain",0x792a71e3,"sentinel.modules.UpdateMonitor.isTrustedDomain","sentinel/modules/UpdateMonitor.hx",298,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_305_showUpdateAlert,"sentinel.modules.UpdateMonitor","showUpdateAlert",0x6f12d228,"sentinel.modules.UpdateMonitor.showUpdateAlert","sentinel/modules/UpdateMonitor.hx",305,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_140_parsePlist,"sentinel.modules.UpdateMonitor","parsePlist",0x26580d49,"sentinel.modules.UpdateMonitor.parsePlist","sentinel/modules/UpdateMonitor.hx",140,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_176_extractPlistValue,"sentinel.modules.UpdateMonitor","extractPlistValue",0x0485e476,"sentinel.modules.UpdateMonitor.extractPlistValue","sentinel/modules/UpdateMonitor.hx",176,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_239_lookupLatestVersion,"sentinel.modules.UpdateMonitor","lookupLatestVersion",0x2a4c2249,"sentinel.modules.UpdateMonitor.lookupLatestVersion","sentinel/modules/UpdateMonitor.hx",239,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_255_fetchSparkleVersion,"sentinel.modules.UpdateMonitor","fetchSparkleVersion",0x3b73a68e,"sentinel.modules.UpdateMonitor.fetchSparkleVersion","sentinel/modules/UpdateMonitor.hx",255,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_269_fetchGithubLatestRelease,"sentinel.modules.UpdateMonitor","fetchGithubLatestRelease",0x37345f71,"sentinel.modules.UpdateMonitor.fetchGithubLatestRelease","sentinel/modules/UpdateMonitor.hx",269,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_292_extractDomain,"sentinel.modules.UpdateMonitor","extractDomain",0x758dd077,"sentinel.modules.UpdateMonitor.extractDomain","sentinel/modules/UpdateMonitor.hx",292,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_319_escapeAS,"sentinel.modules.UpdateMonitor","escapeAS",0xafec68e1,"sentinel.modules.UpdateMonitor.escapeAS","sentinel/modules/UpdateMonitor.hx",319,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_56_boot,"sentinel.modules.UpdateMonitor","boot",0xb5dc9f60,"sentinel.modules.UpdateMonitor.boot","sentinel/modules/UpdateMonitor.hx",56,0x8cbdbbc0)
+static const ::String _hx_array_data_40c51400_24[] = {
 	HX_("/Applications",f2,91,00,63),HX_("~/Applications",b4,9a,4f,34),
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_55_boot,"sentinel.modules.UpdateMonitor","boot",0xb5dc9f60,"sentinel.modules.UpdateMonitor.boot","sentinel/modules/UpdateMonitor.hx",55,0x8cbdbbc0)
+HX_LOCAL_STACK_FRAME(_hx_pos_51a3bb0a353a6c66_57_boot,"sentinel.modules.UpdateMonitor","boot",0xb5dc9f60,"sentinel.modules.UpdateMonitor.boot","sentinel/modules/UpdateMonitor.hx",57,0x8cbdbbc0)
 namespace sentinel{
 namespace modules{
 
 void UpdateMonitor_obj::__construct( ::sentinel::core::EventBus bus, ::sentinel::ai::AIEngine ai){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_45_new)
-HXLINE(  52)		this->checkedApps =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
-HXLINE(  51)		this->knownVersions =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
-HXLINE(  50)		this->running = false;
-HXLINE(  58)		this->bus = bus;
-HXLINE(  59)		this->ai = ai;
-HXLINE(  60)		this->cfg = ::sentinel::config::Config_obj::get()->__Field(HX_("updates",4a,c2,cf,9d),::hx::paccDynamic);
-HXLINE(  61)		bus->subscribe(this->onEvent_dyn());
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_47_new)
+HXLINE(  54)		this->checkedApps =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXLINE(  53)		this->knownVersions =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXLINE(  52)		this->running = false;
+HXLINE(  60)		this->bus = bus;
+HXLINE(  61)		this->ai = ai;
+HXLINE(  62)		this->cfg = ::sentinel::config::Config_obj::get()->__Field(HX_("updates",4a,c2,cf,9d),::hx::paccDynamic);
+HXLINE(  63)		bus->subscribe(this->onEvent_dyn());
             	}
 
 Dynamic UpdateMonitor_obj::__CreateEmpty() { return new UpdateMonitor_obj; }
@@ -157,8 +144,8 @@ void *UpdateMonitor_obj::_hx_getInterface(int inHash) {
 }
 
 ::String UpdateMonitor_obj::name(){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_64_name)
-HXDLIN(  64)		return HX_("UpdateMonitor",71,ef,72,c5);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_66_name)
+HXDLIN(  66)		return HX_("UpdateMonitor",71,ef,72,c5);
             	}
 
 
@@ -167,39 +154,39 @@ HX_DEFINE_DYNAMIC_FUNC0(UpdateMonitor_obj,name,return )
 void UpdateMonitor_obj::start(){
             		HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0, ::sentinel::modules::UpdateMonitor,_gthis) HXARGC(0)
             		void _hx_run(){
-            			HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_69_start)
-HXLINE(  70)			_gthis->scanApplications();
-HXLINE(  71)			while(_gthis->running){
-HXLINE(  72)				::Sys_obj::sleep(((Float)60.0));
-HXLINE(  73)				_gthis->scanApplications();
+            			HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_71_start)
+HXLINE(  72)			_gthis->scanApplications();
+HXLINE(  73)			while(_gthis->running){
+HXLINE(  74)				::Sys_obj::sleep(((Float)60.0));
+HXLINE(  75)				_gthis->scanApplications();
             			}
             		}
             		HX_END_LOCAL_FUNC0((void))
 
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_66_start)
-HXDLIN(  66)		 ::sentinel::modules::UpdateMonitor _gthis = ::hx::ObjectPtr<OBJ_>(this);
-HXLINE(  67)		this->running = true;
-HXLINE(  69)		::sys::thread::_Thread::HaxeThread_obj::create( ::Dynamic(new _hx_Closure_0(_gthis)),false);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_68_start)
+HXDLIN(  68)		 ::sentinel::modules::UpdateMonitor _gthis = ::hx::ObjectPtr<OBJ_>(this);
+HXLINE(  69)		this->running = true;
+HXLINE(  71)		::sys::thread::_Thread::HaxeThread_obj::create( ::Dynamic(new _hx_Closure_0(_gthis)),false);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(UpdateMonitor_obj,start,(void))
 
 void UpdateMonitor_obj::stop(){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_79_stop)
-HXDLIN(  79)		this->running = false;
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_81_stop)
+HXDLIN(  81)		this->running = false;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(UpdateMonitor_obj,stop,(void))
 
 void UpdateMonitor_obj::onEvent( ::sentinel::core::SecurityEvent event){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_83_onEvent)
-HXDLIN(  83)		if ((event->_hx_getIndex() == 2)) {
-HXLINE(  84)			::String appName = event->_hx_getString(0);
-HXDLIN(  84)			::String plistPath = event->_hx_getString(1);
-HXDLIN(  84)			::String downloadUrl = event->_hx_getString(2);
-HXLINE(  85)			this->validateUpdate(appName,plistPath,downloadUrl);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_85_onEvent)
+HXDLIN(  85)		if ((event->_hx_getIndex() == 2)) {
+HXLINE(  86)			::String appName = event->_hx_getString(0);
+HXDLIN(  86)			::String plistPath = event->_hx_getString(1);
+HXDLIN(  86)			::String downloadUrl = event->_hx_getString(2);
+HXLINE(  87)			this->validateUpdate(appName,plistPath,downloadUrl);
             		}
             	}
 
@@ -207,96 +194,96 @@ HXLINE(  85)			this->validateUpdate(appName,plistPath,downloadUrl);
 HX_DEFINE_DYNAMIC_FUNC1(UpdateMonitor_obj,onEvent,(void))
 
 void UpdateMonitor_obj::scanApplications(){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_94_scanApplications)
-HXLINE(  95)		::String home;
-HXDLIN(  95)		::String tmp = ::Sys_obj::getEnv(HX_("HOME",1f,92,d3,2f));
-HXDLIN(  95)		if (::hx::IsNotNull( tmp )) {
-HXLINE(  95)			home = tmp;
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_96_scanApplications)
+HXLINE(  97)		::String home;
+HXDLIN(  97)		::String tmp = ::Sys_obj::getEnv(HX_("HOME",1f,92,d3,2f));
+HXDLIN(  97)		if (::hx::IsNotNull( tmp )) {
+HXLINE(  97)			home = tmp;
             		}
             		else {
-HXLINE(  95)			home = HX_("/tmp",08,6c,69,1f);
+HXLINE(  97)			home = HX_("/tmp",08,6c,69,1f);
             		}
-HXLINE(  96)		::Array< ::String > dirs = ::Array_obj< ::String >::__new(2)->init(0,HX_("/Applications",f2,91,00,63))->init(1,((HX_("",00,00,00,00) + home) + HX_("/Applications",f2,91,00,63)));
-HXLINE(  98)		{
-HXLINE(  98)			int _g = 0;
-HXDLIN(  98)			while((_g < dirs->length)){
-HXLINE(  98)				::String dir = dirs->__get(_g);
-HXDLIN(  98)				_g = (_g + 1);
-HXLINE(  99)				if (!(::sys::FileSystem_obj::exists(dir))) {
-HXLINE(  99)					continue;
+HXLINE(  98)		::Array< ::String > dirs = ::Array_obj< ::String >::__new(2)->init(0,HX_("/Applications",f2,91,00,63))->init(1,((HX_("",00,00,00,00) + home) + HX_("/Applications",f2,91,00,63)));
+HXLINE( 100)		{
+HXLINE( 100)			int _g = 0;
+HXDLIN( 100)			while((_g < dirs->length)){
+HXLINE( 100)				::String dir = dirs->__get(_g);
+HXDLIN( 100)				_g = (_g + 1);
+HXLINE( 101)				if (!(::sys::FileSystem_obj::exists(dir))) {
+HXLINE( 101)					continue;
             				}
-HXLINE( 100)				try {
+HXLINE( 102)				try {
             					HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 101)					int _g1 = 0;
-HXDLIN( 101)					::Array< ::String > _g2 = ::sys::FileSystem_obj::readDirectory(dir);
-HXDLIN( 101)					while((_g1 < _g2->length)){
-HXLINE( 101)						::String entry = _g2->__get(_g1);
-HXDLIN( 101)						_g1 = (_g1 + 1);
-HXLINE( 102)						if (!(::StringTools_obj::endsWith(entry,HX_(".app",33,cd,b1,1e)))) {
-HXLINE( 102)							continue;
+HXLINE( 103)					int _g1 = 0;
+HXDLIN( 103)					::Array< ::String > _g2 = ::sys::FileSystem_obj::readDirectory(dir);
+HXDLIN( 103)					while((_g1 < _g2->length)){
+HXLINE( 103)						::String entry = _g2->__get(_g1);
+HXDLIN( 103)						_g1 = (_g1 + 1);
+HXLINE( 104)						if (!(::StringTools_obj::endsWith(entry,HX_(".app",33,cd,b1,1e)))) {
+HXLINE( 104)							continue;
             						}
-HXLINE( 103)						::String appPath = (((HX_("",00,00,00,00) + dir) + HX_("/",2f,00,00,00)) + entry);
-HXLINE( 104)						::String plistPath = ((HX_("",00,00,00,00) + appPath) + HX_("/Contents/Info.plist",14,90,7c,4d));
-HXLINE( 105)						if (!(::sys::FileSystem_obj::exists(plistPath))) {
-HXLINE( 105)							continue;
+HXLINE( 105)						::String appPath = (((HX_("",00,00,00,00) + dir) + HX_("/",2f,00,00,00)) + entry);
+HXLINE( 106)						::String plistPath = ((HX_("",00,00,00,00) + appPath) + HX_("/Contents/Info.plist",14,90,7c,4d));
+HXLINE( 107)						if (!(::sys::FileSystem_obj::exists(plistPath))) {
+HXLINE( 107)							continue;
             						}
-HXLINE( 107)						 ::Dynamic info = ::sentinel::modules::UpdateMonitor_obj::parsePlist(plistPath);
-HXLINE( 108)						if (::hx::IsNull( info )) {
-HXLINE( 108)							continue;
+HXLINE( 109)						 ::Dynamic info = ::sentinel::modules::UpdateMonitor_obj::parsePlist(plistPath);
+HXLINE( 110)						if (::hx::IsNull( info )) {
+HXLINE( 110)							continue;
             						}
-HXLINE( 110)						::String bundleId;
-HXDLIN( 110)						::String tmp1 = ( (::String)(info->__Field(HX_("bundleId",fd,97,a2,bd),::hx::paccDynamic)) );
-HXDLIN( 110)						if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 110)							bundleId = tmp1;
-            						}
-            						else {
-HXLINE( 110)							bundleId = entry;
-            						}
-HXLINE( 111)						::String version;
-HXDLIN( 111)						::String tmp2 = ( (::String)(info->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
-HXDLIN( 111)						if (::hx::IsNotNull( tmp2 )) {
-HXLINE( 111)							version = tmp2;
+HXLINE( 112)						::String bundleId;
+HXDLIN( 112)						::String tmp1 = ( (::String)(info->__Field(HX_("bundleId",fd,97,a2,bd),::hx::paccDynamic)) );
+HXDLIN( 112)						if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 112)							bundleId = tmp1;
             						}
             						else {
-HXLINE( 111)							version = HX_("unknown",8a,23,7b,e1);
+HXLINE( 112)							bundleId = entry;
             						}
-HXLINE( 114)						::String lastVersion = this->knownVersions->get_string(bundleId);
-HXLINE( 115)						bool _hx_tmp;
-HXDLIN( 115)						if (::hx::IsNotNull( lastVersion )) {
-HXLINE( 115)							_hx_tmp = (lastVersion != version);
+HXLINE( 113)						::String version;
+HXDLIN( 113)						::String tmp2 = ( (::String)(info->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
+HXDLIN( 113)						if (::hx::IsNotNull( tmp2 )) {
+HXLINE( 113)							version = tmp2;
             						}
             						else {
-HXLINE( 115)							_hx_tmp = false;
+HXLINE( 113)							version = HX_("unknown",8a,23,7b,e1);
             						}
-HXDLIN( 115)						if (_hx_tmp) {
-HXLINE( 116)							::sentinel::core::Logger_obj::info((((((HX_("[Update] Version change detected: ",69,5c,ca,7b) + entry) + HX_(" ",20,00,00,00)) + lastVersion) + HX_W(u" \u2192 ",f5d2,029a)) + version));
-HXLINE( 118)							Float lastCheck;
-HXDLIN( 118)							 ::Dynamic tmp3 = this->checkedApps->get(bundleId);
-HXDLIN( 118)							if (::hx::IsNotNull( tmp3 )) {
-HXLINE( 118)								lastCheck = ( (Float)(tmp3) );
+HXLINE( 116)						::String lastVersion = this->knownVersions->get_string(bundleId);
+HXLINE( 117)						bool _hx_tmp;
+HXDLIN( 117)						if (::hx::IsNotNull( lastVersion )) {
+HXLINE( 117)							_hx_tmp = (lastVersion != version);
+            						}
+            						else {
+HXLINE( 117)							_hx_tmp = false;
+            						}
+HXDLIN( 117)						if (_hx_tmp) {
+HXLINE( 118)							::sentinel::core::Logger_obj::info((((((HX_("[Update] Version change detected: ",69,5c,ca,7b) + entry) + HX_(" ",20,00,00,00)) + lastVersion) + HX_W(u" \u2192 ",f5d2,029a)) + version));
+HXLINE( 120)							Float lastCheck;
+HXDLIN( 120)							 ::Dynamic tmp3 = this->checkedApps->get(bundleId);
+HXDLIN( 120)							if (::hx::IsNotNull( tmp3 )) {
+HXLINE( 120)								lastCheck = ( (Float)(tmp3) );
             							}
             							else {
-HXLINE( 118)								lastCheck = ((Float)0.0);
+HXLINE( 120)								lastCheck = ((Float)0.0);
             							}
-HXLINE( 119)							if ((((::Date_obj::now()->getTime() / ( (Float)(1000) )) - lastCheck) > ::sentinel::modules::UpdateMonitor_obj::RECHECK_INTERVAL)) {
-HXLINE( 120)								this->analyzeUpdateFromPlist(entry,plistPath,info,lastVersion,version);
-HXLINE( 121)								{
-HXLINE( 121)									::Dynamic this1 = this->checkedApps;
-HXDLIN( 121)									( ( ::haxe::ds::StringMap)(this1) )->set(bundleId,(::Date_obj::now()->getTime() / ( (Float)(1000) )));
+HXLINE( 121)							if ((((::Date_obj::now()->getTime() / ( (Float)(1000) )) - lastCheck) > ::sentinel::modules::UpdateMonitor_obj::RECHECK_INTERVAL)) {
+HXLINE( 122)								this->analyzeUpdateFromPlist(entry,plistPath,info,lastVersion,version);
+HXLINE( 123)								{
+HXLINE( 123)									::Dynamic this1 = this->checkedApps;
+HXDLIN( 123)									( ( ::haxe::ds::StringMap)(this1) )->set(bundleId,(::Date_obj::now()->getTime() / ( (Float)(1000) )));
             								}
             							}
             						}
-HXLINE( 124)						this->knownVersions->set(bundleId,version);
+HXLINE( 126)						this->knownVersions->set(bundleId,version);
             					}
             				} catch( ::Dynamic _hx_e) {
             					if (_hx_e.IsClass<  ::Dynamic >() ){
             						HX_STACK_BEGIN_CATCH
             						 ::Dynamic _g3 = _hx_e;
-HXLINE( 126)						{
-HXLINE( 126)							null();
+HXLINE( 128)						{
+HXLINE( 128)							null();
             						}
-HXDLIN( 126)						 ::Dynamic e = _g3;
-HXLINE( 127)						::sentinel::core::Logger_obj::warn((((HX_("[Update] Scan error in ",27,3d,cd,9a) + dir) + HX_(": ",a6,32,00,00)) + ::Std_obj::string(e)));
+HXDLIN( 128)						 ::Dynamic e = _g3;
+HXLINE( 129)						::sentinel::core::Logger_obj::warn((((HX_("[Update] Scan error in ",27,3d,cd,9a) + dir) + HX_(": ",a6,32,00,00)) + ::Std_obj::string(e)));
             					}
             					else {
             						HX_STACK_DO_THROW(_hx_e);
@@ -310,126 +297,126 @@ HXLINE( 127)						::sentinel::core::Logger_obj::warn((((HX_("[Update] Scan error
 HX_DEFINE_DYNAMIC_FUNC0(UpdateMonitor_obj,scanApplications,(void))
 
 void UpdateMonitor_obj::analyzeUpdateFromPlist(::String appName,::String plistPath, ::Dynamic info,::String oldVer,::String newVer){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_186_analyzeUpdateFromPlist)
-HXLINE( 187)		::String downloadUrl;
-HXDLIN( 187)		::String tmp = ( (::String)(info->__Field(HX_("feedUrl",b1,92,6b,5d),::hx::paccDynamic)) );
-HXDLIN( 187)		::String tmp1;
-HXDLIN( 187)		if (::hx::IsNotNull( tmp )) {
-HXLINE( 187)			tmp1 = tmp;
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_188_analyzeUpdateFromPlist)
+HXLINE( 189)		::String downloadUrl;
+HXDLIN( 189)		::String tmp = ( (::String)(info->__Field(HX_("feedUrl",b1,92,6b,5d),::hx::paccDynamic)) );
+HXDLIN( 189)		::String tmp1;
+HXDLIN( 189)		if (::hx::IsNotNull( tmp )) {
+HXLINE( 189)			tmp1 = tmp;
             		}
             		else {
-HXLINE( 187)			tmp1 = ( (::String)(info->__Field(HX_("updateUrl",e6,08,e6,82),::hx::paccDynamic)) );
+HXLINE( 189)			tmp1 = ( (::String)(info->__Field(HX_("updateUrl",e6,08,e6,82),::hx::paccDynamic)) );
             		}
-HXDLIN( 187)		if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 187)			downloadUrl = tmp1;
+HXDLIN( 189)		if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 189)			downloadUrl = tmp1;
             		}
             		else {
-HXLINE( 187)			downloadUrl = HX_("unknown",8a,23,7b,e1);
+HXLINE( 189)			downloadUrl = HX_("unknown",8a,23,7b,e1);
             		}
-HXLINE( 188)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateDetected(appName,plistPath,downloadUrl));
+HXLINE( 190)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateDetected(appName,plistPath,downloadUrl));
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC5(UpdateMonitor_obj,analyzeUpdateFromPlist,(void))
 
 void UpdateMonitor_obj::validateUpdate(::String appName,::String plistPath,::String downloadUrl){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_191_validateUpdate)
-HXLINE( 192)		::sentinel::core::Logger_obj::info((((HX_("[Update] Validating update for ",68,6e,27,9f) + appName) + HX_W(u" \u2014 ",6a0a,0296)) + downloadUrl));
-HXLINE( 194)		 ::Dynamic info = ::sentinel::modules::UpdateMonitor_obj::parsePlist(plistPath);
-HXLINE( 195)		::String currentVersion;
-HXDLIN( 195)		::String tmp;
-HXDLIN( 195)		if (::hx::IsNotNull( info )) {
-HXLINE( 195)			tmp = ( (::String)(info->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
-            		}
-            		else {
-HXLINE( 195)			tmp = null();
-            		}
-HXDLIN( 195)		if (::hx::IsNotNull( tmp )) {
-HXLINE( 195)			currentVersion = tmp;
-            		}
-            		else {
-HXLINE( 195)			currentVersion = HX_("unknown",8a,23,7b,e1);
-            		}
-HXLINE( 196)		::String shortVersion;
-HXDLIN( 196)		::String tmp1;
-HXDLIN( 196)		if (::hx::IsNotNull( info )) {
-HXLINE( 196)			tmp1 = ( (::String)(info->__Field(HX_("shortVersion",fc,51,43,68),::hx::paccDynamic)) );
-            		}
-            		else {
-HXLINE( 196)			tmp1 = null();
-            		}
-HXDLIN( 196)		if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 196)			shortVersion = tmp1;
-            		}
-            		else {
-HXLINE( 196)			shortVersion = HX_("unknown",8a,23,7b,e1);
-            		}
-HXLINE( 197)		::String plistSnippet;
-HXDLIN( 197)		::String tmp2;
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_193_validateUpdate)
+HXLINE( 194)		::sentinel::core::Logger_obj::info((((HX_("[Update] Validating update for ",68,6e,27,9f) + appName) + HX_W(u" \u2014 ",6a0a,0296)) + downloadUrl));
+HXLINE( 196)		 ::Dynamic info = ::sentinel::modules::UpdateMonitor_obj::parsePlist(plistPath);
+HXLINE( 197)		::String currentVersion;
+HXDLIN( 197)		::String tmp;
 HXDLIN( 197)		if (::hx::IsNotNull( info )) {
-HXLINE( 197)			tmp2 = ( (::String)(info->__Field(HX_("raw",e8,d5,56,00),::hx::paccDynamic)) );
+HXLINE( 197)			tmp = ( (::String)(info->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
             		}
             		else {
-HXLINE( 197)			tmp2 = null();
+HXLINE( 197)			tmp = null();
             		}
-HXDLIN( 197)		if (::hx::IsNotNull( tmp2 )) {
-HXLINE( 197)			plistSnippet = tmp2;
-            		}
-            		else {
-HXLINE( 197)			plistSnippet = HX_("(could not read)",3f,6c,63,1e);
-            		}
-HXLINE( 200)		::String domain = ::sentinel::modules::UpdateMonitor_obj::extractDomain(downloadUrl);
-HXLINE( 201)		bool trusted = this->isTrustedDomain(domain);
-HXLINE( 203)		if (trusted) {
-HXLINE( 204)			::sentinel::core::Logger_obj::info(((((HX_("[Update] ",e7,3a,7c,4d) + appName) + HX_W(u" \u2014 trusted domain (",759f,3b64)) + domain) + HX_W(u") \u2014 skipping deep analysis",15e2,4096)));
-HXLINE( 205)			this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateValidated(appName,true,(HX_("Trusted domain: ",53,ca,4e,34) + domain)));
-HXLINE( 206)			return;
-            		}
-HXLINE( 210)		 ::Dynamic latestInfo = ::sentinel::modules::UpdateMonitor_obj::lookupLatestVersion(appName,downloadUrl);
-HXLINE( 211)		::String newVersion;
-HXDLIN( 211)		::String tmp3;
-HXDLIN( 211)		if (::hx::IsNotNull( latestInfo )) {
-HXLINE( 211)			tmp3 = ( (::String)(latestInfo->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
+HXDLIN( 197)		if (::hx::IsNotNull( tmp )) {
+HXLINE( 197)			currentVersion = tmp;
             		}
             		else {
-HXLINE( 211)			tmp3 = null();
+HXLINE( 197)			currentVersion = HX_("unknown",8a,23,7b,e1);
             		}
-HXDLIN( 211)		if (::hx::IsNotNull( tmp3 )) {
-HXLINE( 211)			newVersion = tmp3;
+HXLINE( 198)		::String shortVersion;
+HXDLIN( 198)		::String tmp1;
+HXDLIN( 198)		if (::hx::IsNotNull( info )) {
+HXLINE( 198)			tmp1 = ( (::String)(info->__Field(HX_("shortVersion",fc,51,43,68),::hx::paccDynamic)) );
             		}
             		else {
-HXLINE( 211)			newVersion = HX_("unknown",8a,23,7b,e1);
+HXLINE( 198)			tmp1 = null();
             		}
-HXLINE( 214)		 ::sentinel::ai::AIEngine result = this->ai;
-HXDLIN( 214)		 ::Dynamic result1 = result->analyzeUpdate(appName,currentVersion,newVersion,downloadUrl,plistSnippet.substr(0,2000));
-HXLINE( 219)		::sentinel::core::Logger_obj::warn((((HX_("[Update] AI risk=",fd,85,62,49) + ::Type_obj::enumConstructor(result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic))) + HX_(" for ",17,f1,92,b0)) + appName));
-HXLINE( 220)		{
-HXLINE( 220)			int _g = 0;
-HXDLIN( 220)			::Array< ::String > _g1 = ( (::Array< ::String >)(result1->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) );
-HXDLIN( 220)			while((_g < _g1->length)){
-HXLINE( 220)				::String w = _g1->__get(_g);
-HXDLIN( 220)				_g = (_g + 1);
-HXDLIN( 220)				::sentinel::core::Logger_obj::warn((HX_W(u"[Update]   \u26a0 ",9d1f,c357) + w));
+HXDLIN( 198)		if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 198)			shortVersion = tmp1;
+            		}
+            		else {
+HXLINE( 198)			shortVersion = HX_("unknown",8a,23,7b,e1);
+            		}
+HXLINE( 199)		::String plistSnippet;
+HXDLIN( 199)		::String tmp2;
+HXDLIN( 199)		if (::hx::IsNotNull( info )) {
+HXLINE( 199)			tmp2 = ( (::String)(info->__Field(HX_("raw",e8,d5,56,00),::hx::paccDynamic)) );
+            		}
+            		else {
+HXLINE( 199)			tmp2 = null();
+            		}
+HXDLIN( 199)		if (::hx::IsNotNull( tmp2 )) {
+HXLINE( 199)			plistSnippet = tmp2;
+            		}
+            		else {
+HXLINE( 199)			plistSnippet = HX_("(could not read)",3f,6c,63,1e);
+            		}
+HXLINE( 202)		::String domain = ::sentinel::modules::UpdateMonitor_obj::extractDomain(downloadUrl);
+HXLINE( 203)		bool trusted = this->isTrustedDomain(domain);
+HXLINE( 205)		if (trusted) {
+HXLINE( 206)			::sentinel::core::Logger_obj::info(((((HX_("[Update] ",e7,3a,7c,4d) + appName) + HX_W(u" \u2014 trusted domain (",759f,3b64)) + domain) + HX_W(u") \u2014 skipping deep analysis",15e2,4096)));
+HXLINE( 207)			this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateValidated(appName,true,(HX_("Trusted domain: ",53,ca,4e,34) + domain)));
+HXLINE( 208)			return;
+            		}
+HXLINE( 212)		 ::Dynamic latestInfo = ::sentinel::modules::UpdateMonitor_obj::lookupLatestVersion(appName,downloadUrl);
+HXLINE( 213)		::String newVersion;
+HXDLIN( 213)		::String tmp3;
+HXDLIN( 213)		if (::hx::IsNotNull( latestInfo )) {
+HXLINE( 213)			tmp3 = ( (::String)(latestInfo->__Field(HX_("version",18,e7,f1,7c),::hx::paccDynamic)) );
+            		}
+            		else {
+HXLINE( 213)			tmp3 = null();
+            		}
+HXDLIN( 213)		if (::hx::IsNotNull( tmp3 )) {
+HXLINE( 213)			newVersion = tmp3;
+            		}
+            		else {
+HXLINE( 213)			newVersion = HX_("unknown",8a,23,7b,e1);
+            		}
+HXLINE( 216)		 ::sentinel::ai::AIEngine result = this->ai;
+HXDLIN( 216)		 ::Dynamic result1 = result->analyzeUpdate(appName,currentVersion,newVersion,downloadUrl,plistSnippet.substr(0,2000));
+HXLINE( 221)		::sentinel::core::Logger_obj::warn((((HX_("[Update] AI risk=",fd,85,62,49) + ::Type_obj::enumConstructor(result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic))) + HX_(" for ",17,f1,92,b0)) + appName));
+HXLINE( 222)		{
+HXLINE( 222)			int _g = 0;
+HXDLIN( 222)			::Array< ::String > _g1 = ( (::Array< ::String >)(result1->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) );
+HXDLIN( 222)			while((_g < _g1->length)){
+HXLINE( 222)				::String w = _g1->__get(_g);
+HXDLIN( 222)				_g = (_g + 1);
+HXDLIN( 222)				::sentinel::core::Logger_obj::warn((HX_W(u"[Update]   \u26a0 ",9d1f,c357) + w));
             			}
             		}
-HXLINE( 222)		bool _hx_tmp;
-HXDLIN( 222)		if (::hx::IsPointerNotEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Safe_dyn() )) {
-HXLINE( 222)			_hx_tmp = ::hx::IsPointerEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Low_dyn() );
+HXLINE( 224)		bool _hx_tmp;
+HXDLIN( 224)		if (::hx::IsPointerNotEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Safe_dyn() )) {
+HXLINE( 224)			_hx_tmp = ::hx::IsPointerEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Low_dyn() );
             		}
             		else {
-HXLINE( 222)			_hx_tmp = true;
+HXLINE( 224)			_hx_tmp = true;
             		}
-HXDLIN( 222)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateValidated(appName,_hx_tmp, ::Dynamic(result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic))));
-HXLINE( 225)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::Alert( ::Dynamic(result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic)),HX_("UpdateMonitor",71,ef,72,c5), ::Dynamic((((((((HX_("",00,00,00,00) + appName) + HX_(" update from ",3f,86,38,55)) + domain) + HX_W(u" \u2014 ",6a0a,0296)) + result1->__Field(HX_("recommendation",39,7e,c2,c5),::hx::paccDynamic)) + HX_(": ",a6,32,00,00)) + result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)))));
-HXLINE( 228)		bool _hx_tmp1;
-HXDLIN( 228)		if (::hx::IsPointerNotEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::High_dyn() )) {
-HXLINE( 228)			_hx_tmp1 = ::hx::IsPointerEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Critical_dyn() );
+HXDLIN( 224)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::UpdateValidated(appName,_hx_tmp, ::Dynamic(result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic))));
+HXLINE( 227)		this->bus->emitNow(::sentinel::core::SecurityEvent_obj::Alert( ::Dynamic(result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic)),HX_("UpdateMonitor",71,ef,72,c5), ::Dynamic((((((((HX_("",00,00,00,00) + appName) + HX_(" update from ",3f,86,38,55)) + domain) + HX_W(u" \u2014 ",6a0a,0296)) + result1->__Field(HX_("recommendation",39,7e,c2,c5),::hx::paccDynamic)) + HX_(": ",a6,32,00,00)) + result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)))));
+HXLINE( 230)		bool _hx_tmp1;
+HXDLIN( 230)		if (::hx::IsPointerNotEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::High_dyn() )) {
+HXLINE( 230)			_hx_tmp1 = ::hx::IsPointerEq( result1->__Field(HX_("riskLevel",f5,0a,16,e1),::hx::paccDynamic),::sentinel::core::RiskLevel_obj::Critical_dyn() );
             		}
             		else {
-HXLINE( 228)			_hx_tmp1 = true;
+HXLINE( 230)			_hx_tmp1 = true;
             		}
-HXDLIN( 228)		if (_hx_tmp1) {
-HXLINE( 229)			this->showUpdateAlert(appName,downloadUrl,( (::String)(result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)) ),( (::Array< ::String >)(result1->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) ));
+HXDLIN( 230)		if (_hx_tmp1) {
+HXLINE( 231)			this->showUpdateAlert(appName,downloadUrl,( (::String)(result1->__Field(HX_("summary",26,0b,e9,80),::hx::paccDynamic)) ),( (::Array< ::String >)(result1->__Field(HX_("warnings",97,36,93,88),::hx::paccDynamic)) ));
             		}
             	}
 
@@ -437,48 +424,48 @@ HXLINE( 229)			this->showUpdateAlert(appName,downloadUrl,( (::String)(result1->_
 HX_DEFINE_DYNAMIC_FUNC3(UpdateMonitor_obj,validateUpdate,(void))
 
 bool UpdateMonitor_obj::isTrustedDomain(::String domain){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_307_isTrustedDomain)
-HXLINE( 308)		{
-HXLINE( 308)			int _g = 0;
-HXDLIN( 308)			::Array< ::String > _g1 = ( (::Array< ::String >)(this->cfg->__Field(HX_("trustedDomains",78,d7,c5,59),::hx::paccDynamic)) );
-HXDLIN( 308)			while((_g < _g1->length)){
-HXLINE( 308)				::String trusted = _g1->__get(_g);
-HXDLIN( 308)				_g = (_g + 1);
-HXLINE( 309)				bool _hx_tmp;
-HXDLIN( 309)				if (!(::StringTools_obj::endsWith(domain,trusted))) {
-HXLINE( 309)					_hx_tmp = (domain == trusted);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_298_isTrustedDomain)
+HXLINE( 299)		{
+HXLINE( 299)			int _g = 0;
+HXDLIN( 299)			::Array< ::String > _g1 = ( (::Array< ::String >)(this->cfg->__Field(HX_("trustedDomains",78,d7,c5,59),::hx::paccDynamic)) );
+HXDLIN( 299)			while((_g < _g1->length)){
+HXLINE( 299)				::String trusted = _g1->__get(_g);
+HXDLIN( 299)				_g = (_g + 1);
+HXLINE( 300)				bool _hx_tmp;
+HXDLIN( 300)				if (!(::StringTools_obj::endsWith(domain,trusted))) {
+HXLINE( 300)					_hx_tmp = (domain == trusted);
             				}
             				else {
-HXLINE( 309)					_hx_tmp = true;
+HXLINE( 300)					_hx_tmp = true;
             				}
-HXDLIN( 309)				if (_hx_tmp) {
-HXLINE( 309)					return true;
+HXDLIN( 300)				if (_hx_tmp) {
+HXLINE( 300)					return true;
             				}
             			}
             		}
-HXLINE( 311)		return false;
+HXLINE( 302)		return false;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(UpdateMonitor_obj,isTrustedDomain,return )
 
 void UpdateMonitor_obj::showUpdateAlert(::String app,::String url,::String summary,::Array< ::String > warnings){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_314_showUpdateAlert)
-HXLINE( 315)		::String msg = (((((HX_("App: ",67,c9,68,b7) + app) + HX_("\nURL: ",6b,47,0e,27)) + url) + HX_("\n",0a,00,00,00)) + summary);
-HXLINE( 316)		if ((warnings->length > 0)) {
-HXLINE( 316)			msg = (msg + (HX_("\nWarnings: ",a7,b1,20,3c) + warnings->join(HX_("; ",85,33,00,00))));
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_305_showUpdateAlert)
+HXLINE( 306)		::String msg = (((((HX_("App: ",67,c9,68,b7) + app) + HX_("\nURL: ",6b,47,0e,27)) + url) + HX_("\n",0a,00,00,00)) + summary);
+HXLINE( 307)		if ((warnings->length > 0)) {
+HXLINE( 307)			msg = (msg + (HX_("\nWarnings: ",a7,b1,20,3c) + warnings->join(HX_("; ",85,33,00,00))));
             		}
-HXLINE( 317)		try {
+HXLINE( 308)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 318)			 ::sys::io::Process p =  ::sys::io::Process_obj::__alloc( HX_CTX ,HX_("osascript",88,18,58,31),::Array_obj< ::String >::__new(2)->init(0,HX_("-e",98,27,00,00))->init(1,((HX_W(u"display alert \"\u26a0\ufe0f Suspicious Update Detected\" message \"",0cf3,c9f6) + ::sentinel::modules::UpdateMonitor_obj::escapeAS(msg)) + HX_("\" buttons {\"Block\", \"Allow\"} default button \"Block\" as warning",95,52,da,b5))),null());
-HXLINE( 322)			p->exitCode(null());
-HXLINE( 323)			p->close();
+HXLINE( 309)			 ::sys::io::Process p =  ::sys::io::Process_obj::__alloc( HX_CTX ,HX_("osascript",88,18,58,31),::Array_obj< ::String >::__new(2)->init(0,HX_("-e",98,27,00,00))->init(1,((HX_W(u"display alert \"\u26a0\ufe0f Suspicious Update Detected\" message \"",0cf3,c9f6) + ::sentinel::modules::UpdateMonitor_obj::escapeAS(msg)) + HX_("\" buttons {\"Block\", \"Allow\"} default button \"Block\" as warning",95,52,da,b5))),null());
+HXLINE( 313)			p->exitCode(null());
+HXLINE( 314)			p->close();
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
             				 ::Dynamic _g = _hx_e;
-HXLINE( 324)				{
-HXLINE( 324)					null();
+HXLINE( 315)				{
+HXLINE( 315)					null();
             				}
             			}
             			else {
@@ -495,54 +482,54 @@ HX_DEFINE_DYNAMIC_FUNC4(UpdateMonitor_obj,showUpdateAlert,(void))
 Float UpdateMonitor_obj::RECHECK_INTERVAL;
 
  ::Dynamic UpdateMonitor_obj::parsePlist(::String path){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_138_parsePlist)
-HXDLIN( 138)		try {
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_140_parsePlist)
+HXDLIN( 140)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 139)			 ::sys::io::Process p =  ::sys::io::Process_obj::__alloc( HX_CTX ,HX_("plutil",fe,67,ed,44),::Array_obj< ::String >::__new(5)->init(0,HX_("-convert",66,0d,a8,28))->init(1,HX_("xml1",7a,ae,a4,4f))->init(2,HX_("-o",a2,27,00,00))->init(3,HX_("-",2d,00,00,00))->init(4,path),null());
-HXLINE( 140)			::String xml = p->_hx_stdout->readAll(null())->toString();
-HXLINE( 141)			p->exitCode(null());
-HXLINE( 142)			p->close();
-HXLINE( 144)			if ((xml.length < 10)) {
-HXLINE( 144)				return null();
+HXLINE( 141)			 ::sys::io::Process p =  ::sys::io::Process_obj::__alloc( HX_CTX ,HX_("plutil",fe,67,ed,44),::Array_obj< ::String >::__new(5)->init(0,HX_("-convert",66,0d,a8,28))->init(1,HX_("xml1",7a,ae,a4,4f))->init(2,HX_("-o",a2,27,00,00))->init(3,HX_("-",2d,00,00,00))->init(4,path),null());
+HXLINE( 142)			::String xml = p->_hx_stdout->readAll(null())->toString();
+HXLINE( 143)			p->exitCode(null());
+HXLINE( 144)			p->close();
+HXLINE( 146)			if ((xml.length < 10)) {
+HXLINE( 146)				return null();
             			}
-HXLINE( 146)			 ::Dynamic info =  ::Dynamic(::hx::Anon_obj::Create(1)
+HXLINE( 148)			 ::Dynamic info =  ::Dynamic(::hx::Anon_obj::Create(1)
             				->setFixed(0,HX_("raw",e8,d5,56,00),xml.substr(0,5000)));
-HXLINE( 149)			info->__SetField(HX_("bundleId",fd,97,a2,bd),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleIdentifier",4e,c3,48,4f)),::hx::paccDynamic);
-HXLINE( 150)			info->__SetField(HX_("version",18,e7,f1,7c),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleVersion",13,5b,08,97)),::hx::paccDynamic);
-HXLINE( 151)			info->__SetField(HX_("shortVersion",fc,51,43,68),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleShortVersionString",d2,7b,94,02)),::hx::paccDynamic);
-HXLINE( 152)			::String tmp = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("SUFeedURL",2f,8e,c1,8c));
-HXDLIN( 152)			::String _hx_tmp;
-HXDLIN( 152)			if (::hx::IsNotNull( tmp )) {
-HXLINE( 152)				_hx_tmp = tmp;
+HXLINE( 151)			info->__SetField(HX_("bundleId",fd,97,a2,bd),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleIdentifier",4e,c3,48,4f)),::hx::paccDynamic);
+HXLINE( 152)			info->__SetField(HX_("version",18,e7,f1,7c),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleVersion",13,5b,08,97)),::hx::paccDynamic);
+HXLINE( 153)			info->__SetField(HX_("shortVersion",fc,51,43,68),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleShortVersionString",d2,7b,94,02)),::hx::paccDynamic);
+HXLINE( 154)			::String tmp = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("SUFeedURL",2f,8e,c1,8c));
+HXDLIN( 154)			::String _hx_tmp;
+HXDLIN( 154)			if (::hx::IsNotNull( tmp )) {
+HXLINE( 154)				_hx_tmp = tmp;
             			}
             			else {
-HXLINE( 152)				_hx_tmp = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("SUScheduledCheckIntervalKey",bd,9c,0f,19));
+HXLINE( 154)				_hx_tmp = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("SUScheduledCheckIntervalKey",bd,9c,0f,19));
             			}
-HXDLIN( 152)			info->__SetField(HX_("feedUrl",b1,92,6b,5d),_hx_tmp,::hx::paccDynamic);
-HXLINE( 154)			::String tmp1 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleURLTypes",2f,86,95,40));
-HXDLIN( 154)			::String _hx_tmp1;
-HXDLIN( 154)			if (::hx::IsNotNull( tmp1 )) {
-HXLINE( 154)				_hx_tmp1 = tmp1;
+HXDLIN( 154)			info->__SetField(HX_("feedUrl",b1,92,6b,5d),_hx_tmp,::hx::paccDynamic);
+HXLINE( 156)			::String tmp1 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("CFBundleURLTypes",2f,86,95,40));
+HXDLIN( 156)			::String _hx_tmp1;
+HXDLIN( 156)			if (::hx::IsNotNull( tmp1 )) {
+HXLINE( 156)				_hx_tmp1 = tmp1;
             			}
             			else {
-HXLINE( 154)				_hx_tmp1 = ( (::String)(info->__Field(HX_("feedUrl",b1,92,6b,5d),::hx::paccDynamic)) );
+HXLINE( 156)				_hx_tmp1 = ( (::String)(info->__Field(HX_("feedUrl",b1,92,6b,5d),::hx::paccDynamic)) );
             			}
-HXDLIN( 154)			info->__SetField(HX_("updateUrl",e6,08,e6,82),_hx_tmp1,::hx::paccDynamic);
-HXLINE( 156)			info->__SetField(HX_("minOS",36,5f,68,08),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("LSMinimumSystemVersion",62,01,3b,3c)),::hx::paccDynamic);
-HXLINE( 158)			return info;
+HXDLIN( 156)			info->__SetField(HX_("updateUrl",e6,08,e6,82),_hx_tmp1,::hx::paccDynamic);
+HXLINE( 158)			info->__SetField(HX_("minOS",36,5f,68,08),::sentinel::modules::UpdateMonitor_obj::extractPlistValue(xml,HX_("LSMinimumSystemVersion",62,01,3b,3c)),::hx::paccDynamic);
+HXLINE( 160)			return info;
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
             				 ::Dynamic _g = _hx_e;
-HXLINE( 159)				{
-HXLINE( 159)					null();
+HXLINE( 161)				{
+HXLINE( 161)					null();
             				}
-HXLINE( 161)				try {
+HXLINE( 163)				try {
             					HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 162)					::String raw = ::sys::io::File_obj::getContent(path);
-HXLINE( 164)					::String _hx_tmp2 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(raw,HX_("CFBundleIdentifier",4e,c3,48,4f));
-HXLINE( 165)					::String _hx_tmp3 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(raw,HX_("CFBundleVersion",13,5b,08,97));
-HXLINE( 163)					return  ::Dynamic(::hx::Anon_obj::Create(3)
+HXLINE( 164)					::String raw = ::sys::io::File_obj::getContent(path);
+HXLINE( 166)					::String _hx_tmp2 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(raw,HX_("CFBundleIdentifier",4e,c3,48,4f));
+HXLINE( 167)					::String _hx_tmp3 = ::sentinel::modules::UpdateMonitor_obj::extractPlistValue(raw,HX_("CFBundleVersion",13,5b,08,97));
+HXLINE( 165)					return  ::Dynamic(::hx::Anon_obj::Create(3)
             						->setFixed(0,HX_("bundleId",fd,97,a2,bd),_hx_tmp2)
             						->setFixed(1,HX_("raw",e8,d5,56,00),raw.substr(0,5000))
             						->setFixed(2,HX_("version",18,e7,f1,7c),_hx_tmp3));
@@ -550,7 +537,7 @@ HXLINE( 163)					return  ::Dynamic(::hx::Anon_obj::Create(3)
             					if (_hx_e.IsClass<  ::Dynamic >() ){
             						HX_STACK_BEGIN_CATCH
             						 ::Dynamic _g1 = _hx_e;
-HXLINE( 169)						return null();
+HXLINE( 171)						return null();
             					}
             					else {
             						HX_STACK_DO_THROW(_hx_e);
@@ -561,192 +548,160 @@ HXLINE( 169)						return null();
             				HX_STACK_DO_THROW(_hx_e);
             			}
             		}
-HXLINE( 138)		return null();
+HXLINE( 140)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(UpdateMonitor_obj,parsePlist,return )
 
 ::String UpdateMonitor_obj::extractPlistValue(::String xml,::String key){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_174_extractPlistValue)
-HXLINE( 176)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,((HX_("<key>",fb,af,11,d3) + key) + HX_("</key>\\s*<(string|integer|real)>([^<]+)</",ce,35,d9,da)),HX_("i",69,00,00,00));
-HXLINE( 177)		if (re->match(xml)) {
-HXLINE( 177)			return ::StringTools_obj::trim(re->matched(2));
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_176_extractPlistValue)
+HXLINE( 178)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,((HX_("<key>",fb,af,11,d3) + key) + HX_("</key>\\s*<(string|integer|real)>([^<]+)</",ce,35,d9,da)),HX_("i",69,00,00,00));
+HXLINE( 179)		if (re->match(xml)) {
+HXLINE( 179)			return ::StringTools_obj::trim(re->matched(2));
             		}
-HXLINE( 178)		return null();
+HXLINE( 180)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(UpdateMonitor_obj,extractPlistValue,return )
 
  ::Dynamic UpdateMonitor_obj::lookupLatestVersion(::String appName,::String updateUrl){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_237_lookupLatestVersion)
-HXLINE( 239)		bool _hx_tmp;
-HXDLIN( 239)		bool _hx_tmp1;
-HXDLIN( 239)		if ((updateUrl.indexOf(HX_("appcast",e0,7f,35,48),null()) == -1)) {
-HXLINE( 239)			_hx_tmp1 = ::StringTools_obj::endsWith(updateUrl,HX_(".xml",69,3e,c3,1e));
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_239_lookupLatestVersion)
+HXLINE( 241)		bool _hx_tmp;
+HXDLIN( 241)		bool _hx_tmp1;
+HXDLIN( 241)		if ((updateUrl.indexOf(HX_("appcast",e0,7f,35,48),null()) == -1)) {
+HXLINE( 241)			_hx_tmp1 = ::StringTools_obj::endsWith(updateUrl,HX_(".xml",69,3e,c3,1e));
             		}
             		else {
-HXLINE( 239)			_hx_tmp1 = true;
+HXLINE( 241)			_hx_tmp1 = true;
             		}
-HXDLIN( 239)		if (!(_hx_tmp1)) {
-HXLINE( 239)			_hx_tmp = ::StringTools_obj::endsWith(updateUrl,HX_(".rss",24,b6,be,1e));
+HXDLIN( 241)		if (!(_hx_tmp1)) {
+HXLINE( 241)			_hx_tmp = ::StringTools_obj::endsWith(updateUrl,HX_(".rss",24,b6,be,1e));
             		}
             		else {
-HXLINE( 239)			_hx_tmp = true;
+HXLINE( 241)			_hx_tmp = true;
             		}
-HXDLIN( 239)		if (_hx_tmp) {
-HXLINE( 240)			return ::sentinel::modules::UpdateMonitor_obj::fetchSparkleVersion(updateUrl);
+HXDLIN( 241)		if (_hx_tmp) {
+HXLINE( 242)			return ::sentinel::modules::UpdateMonitor_obj::fetchSparkleVersion(updateUrl);
             		}
-HXLINE( 244)		 ::EReg ghRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
-HXLINE( 245)		if (ghRe->match(updateUrl)) {
-HXLINE( 246)			::String _hx_tmp2 = ghRe->matched(1);
-HXDLIN( 246)			return ::sentinel::modules::UpdateMonitor_obj::fetchGithubLatestRelease(_hx_tmp2,ghRe->matched(2));
+HXLINE( 246)		 ::EReg ghRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("github\\.com/([\\w.-]+)/([\\w.-]+)",2a,d9,3a,f4),HX_("",00,00,00,00));
+HXLINE( 247)		if (ghRe->match(updateUrl)) {
+HXLINE( 248)			::String _hx_tmp2 = ghRe->matched(1);
+HXDLIN( 248)			return ::sentinel::modules::UpdateMonitor_obj::fetchGithubLatestRelease(_hx_tmp2,ghRe->matched(2));
             		}
-HXLINE( 249)		return null();
+HXLINE( 251)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(UpdateMonitor_obj,lookupLatestVersion,return )
 
  ::Dynamic UpdateMonitor_obj::fetchSparkleVersion(::String feedUrl){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_253_fetchSparkleVersion)
-HXDLIN( 253)		try {
-            			HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0,::Array< ::String >,xml) HXARGC(1)
-            			void _hx_run(::String d){
-            				HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_256_fetchSparkleVersion)
-HXLINE( 256)				xml[0] = d;
-            			}
-            			HX_END_LOCAL_FUNC1((void))
-
-            			HX_BEGIN_LOCAL_FUNC_S0(::hx::LocalFunc,_hx_Closure_1) HXARGC(1)
-            			void _hx_run(::String e){
-            				HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_257_fetchSparkleVersion)
-            			}
-            			HX_END_LOCAL_FUNC1((void))
-
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_255_fetchSparkleVersion)
+HXDLIN( 255)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 254)			 ::sys::Http http =  ::sys::Http_obj::__alloc( HX_CTX ,feedUrl);
-HXLINE( 255)			::Array< ::String > xml = ::Array_obj< ::String >::fromData( _hx_array_data_40c51400_22,1);
-HXLINE( 256)			http->onData =  ::Dynamic(new _hx_Closure_0(xml));
-HXLINE( 257)			http->onError =  ::Dynamic(new _hx_Closure_1());
-HXLINE( 258)			http->request(false);
-HXLINE( 260)			if ((xml->__get(0).length == 0)) {
-HXLINE( 260)				return null();
+HXLINE( 256)			::String xml = ::sentinel::platform::HttpsClient_obj::get(feedUrl,null());
+HXLINE( 257)			if ((xml.length == 0)) {
+HXLINE( 257)				return null();
             			}
-HXLINE( 263)			 ::EReg verRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("sparkle:version=\"([^\"]+)\"",f7,a8,4c,b5),HX_("",00,00,00,00));
-HXLINE( 264)			::String version;
-HXDLIN( 264)			if (verRe->match(xml->__get(0))) {
-HXLINE( 264)				version = verRe->matched(1);
+HXLINE( 258)			 ::EReg verRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("sparkle:version=\"([^\"]+)\"",f7,a8,4c,b5),HX_("",00,00,00,00));
+HXLINE( 259)			::String version;
+HXDLIN( 259)			if (verRe->match(xml)) {
+HXLINE( 259)				version = verRe->matched(1);
             			}
             			else {
-HXLINE( 264)				version = null();
+HXLINE( 259)				version = null();
             			}
-HXLINE( 266)			 ::EReg dateRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("<pubDate>([^<]+)</pubDate>",a1,42,d0,73),HX_("",00,00,00,00));
-HXLINE( 267)			::String date;
-HXDLIN( 267)			if (dateRe->match(xml->__get(0))) {
-HXLINE( 267)				date = dateRe->matched(1);
+HXLINE( 260)			 ::EReg dateRe =  ::EReg_obj::__alloc( HX_CTX ,HX_("<pubDate>([^<]+)</pubDate>",a1,42,d0,73),HX_("",00,00,00,00));
+HXLINE( 261)			::String date;
+HXDLIN( 261)			if (dateRe->match(xml)) {
+HXLINE( 261)				date = dateRe->matched(1);
             			}
             			else {
-HXLINE( 267)				date = null();
+HXLINE( 261)				date = null();
             			}
-HXLINE( 269)			return  ::Dynamic(::hx::Anon_obj::Create(2)
+HXLINE( 262)			return  ::Dynamic(::hx::Anon_obj::Create(2)
             				->setFixed(0,HX_("releaseDate",95,f7,8d,e0),date)
             				->setFixed(1,HX_("version",18,e7,f1,7c),version));
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
             				 ::Dynamic _g = _hx_e;
-HXLINE( 270)				{
-HXLINE( 270)					null();
+HXLINE( 263)				{
+HXLINE( 263)					null();
             				}
-HXLINE( 271)				return null();
+HXLINE( 264)				return null();
             			}
             			else {
             				HX_STACK_DO_THROW(_hx_e);
             			}
             		}
-HXLINE( 253)		return null();
+HXLINE( 255)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(UpdateMonitor_obj,fetchSparkleVersion,return )
 
  ::Dynamic UpdateMonitor_obj::fetchGithubLatestRelease(::String owner,::String repo){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_276_fetchGithubLatestRelease)
-HXDLIN( 276)		try {
-            			HX_BEGIN_LOCAL_FUNC_S1(::hx::LocalFunc,_hx_Closure_0,::Array< ::String >,response) HXARGC(1)
-            			void _hx_run(::String d){
-            				HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_281_fetchGithubLatestRelease)
-HXLINE( 281)				response[0] = d;
-            			}
-            			HX_END_LOCAL_FUNC1((void))
-
-            			HX_BEGIN_LOCAL_FUNC_S0(::hx::LocalFunc,_hx_Closure_1) HXARGC(1)
-            			void _hx_run(::String e){
-            				HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_282_fetchGithubLatestRelease)
-            			}
-            			HX_END_LOCAL_FUNC1((void))
-
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_269_fetchGithubLatestRelease)
+HXDLIN( 269)		try {
             			HX_STACK_CATCHABLE( ::Dynamic, 0);
-HXLINE( 277)			 ::sys::Http http =  ::sys::Http_obj::__alloc( HX_CTX ,((((HX_("https://api.github.com/repos/",44,c1,e0,da) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/releases/latest",1b,c8,77,2e)));
-HXLINE( 278)			http->setHeader(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
-HXLINE( 279)			http->setHeader(HX_("Accept",28,07,9b,3f),HX_("application/vnd.github+json",cf,1f,70,86));
-HXLINE( 280)			::Array< ::String > response = ::Array_obj< ::String >::fromData( _hx_array_data_40c51400_26,1);
-HXLINE( 281)			http->onData =  ::Dynamic(new _hx_Closure_0(response));
-HXLINE( 282)			http->onError =  ::Dynamic(new _hx_Closure_1());
-HXLINE( 283)			http->request(false);
-HXLINE( 285)			if ((response->__get(0).length == 0)) {
-HXLINE( 285)				return null();
+HXLINE( 270)			 ::haxe::ds::StringMap _g =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXDLIN( 270)			_g->set(HX_("User-Agent",03,d0,1e,60),HX_("Sentinel-Security/0.1",ad,92,ea,19));
+HXDLIN( 270)			_g->set(HX_("Accept",28,07,9b,3f),HX_("application/vnd.github+json",cf,1f,70,86));
+HXDLIN( 270)			 ::haxe::ds::StringMap headers = _g;
+HXLINE( 274)			::String response = ::sentinel::platform::HttpsClient_obj::get(((((HX_("https://api.github.com/repos/",44,c1,e0,da) + owner) + HX_("/",2f,00,00,00)) + repo) + HX_("/releases/latest",1b,c8,77,2e)),headers);
+HXLINE( 276)			if ((response.length == 0)) {
+HXLINE( 276)				return null();
             			}
-HXLINE( 286)			 ::Dynamic j =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response->__get(0))->doParse();
-HXLINE( 288)			::String j1 = ( (::String)(j->__Field(HX_("tag_name",90,6d,50,d7),::hx::paccDynamic)) );
-HXLINE( 289)			::String j2 = ( (::String)(j->__Field(HX_("published_at",24,30,8e,66),::hx::paccDynamic)) );
-HXLINE( 290)			::String _hx_tmp;
-HXDLIN( 290)			if (::hx::IsNotNull( j->__Field(HX_("body",a2,7a,1b,41),::hx::paccDynamic) )) {
-HXLINE( 290)				_hx_tmp = ::Std_obj::string( ::Dynamic(j->__Field(HX_("body",a2,7a,1b,41),::hx::paccDynamic))).substr(0,500);
+HXLINE( 277)			 ::Dynamic j =  ::haxe::format::JsonParser_obj::__alloc( HX_CTX ,response)->doParse();
+HXLINE( 279)			::String j1 = ( (::String)(j->__Field(HX_("tag_name",90,6d,50,d7),::hx::paccDynamic)) );
+HXLINE( 280)			::String j2 = ( (::String)(j->__Field(HX_("published_at",24,30,8e,66),::hx::paccDynamic)) );
+HXLINE( 281)			::String _hx_tmp;
+HXDLIN( 281)			if (::hx::IsNotNull( j->__Field(HX_("body",a2,7a,1b,41),::hx::paccDynamic) )) {
+HXLINE( 281)				_hx_tmp = ::Std_obj::string( ::Dynamic(j->__Field(HX_("body",a2,7a,1b,41),::hx::paccDynamic))).substr(0,500);
             			}
             			else {
-HXLINE( 290)				_hx_tmp = null();
+HXLINE( 281)				_hx_tmp = null();
             			}
-HXLINE( 287)			return  ::Dynamic(::hx::Anon_obj::Create(3)
+HXLINE( 278)			return  ::Dynamic(::hx::Anon_obj::Create(3)
             				->setFixed(0,HX_("notes",41,dc,ca,9f),_hx_tmp)
             				->setFixed(1,HX_("releaseDate",95,f7,8d,e0),j2)
             				->setFixed(2,HX_("version",18,e7,f1,7c),j1));
             		} catch( ::Dynamic _hx_e) {
             			if (_hx_e.IsClass<  ::Dynamic >() ){
             				HX_STACK_BEGIN_CATCH
-            				 ::Dynamic _g = _hx_e;
-HXLINE( 292)				{
-HXLINE( 292)					null();
+            				 ::Dynamic _g1 = _hx_e;
+HXLINE( 283)				{
+HXLINE( 283)					null();
             				}
-HXLINE( 293)				return null();
+HXLINE( 284)				return null();
             			}
             			else {
             				HX_STACK_DO_THROW(_hx_e);
             			}
             		}
-HXLINE( 276)		return null();
+HXLINE( 269)		return null();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(UpdateMonitor_obj,fetchGithubLatestRelease,return )
 
 ::String UpdateMonitor_obj::extractDomain(::String url){
-            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_301_extractDomain)
-HXLINE( 302)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,HX_("https?://([^/]+)",11,78,5b,54),HX_("",00,00,00,00));
-HXLINE( 303)		if (re->match(url)) {
-HXLINE( 303)			return re->matched(1).toLowerCase();
+            	HX_GC_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_292_extractDomain)
+HXLINE( 293)		 ::EReg re =  ::EReg_obj::__alloc( HX_CTX ,HX_("https?://([^/]+)",11,78,5b,54),HX_("",00,00,00,00));
+HXLINE( 294)		if (re->match(url)) {
+HXLINE( 294)			return re->matched(1).toLowerCase();
             		}
-HXLINE( 304)		return url.toLowerCase();
+HXLINE( 295)		return url.toLowerCase();
             	}
 
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(UpdateMonitor_obj,extractDomain,return )
 
 ::String UpdateMonitor_obj::escapeAS(::String s){
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_328_escapeAS)
-HXDLIN( 328)		return s.split(HX_("\"",22,00,00,00))->join(HX_("\\\"",46,50,00,00)).split(HX_("\n",0a,00,00,00))->join(HX_(" ",20,00,00,00));
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_319_escapeAS)
+HXDLIN( 319)		return s.split(HX_("\"",22,00,00,00))->join(HX_("\\\"",46,50,00,00)).split(HX_("\n",0a,00,00,00))->join(HX_(" ",20,00,00,00));
             	}
 
 
@@ -1002,12 +957,12 @@ void UpdateMonitor_obj::__register()
 void UpdateMonitor_obj::__boot()
 {
 {
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_54_boot)
-HXDLIN(  54)		APP_DIRS = ::Array_obj< ::String >::fromData( _hx_array_data_40c51400_30,2);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_56_boot)
+HXDLIN(  56)		APP_DIRS = ::Array_obj< ::String >::fromData( _hx_array_data_40c51400_24,2);
             	}
 {
-            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_55_boot)
-HXDLIN(  55)		RECHECK_INTERVAL = ((Float)3600.0);
+            	HX_STACKFRAME(&_hx_pos_51a3bb0a353a6c66_57_boot)
+HXDLIN(  57)		RECHECK_INTERVAL = ((Float)3600.0);
             	}
 }
 

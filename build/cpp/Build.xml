@@ -13,6 +13,47 @@
   <file name="src/sys/thread/_EventLoop/RegularEvent.cpp" >
    <depend name="include/sys/thread/_EventLoop/RegularEvent.h"/>
   </file>
+  <file name="src/sys/ssl/Socket.cpp" >
+   <depend name="include/Std.h"/>
+   <depend name="include/cpp/Lib.h"/>
+   <depend name="include/haxe/Exception.h"/>
+   <depend name="include/haxe/ValueException.h"/>
+   <depend name="include/haxe/io/Error.h"/>
+   <depend name="include/haxe/io/Input.h"/>
+   <depend name="include/haxe/io/Output.h"/>
+   <depend name="include/sys/net/Host.h"/>
+   <depend name="include/sys/net/Socket.h"/>
+   <depend name="include/sys/ssl/Certificate.h"/>
+   <depend name="include/sys/ssl/Key.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
+   <depend name="include/sys/ssl/_Socket/SocketInput.h"/>
+   <depend name="include/sys/ssl/_Socket/SocketOutput.h"/>
+  </file>
+  <file name="src/sys/ssl/_Socket/SocketOutput.cpp" >
+   <depend name="include/haxe/io/Bytes.h"/>
+   <depend name="include/haxe/io/Error.h"/>
+   <depend name="include/haxe/io/Output.h"/>
+   <depend name="include/sys/net/Socket.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
+   <depend name="include/sys/ssl/_Socket/SocketOutput.h"/>
+  </file>
+  <file name="src/sys/ssl/_Socket/SocketInput.cpp" >
+   <depend name="include/haxe/io/Bytes.h"/>
+   <depend name="include/haxe/io/Eof.h"/>
+   <depend name="include/haxe/io/Error.h"/>
+   <depend name="include/haxe/io/Input.h"/>
+   <depend name="include/sys/net/Socket.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
+   <depend name="include/sys/ssl/_Socket/SocketInput.h"/>
+  </file>
+  <file name="src/sys/ssl/Key.cpp" >
+   <depend name="include/sys/ssl/Key.h"/>
+  </file>
+  <file name="src/sys/ssl/Certificate.cpp" >
+   <depend name="include/Sys.h"/>
+   <depend name="include/sys/FileSystem.h"/>
+   <depend name="include/sys/ssl/Certificate.h"/>
+  </file>
   <file name="src/sys/net/Socket.cpp" >
    <depend name="include/Reflect.h"/>
    <depend name="include/Std.h"/>
@@ -146,6 +187,17 @@
    <depend name="include/sentinel/platform/MacSecurity.h"/>
    <depend name="include/sys/io/Process.h"/>
   </file>
+  <file name="src/sentinel/platform/HttpsClient.cpp" >
+   <depend name="include/haxe/IMap.h"/>
+   <depend name="include/haxe/ds/StringMap.h"/>
+   <depend name="include/haxe/http/HttpBase.h"/>
+   <depend name="include/haxe/io/BytesOutput.h"/>
+   <depend name="include/haxe/io/Output.h"/>
+   <depend name="include/sentinel/platform/HttpsClient.h"/>
+   <depend name="include/sys/Http.h"/>
+   <depend name="include/sys/net/Socket.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
+  </file>
   <file name="src/sentinel/modules/UpdateMonitor.cpp" >
    <depend name="include/Date.h"/>
    <depend name="include/EReg.h"/>
@@ -156,7 +208,6 @@
    <depend name="include/haxe/IMap.h"/>
    <depend name="include/haxe/ds/StringMap.h"/>
    <depend name="include/haxe/format/JsonParser.h"/>
-   <depend name="include/haxe/http/HttpBase.h"/>
    <depend name="include/haxe/io/Bytes.h"/>
    <depend name="include/haxe/io/Input.h"/>
    <depend name="include/sentinel/ai/AIEngine.h"/>
@@ -167,8 +218,8 @@
    <depend name="include/sentinel/core/RiskLevel.h"/>
    <depend name="include/sentinel/core/SecurityEvent.h"/>
    <depend name="include/sentinel/modules/UpdateMonitor.h"/>
+   <depend name="include/sentinel/platform/HttpsClient.h"/>
    <depend name="include/sys/FileSystem.h"/>
-   <depend name="include/sys/Http.h"/>
    <depend name="include/sys/io/File.h"/>
    <depend name="include/sys/io/Process.h"/>
    <depend name="include/sys/thread/_Thread/HaxeThread.h"/>
@@ -290,22 +341,26 @@
    <depend name="include/EReg.h"/>
    <depend name="include/Std.h"/>
    <depend name="include/StringTools.h"/>
+   <depend name="include/haxe/IMap.h"/>
+   <depend name="include/haxe/ds/StringMap.h"/>
    <depend name="include/haxe/format/JsonParser.h"/>
-   <depend name="include/haxe/http/HttpBase.h"/>
    <depend name="include/sentinel/ai/GitHubFetcher.h"/>
    <depend name="include/sentinel/core/Logger.h"/>
-   <depend name="include/sys/Http.h"/>
+   <depend name="include/sentinel/platform/HttpsClient.h"/>
   </file>
   <file name="src/sentinel/ai/AIEngine.cpp" >
    <depend name="include/EReg.h"/>
    <depend name="include/Std.h"/>
    <depend name="include/StringTools.h"/>
+   <depend name="include/haxe/IMap.h"/>
+   <depend name="include/haxe/ds/StringMap.h"/>
    <depend name="include/haxe/format/JsonParser.h"/>
    <depend name="include/haxe/format/JsonPrinter.h"/>
    <depend name="include/haxe/http/HttpBase.h"/>
    <depend name="include/sentinel/ai/AIEngine.h"/>
    <depend name="include/sentinel/core/Logger.h"/>
    <depend name="include/sentinel/core/RiskLevel.h"/>
+   <depend name="include/sentinel/platform/HttpsClient.h"/>
    <depend name="include/sys/Http.h"/>
   </file>
   <file name="src/sentinel/Main.cpp" >
@@ -523,6 +578,9 @@
    <depend name="include/haxe/io/Error.h"/>
    <depend name="include/haxe/io/Encoding.h"/>
    <depend name="include/ValueType.h"/>
+   <depend name="include/sys/ssl/Socket.h"/>
+   <depend name="include/sys/ssl/Key.h"/>
+   <depend name="include/sys/ssl/Certificate.h"/>
    <depend name="include/sys/net/Host.h"/>
    <depend name="include/sys/Http.h"/>
    <depend name="include/sentinel/platform/UnixSocket.h"/>
@@ -565,6 +623,7 @@
 <include name="${HXCPP}/src/hx/libs/std/Build.xml"/>
 <include name="${HXCPP}/src/hx/libs/std/Build.xml"/>
 <include name="${HXCPP}/src/hx/libs/std/Build.xml"/>
+<include name="${HXCPP}/src/hx/libs/ssl/Build.xml"/>
 <include name="${HXCPP}/src/hx/libs/std/Build.xml"/>
 
 <files id="haxe">

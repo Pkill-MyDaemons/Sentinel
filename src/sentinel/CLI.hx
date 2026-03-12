@@ -1,5 +1,5 @@
 package sentinel;
-
+using StringTools;
 import sentinel.config.Config;
 import sentinel.ai.AIEngine;
 import sentinel.ai.GitHubFetcher;

@@ -85,7 +85,10 @@ class UnixSocket {
         var buf = new hl.Bytes(READ_BUF_SIZE);
         var n = hlRead(clientFd, buf, READ_BUF_SIZE);
         if (n <= 0) return null;
-        return @:privateAccess String.fromUTF8(buf, 0, n);
+        // buf.sub(offset, length)
+        var subBytes = buf.sub(0, n);
+        return @:privateAccess String.fromUTF8(subBytes);
+
         #elseif cpp
         // Declare ptr as char* so nullptr comparison and free are unambiguous.
         // __cpp__ with a return-type cast avoids ::Dynamic operator== ambiguity.
